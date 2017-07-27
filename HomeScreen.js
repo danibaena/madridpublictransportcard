@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Platform, AppRegistry, StyleSheet, Text, View, TextInput, TouchableHighlight, Alert } from 'react-native'
-import { StackNavigator } from 'react-navigation';
+import { Platform, AppRegistry, StyleSheet, Text, View, ScrollView, TextInput, TouchableHighlight, Alert } from 'react-native'
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment'
 
@@ -10,19 +9,25 @@ const black = '#282629'
 const grey = '#9B9B9B'
 const red = '#DD382C'
 
-const StyledView = styled.View`
+const StyledView = styled.ScrollView.attrs({
+  contentContainerStyle: props => {
+    return {
+      alignItems: 'center',
+      justifyContent: 'flex-start'
+    }
+  }
+})`
   flex: 1;
   background-color: #fff;
-  align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
   padding: 30px;
-`;
+`
+
   /* font-family: 'Roboto'; */
 
 const StyledMainTitle = styled.Text`
   color: ${black};
-  font-size: 38;
+  font-size: 46;
   font-weight: bold;
   align-self: flex-start;
 `
@@ -75,14 +80,12 @@ const StyledCardsSubtitle = styled.Text`
 `
 
 const StyledCardLink = styled.TouchableHighlight`
-  padding-top: 8;
   width: 100%;
-  padding-bottom: 6;
 `
 
-// StyledCta = Platform.OS === 'ios' ? styled.TouchableHighlight(StyledCta): styled.TouchableHighlight(StyledCta)
-
 const StyledCardLinkText = styled.Text`
+  padding-top: 8;
+  padding-bottom: 6;
   color: ${red};
   font-size: 18;
   font-weight: 400;
@@ -99,43 +102,33 @@ export default class HomesScreen extends React.Component {
     this.state = {text: ''};
   };
 
-  static navigationOptions = {
-    title: 'Home',
+  _onPressButton() {
+    // const cardId = "2510010062803";
+    const cardId = this.state.text;
+    if(cardId.length < 13) {
+      console.log("tiki")
+    } else {
+      console.log("tuku")
+    }
+    const body = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultaSaldoTarjeta1><tem:sNumeroTP>${cardId}</tem:sNumeroTP><tem:sLenguaje>es</tem:sLenguaje><tem:sTipoApp>APP_SALDO_ANDROID</tem:sTipoApp></tem:ConsultaSaldoTarjeta1></soapenv:Body></soapenv:Envelope>`
+
+    return fetch('http://www.citram.es:50081/VENTAPREPAGOTITULO/VentaPrepagoTitulo.svc?wsdl', {
+      method: 'POST',
+      headers: {
+        'host': 'www.citram.es:50081',
+        'Content-Type': 'application/json',
+        'cache-control': 'no-cache',
+        'Connection': 'keep-alive',
+        'content-type': 'text/xml; charset=utf-8',
+        'soapaction': 'http://tempuri.org/IVentaPrepagoTitulo/ConsultaSaldoTarjeta1'
+      },
+      body: body
+    }).then((response) => {
+      console.log("Entrandito")
+      Alert.alert("Taka")
+    }).catch((error) => {
+    });
   };
-
-  static navigatorStyle = {
-    navBarHidden: true,
-    drawUnderNavBar: false,
-    navBarTranslucent: false
-  };
-
-  // _onPressButton() {
-  //   // const cardId = "2510010062803";
-  //   const cardId = this.state.text;
-  //   if(cardId.length < 13) {
-  //     console.log("tiki")
-  //   } else {
-  //     console.log("tuku")
-  //   }
-  //   const body = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultaSaldoTarjeta1><tem:sNumeroTP>${cardId}</tem:sNumeroTP><tem:sLenguaje>es</tem:sLenguaje><tem:sTipoApp>APP_SALDO_ANDROID</tem:sTipoApp></tem:ConsultaSaldoTarjeta1></soapenv:Body></soapenv:Envelope>`
-
-  //   return fetch('http://www.citram.es:50081/VENTAPREPAGOTITULO/VentaPrepagoTitulo.svc?wsdl', {
-  //     method: 'POST',
-  //     headers: {
-  //       'host': 'www.citram.es:50081',
-  //       'Content-Type': 'application/json',
-  //       'cache-control': 'no-cache',
-  //       'Connection': 'keep-alive',
-  //       'content-type': 'text/xml; charset=utf-8',
-  //       'soapaction': 'http://tempuri.org/IVentaPrepagoTitulo/ConsultaSaldoTarjeta1'
-  //     },
-  //     body: body
-  //   }).then((response) => {
-  //     console.log("Entrandito")
-  //     Alert.alert("Taka")
-  //   }).catch((error) => {
-  //   });
-  // };
 
   parseCardData(response) {
     let $ = response;
@@ -165,7 +158,7 @@ export default class HomesScreen extends React.Component {
         <StyledInputView>
           <StyledInput 
             autoFocus={true}
-            placeholder="Introduce tu número de tarjeta"
+            placeholder="Pon tu número de tarjeta"
             placeholderTextColor={black}
             multiline={true}
             editable={true}
@@ -178,7 +171,7 @@ export default class HomesScreen extends React.Component {
           />          
         </StyledInputView>
         <StyledCta onPress={console.log("Taka")}>
-          <StyledCtaText>{"Dime mis datos".toUpperCase()}</StyledCtaText>
+          <StyledCtaText>{"Consultar mis datos".toUpperCase()}</StyledCtaText>
         </StyledCta>
         <StyledCardsView>
           <StyledCardsSubtitle>Tus tarjetas</StyledCardsSubtitle>
@@ -187,6 +180,42 @@ export default class HomesScreen extends React.Component {
           </StyledCardLink>
           <StyledCardLink onPress={() => navigate('Card')}>
             <StyledCardLinkText>Tarjeta Ana</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Ana</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
+          </StyledCardLink>
+          <StyledCardLink onPress={() => navigate('Card')}>
+            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
           </StyledCardLink>
         </StyledCardsView>
       </StyledView>

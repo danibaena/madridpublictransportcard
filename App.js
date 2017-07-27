@@ -8,13 +8,12 @@ const App = StackNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions: ({ navigation }) => ({
-        title: 'Inicio'
+        header: null,
       })
     },
     Card: {
       screen: CardScreen,
       navigationOptions: ({ navigation }) => ({
-        title: 'Tarjeta'
       })
     }
   },
@@ -22,7 +21,14 @@ const App = StackNavigator(
     cardStyle: {
       paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
       shadowColor: 'transparent'
-    }
+    },
+    navigationOptions: {
+        headerStyle: {
+            elevation: 0,
+            shadowOpacity: 0,
+        }
+    },
+    headerMode: 'screen',
   }
 );
 
