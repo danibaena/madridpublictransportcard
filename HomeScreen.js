@@ -1,13 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Platform, AppRegistry, StyleSheet, Text, View, ScrollView, TextInput, TouchableHighlight, Alert } from 'react-native'
+import { Platform, AppRegistry, StyleSheet, Text, View, ScrollView, TextInput, TouchableHighlight, Image, Alert } from 'react-native'
+import CardLink from './CardLink'
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment'
-
-const white = '#ffffff'
-const black = '#282629'
-const grey = '#9B9B9B'
-const red = '#DD382C'
+import colors from './colors'
 
 const StyledView = styled.ScrollView.attrs({
   contentContainerStyle: props => {
@@ -26,7 +23,7 @@ const StyledView = styled.ScrollView.attrs({
   /* font-family: 'Roboto'; */
 
 const StyledMainTitle = styled.Text`
-  color: ${black};
+  color: ${colors.black};
   font-size: 46;
   font-weight: bold;
   align-self: flex-start;
@@ -34,23 +31,23 @@ const StyledMainTitle = styled.Text`
 
 const StyledInputView = styled.View`
   width: 100%;
-  margin-top: 140px;
+  margin-top: 60;
 `
 
 const StyledInput = styled.TextInput`
-  color: ${black};
+  color: ${colors.black};
   font-size: 18;
   font-weight: 500;
   padding: 0
   padding-bottom: 7;
   border-width: 0;
   border-style: solid;
-  border-bottom-width: 2;
-  border-bottom-color: ${red};
+  border-bottom-width: 1.5;
+  border-bottom-color: ${colors.red};
 `
 
 const StyledCta = styled.TouchableHighlight`
-  background-color: ${red};
+  background-color: ${colors.red};
   width: 100%;
   padding: 12px 22px;
   border-radius: 5;
@@ -59,7 +56,7 @@ const StyledCta = styled.TouchableHighlight`
 `
 
 const StyledCtaText = styled.Text`
-  color: ${white};
+  color: ${colors.white};
   font-size: 18;
   font-weight: 500;
   text-align: center;
@@ -73,34 +70,27 @@ const StyledCardsView = styled.View`
 `
 
 const StyledCardsSubtitle = styled.Text`
-  color: ${black};
+  color: ${colors.black};
   font-size: 24;
   font-weight: bold;
   margin-bottom: 12;
 `
 
-const StyledCardLink = styled.TouchableHighlight`
-  width: 100%;
-`
-
-const StyledCardLinkText = styled.Text`
-  padding-top: 8;
-  padding-bottom: 6;
-  color: ${red};
-  font-size: 18;
-  font-weight: 400;
+const StyledHelpLink = styled.TouchableHighlight`
+  margin-top: 30px;
+  align-self: flex-end;
 `
 
 const StyledHelp = styled.Image`
-  width: 50;
-  align-self: flex-end;
+  width: 40px;
+  height: 40px;
 `
 
 export default class HomesScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {text: ''};
-  };
+  }
 
   _onPressButton() {
     // const cardId = "2510010062803";
@@ -128,7 +118,7 @@ export default class HomesScreen extends React.Component {
       Alert.alert("Taka")
     }).catch((error) => {
     });
-  };
+  }
 
   parseCardData(response) {
     let $ = response;
@@ -152,14 +142,21 @@ export default class HomesScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    const cardData = {
+        cardName: this.props.cardName, 
+        cardId: this.props.cardId, 
+        cardExpireDate: this.props.cardExpireDate,
+    }
     return (
       <StyledView>
         <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>
+        <StyledHelpLink onPress={() => navigate('Help')}>
+          <StyledHelp source={require('./assets/img/help-button.png')} />
+        </StyledHelpLink>
         <StyledInputView>
           <StyledInput 
-            autoFocus={true}
             placeholder="Pon tu número de tarjeta"
-            placeholderTextColor={black}
+            placeholderTextColor={colors.black}
             multiline={true}
             editable={true}
             autoCorrect={false}
@@ -170,55 +167,15 @@ export default class HomesScreen extends React.Component {
             onSubmitEditing={(text) => this.setState({text})}
           />          
         </StyledInputView>
-        <StyledCta onPress={console.log("Taka")}>
+        <StyledCta onPress={() => navigate('Card', cardData)}>
           <StyledCtaText>{"Consultar mis datos".toUpperCase()}</StyledCtaText>
         </StyledCta>
         <StyledCardsView>
           <StyledCardsSubtitle>Tus tarjetas</StyledCardsSubtitle>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Ana</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Ana</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
-          <StyledCardLink onPress={() => navigate('Card')}>
-            <StyledCardLinkText>Tarjeta Dani</StyledCardLinkText>
-          </StyledCardLink>
+          <CardLink cardId="1234567890123" cardName="Tarjeta Dani" cardExpireDate="18/08/2017" navigate={navigate}/>
+          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
         </StyledCardsView>
       </StyledView>
-    );
+    )
   }
 }

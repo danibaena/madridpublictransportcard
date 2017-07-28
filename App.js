@@ -2,6 +2,7 @@ import { Platform, StatusBar, AppRegistry } from 'react-native'
 import { StackNavigator } from 'react-navigation';
 import HomeScreen from './HomeScreen'
 import CardScreen from './CardScreen'
+import HelpScreen from './HelpScreen'
 
 const App = StackNavigator(
   {
@@ -13,6 +14,12 @@ const App = StackNavigator(
     },
     Card: {
       screen: CardScreen,
+      navigationOptions: ({ navigation }) => ({
+      })
+    },
+    Help: {
+      screen: HelpScreen,
+      title: 'Ayuda',
       navigationOptions: ({ navigation }) => ({
       })
     }
