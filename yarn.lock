@@ -4067,9 +4067,9 @@ react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
 
-react-native-calendars@^1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.5.5.tgz#5a063c7a4d0985ec50d567e84fc3fdc996176438"
+"react-native-calendars@git://github.com/danibaena/react-native-calendars.git#v.1.5.6":
+  version "1.5.6"
+  resolved "git://github.com/danibaena/react-native-calendars.git#8212c2d0bd616d1fb8f84f0f0aaf250306989022"
   dependencies:
     prop-types "^15.5.10"
     xdate "^0.8.0"

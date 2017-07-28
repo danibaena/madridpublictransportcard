@@ -1,20 +1,24 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight, ScrollView, StyleSheet, Alert } from 'react-native'
+import { Text, View, TouchableHighlight, ScrollView, StyleSheet, Alert, AsyncStorage } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
+import cheerio from 'cheerio-without-node-native'
 import moment from 'moment/min/moment-with-locales'
 import colors from './colors'
 
 
-    /* i18n for time*/
-    const localeData = {
-      monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-      monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-      dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-      dayNamesShort: ['D','L','M','X','J','V','S']
-    };
+/* i18n for time*/
+const localeData = {
+  monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+  monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+  dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+  dayNamesShort: ['D','L','M','X','J','V','S']
+};
 moment.locale('es');
 moment.updateLocale('es', localeData);
+
+LocaleConfig.locales['es'] = localeData;
+LocaleConfig.defaultLocale = 'es';
 
 /* Styles */
 
@@ -85,17 +89,6 @@ export default class CardScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    /* i18n for time*/
-    const localeData = {
-      monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-      monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-      dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-      dayNamesShort: ['D','L','M','X','J','V','S']
-    };
-
-    LocaleConfig.locales['es'] = localeData;
-    LocaleConfig.defaultLocale = 'es';
-
     const regularDateFormat = 'DD[ de ]MMMM[ de ]YYYY';
     const todayDateFormat = '[Hoy es ]DD[ de ]MMMM[ de ]YYYY';
     const expireDateFormatCalendar = 'YYYY-MM-DD';
@@ -107,11 +100,59 @@ export default class CardScreen extends React.Component {
       expireDate: expireDate.format(regularDateFormat),
       expireDateCalendar: expireDate.format(expireDateFormatCalendar),
       today: today.format(todayDateFormat),
+      cardId: this.props.navigation.state.params.cardData.cardId,
+      cardName: this.props.navigation.state.params.cardData.cardName,
     }
   }
 
   componentDidMount() {
+    AsyncStorage.getItem("cards").then((value) => {
+      this.setState({"cards": value});
+    }).done();
 
+    const body = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultaSaldoTarjeta1><tem:sNumeroTP>${this.state.cardId}</tem:sNumeroTP><tem:sLenguaje>es</tem:sLenguaje><tem:sTipoApp>APP_SALDO_ANDROID</tem:sTipoApp></tem:ConsultaSaldoTarjeta1></soapenv:Body></soapenv:Envelope>`
+    fetch('http://www.citram.es:50081/VENTAPREPAGOTITULO/VentaPrepagoTitulo.svc?wsdl', {
+      method: 'POST',
+      headers: {
+        'host': 'www.citram.es:50081',
+        'Content-Type': 'application/json',
+        'cache-control': 'no-cache',
+        'Connection': 'keep-alive',
+        'content-type': 'text/xml; charset=utf-8',
+        'soapaction': 'http://tempuri.org/IVentaPrepagoTitulo/ConsultaSaldoTarjeta1'
+      },
+      body: body
+    }).then((response) => {
+      let $ = cheerio.load(response._bodyInit, {xmlMode:true});
+      $ = cheerio.load($('a\\:sResulXMLField').text(), {xmlMode:true})
+
+      let result;
+      if($('titulos').find("[desc='Fecha de caducidad de la carga']").html()!==null){
+          result = $('titulos').find("[desc='Fecha de caducidad de la carga']")[0].attribs.value;
+      }
+
+      let expireDate;
+      if(result){
+          expireDate = moment(result, 'YYYY-MM-DD');
+          expireDate = expireDate.format('DD-MM-YYYY');
+      }
+      this.setState({text})
+      // Alert.alert(result)
+      Alert.alert(expireDate.toString())
+    }).catch((error) => {
+      Alert.alert(error)
+    });
+  }
+
+  saveData(value) {
+    AsyncStorage.setItem('cards', value);
+    this.setState({'cards': value});
+  }
+
+  merge(arrArg) {
+    return arrArg.filter((elem, pos, arr) => {
+      return arr.indexOf(elem) == pos;
+    });
   }
 
   render() {
@@ -119,9 +160,9 @@ export default class CardScreen extends React.Component {
       <StyledView>
         <StyledDiv>
           <StyledCardsSubtitle>Tus datos</StyledCardsSubtitle>
-          <StyledCardLinkText>{this.props.navigation.state.params.cardData.cardName?this.props.navigation.state.params.cardData.cardName:null}</StyledCardLinkText>
+          <StyledCardLinkText>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
         </StyledDiv>
-        <StyledText>Número de tarjeta: {this.props.navigation.state.params.cardData.cardId?this.props.navigation.state.params.cardData.cardId:0}</StyledText>
+        <StyledText>Número de tarjeta: {this.state.cardId}</StyledText>
         <StyledText>Expira el día {this.state.expireDate}</StyledText>
         <StyledCalendar 
           // Initially visible month. Default = Date()
