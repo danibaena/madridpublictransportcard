@@ -44,6 +44,9 @@ const StyledDiv = styled.View`
   margin: 0;
 `
 
+const StyledWrapper = styled.View`
+`
+
 const StyledCardsSubtitle = styled.Text`
   color: ${colors.black};
   font-size: 24;
@@ -83,6 +86,11 @@ const StyledCurrentDate = styled.Text`
   align-self: flex-start;
 `
 
+const StyledSpinner = styled(Spinner)`
+  background-color: ${colors.white};
+  opacity: 1;
+`
+
 /* Component */
 
 export default class CardScreen extends React.Component {
@@ -97,11 +105,12 @@ export default class CardScreen extends React.Component {
     const today = moment();
     
     this.state = {
-      expireDate: expireDate.format(regularDateFormat),
-      expireDateCalendar: expireDate.format(expireDateFormatCalendar),
+      expireDate: '',
+      expireDateCalendar: '',
       today: today.format(todayDateFormat),
       cardId: this.props.navigation.state.params.cardData.cardId,
       cardName: this.props.navigation.state.params.cardData.cardName,
+      done: false,
     }
   }
 
@@ -134,11 +143,14 @@ export default class CardScreen extends React.Component {
       let expireDate;
       if(result){
           expireDate = moment(result, 'YYYY-MM-DD');
-          expireDate = expireDate.format('DD-MM-YYYY');
+          expireDate = expireDate.format('DD[ de ]MMMM[ de ]YYYY');
       }
-      this.setState({text})
-      // Alert.alert(result)
-      Alert.alert(expireDate.toString())
+
+      this.setState({
+        expireDate: expireDate,
+        expireDateCalendar: result,
+        done: true
+      })
     }).catch((error) => {
       Alert.alert(error)
     });
@@ -158,54 +170,58 @@ export default class CardScreen extends React.Component {
   render() {
     return (
       <StyledView>
-        <StyledDiv>
-          <StyledCardsSubtitle>Tus datos</StyledCardsSubtitle>
-          <StyledCardLinkText>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
-        </StyledDiv>
-        <StyledText>Número de tarjeta: {this.state.cardId}</StyledText>
-        <StyledText>Expira el día {this.state.expireDate}</StyledText>
-        <StyledCalendar 
-          // Initially visible month. Default = Date()
-          current={this.state.expireDateCalendar}
+        { this.state.done ?
+        <StyledWrapper>
+          <StyledDiv>
+            <StyledCardsSubtitle>Tus datos</StyledCardsSubtitle>
+            <StyledCardLinkText>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
+          </StyledDiv>
+          <StyledText>Número de tarjeta: {this.state.cardId}</StyledText>
+          <StyledText>Expira el día {this.state.expireDate}</StyledText>
+          <StyledCalendar 
+            // Initially visible month. Default = Date()
+            current={this.state.expireDateCalendar}
 
-          markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
+            markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
 
-          // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-          monthFormat={'MMMM yyyy'}
-          // Hide month navigation arrows. Default = false
-          hideArrows={false}
-          // Do not show days of other months in month page. Default = false
-          hideExtraDays={false}
-          // If hideArrows=false and hideExtraDays=false do not swich month when tapping on greyed out
-          // day from another month that is visible in calendar page. Default = false
-          disableMonthChange={false}
-          // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-          firstDay={1}
-          // style={calendarStyles.arrow}
-          theme={{
-            calendarBackground: '#ffffff',
-            textSectionTitleColor: `${colors.red}`,
-            selectedDayBackgroundColor: `${colors.red}`,
-            selectedDayTextColor: '#ffffff',
-            todayTextColor: `${colors.black}`,
-            dayTextColor: `${colors.red}`,
-            textDisabledColor: `${colors.disabled}`,
-            dotColor: `${colors.black}`,
-            selectedDotColor: `${colors.white}`,
-            arrowColor: `${colors.red}`,
-            monthTextColor: `${colors.black}`,
-            textDayFontFamily: 'Roboto',
-            textMonthFontFamily: 'Roboto',
-            textDayHeaderFontFamily: 'Roboto',
-            textDayFontSize: 12,
-            textMonthFontSize: 16,
-            textDayHeaderFontSize: 16
-          }}
-        />
-        <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
+            // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
+            monthFormat={'MMMM yyyy'}
+            // Hide month navigation arrows. Default = false
+            hideArrows={false}
+            // Do not show days of other months in month page. Default = false
+            hideExtraDays={false}
+            // If hideArrows=false and hideExtraDays=false do not swich month when tapping on greyed out
+            // day from another month that is visible in calendar page. Default = false
+            disableMonthChange={false}
+            // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
+            firstDay={1}
+            // style={calendarStyles.arrow}
+            theme={{
+              calendarBackground: '#ffffff',
+              textSectionTitleColor: `${colors.red}`,
+              selectedDayBackgroundColor: `${colors.red}`,
+              selectedDayTextColor: '#ffffff',
+              todayTextColor: `${colors.black}`,
+              dayTextColor: `${colors.red}`,
+              textDisabledColor: `${colors.disabled}`,
+              dotColor: `${colors.black}`,
+              selectedDotColor: `${colors.white}`,
+              arrowColor: `${colors.red}`,
+              monthTextColor: `${colors.black}`,
+              textDayFontFamily: 'Roboto',
+              textMonthFontFamily: 'Roboto',
+              textDayHeaderFontFamily: 'Roboto',
+              textDayFontSize: 12,
+              textMonthFontSize: 16,
+              textDayHeaderFontSize: 16
+            }}
+          />
+          <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
+        </StyledWrapper>
+        :
+        <StyledText>Aquí no hay nada que ver</StyledText>
+        }
       </StyledView>
     );
   }
 }
-
-// <StyledCurrentDate>Hoy es {`${today.format("DD")} de ${today.format("MMMM")} de ${today.format("YYYY")}`}</StyledCurrentDate>
