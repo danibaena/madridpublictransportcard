@@ -122,15 +122,7 @@ export default class HomesScreen extends React.Component {
         <StyledCardsView>
           <StyledCardsSubtitle>Tus tarjetas</StyledCardsSubtitle>
           <CardLink cardId="2510010062803" cardName="Tarjeta Dani" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="1234567890123" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
+          <CardLink cardId="0010000323869" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
         </StyledCardsView>
       </StyledView>
     )

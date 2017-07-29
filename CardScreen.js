@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Text, View, TouchableHighlight, ScrollView, StyleSheet, Alert, AsyncStorage } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
+import CardLoading from './CardLoading'
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment/min/moment-with-locales'
 import colors from './colors'
@@ -84,11 +85,6 @@ const StyledCurrentDate = styled.Text`
   color: ${colors.black};
   font-size: 16;
   align-self: flex-start;
-`
-
-const StyledSpinner = styled(Spinner)`
-  background-color: ${colors.white};
-  opacity: 1;
 `
 
 /* Component */
@@ -219,7 +215,7 @@ export default class CardScreen extends React.Component {
           <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
         </StyledWrapper>
         :
-        <StyledText>Aquí no hay nada que ver</StyledText>
+        <CardLoading />
         }
       </StyledView>
     );
