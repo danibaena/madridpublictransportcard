@@ -121,11 +121,18 @@ const StyledFavoriteButton = styled.Image`
   align-self: flex-end;
 `
 
+const StyledPrompt = styled(Prompt)`
+  border-radius: 0;
+`
+
 /* Component */
 
 export default class CardScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.saveData = this.saveData.bind(this);
+    this.saveFavorite = this.saveFavorite.bind(this);
+    this.onSubmitPrompt = this.onSubmitPrompt.bind(this);
 
     const regularDateFormat = 'DD[ de ]MMMM[ de ]YYYY';
     const todayDateFormat = '[Hoy es ]DD[ de ]MMMM[ de ]YYYY';
@@ -141,7 +148,9 @@ export default class CardScreen extends React.Component {
       cardId: cardData.cardId,
       cardName: cardData.cardName,
       cards: null,
+      promptVisible: false,
       done: false,
+      favoriteVisible: true,
     }
   }
 
@@ -209,31 +218,31 @@ export default class CardScreen extends React.Component {
         done: true
       })
     }).catch((error) => {
-      Alert.alert('','No se ha podido hacer la consulta al servidor del CRTM, vuelva a intentarlo o corrija el número')
+      Alert.alert(`Número de tarjeta: ${this.state.cardId}`,'No se ha podido hacer la consulta al servidor del CRTM, vuelva a intentarlo o corrija el número')
       return this.props.navigation.navigate('Home');
     });
   }
 
   saveData(value) {
-
- // AsyncStorage.setItem('cards', JSON.stringify(ORIG), () => {
- //   AsyncStorage.mergeItem('cards', JSON.stringify(DELTA), () => {
- //     AsyncStorage.getItem('cards', (err, result) => {
- //       console.log('cards result of merged object: %O', JSON.parse(result))
- //     })
- //   })
- // })
     AsyncStorage.mergeItem('cards', JSON.stringify(value)).done()
+  }
 
-    // AsyncStorage.getItem("cards").then((cards) => {
-    //   AsyncStorage.mergeItem('cards', JSON.stringify(value))
-    // }).done();
+  saveFavorite(value) {
+    
+  }
 
-    // AsyncStorage.getItem("cards").then((cards) => {
-    //   const result = this.editOrPushCard(JSON.parse(cards), value)
-    //   this.setState({"cards": result});
-    // }).done();
-    // AsyncStorage.setItem('cards', JSON.stringify(this.state.cards));
+  onSubmitPrompt(value) {
+    if(value) {
+      this.setState({
+        promptVisible: false,
+        favoriteVisible: false,
+        cardName: value,
+      })
+    } else {
+      this.setState({
+        promptVisible: false,
+      })
+    }
   }
 
   render() {
@@ -309,9 +318,22 @@ export default class CardScreen extends React.Component {
           <StyledFooter>
             <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
             <StyledWrapper2>
-              <StyledButton>
+              {this.state.favoriteVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
                 <StyledFavoriteButton source={require('./assets/img/favorite-button.png')} />
-              </StyledButton>
+                <Prompt
+                  title="Pon el nombre de la tarjeta"
+                  placeholder="Tarjeta de..."
+                  visible={ this.state.promptVisible }
+                  onCancel={ () => this.setState({
+                    promptVisible: false,
+                    message: "You cancelled"
+                  }) }
+                  onSubmit={ (value) => this.onSubmitPrompt(value) } 
+                  submitText="Ok"
+                  cancelText="Cancelar"
+                  borderColor="transparent"
+                />
+              </StyledButton> }
               <StyledButton>
                 <StyledCalendarButton source={require('./assets/img/calendar-button.png')} />
               </StyledButton>

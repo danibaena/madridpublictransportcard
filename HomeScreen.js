@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert } from 'react-native'
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard } from 'react-native'
 import CardsView from './CardsView'
 import colors from './colors'
+
+/* Styled Components */
 
 const StyledView = styled.ScrollView.attrs({
   contentContainerStyle: props => {
@@ -17,8 +19,7 @@ const StyledView = styled.ScrollView.attrs({
   flex-direction: column;
   padding: 30px;
 `
-
-  /* Add this when project is ejected font-family: 'Roboto'; */
+/* Add this to StyledView when project is ejected: font-family: 'Roboto'; */
 
 const StyledMainTitle = styled.Text`
   color: ${colors.black};
@@ -84,6 +85,13 @@ const StyledHelp = styled.Image`
   height: 40px;
 `
 
+/* Constants */
+
+const MIN_NUM_CARD = 13;
+const MAX_NUM_CARD = 22;
+
+/* Component */
+
 export default class HomesScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -93,10 +101,9 @@ export default class HomesScreen extends React.Component {
   }
 
   onPressCTA(navigate, cardData) {
-    const minNumCard = 13;
-    const maxNumCard = 22;
+    Keyboard.dismiss();
 
-    if(this.state.cardId === '' || this.state.cardId.length < minNumCard || this.state.cardId.length > maxNumCard) {
+    if(this.state.cardId === '' || this.state.cardId.length < MIN_NUM_CARD || this.state.cardId.length > MAX_NUM_CARD) {
       Alert.alert('Debes poner un número de tarjeta válido')
       return;
     }
@@ -105,7 +112,10 @@ export default class HomesScreen extends React.Component {
   }
 
   onChangeText(cardId) {
-    const validCardId = cardId.replace(/\s/g,'').replace(/\D/g, '');
+    let validCardId = cardId.replace(/\s/g,'').replace(/\D/g, '');
+    if(validCardId.length > MIN_NUM_CARD) {
+      validCardId = validCardId.substr(validCardId.length - MIN_NUM_CARD)
+    }
     this.setState({cardId: validCardId});
   }
 
@@ -117,7 +127,7 @@ export default class HomesScreen extends React.Component {
         cardExpireDate: null,
     }
     return (
-      <StyledView>
+      <StyledView keyboardShouldPersistTaps="always">
         <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>
         <StyledHelpLink onPress={() => navigate('Help')}>
           <StyledHelp source={require('./assets/img/help-button.png')} />
