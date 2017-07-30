@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight, ScrollView, StyleSheet, Alert, AsyncStorage } from 'react-native'
+import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, Alert, AsyncStorage } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
+import Prompt from 'react-native-prompt'
+import CalendarEvents from 'react-native-calendar-events'
 import CardLoading from './CardLoading'
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment/min/moment-with-locales'
@@ -42,10 +44,23 @@ const StyledDiv = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  margin: 0;
 `
 
 const StyledWrapper = styled.View`
+`
+
+const StyledWrapper2 = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+`
+
+
+const StyledFooter = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 `
 
 const StyledCardsSubtitle = styled.Text`
@@ -81,10 +96,29 @@ const StyledText = styled.Text`
 `
 
 const StyledCurrentDate = styled.Text`
-  margin-top: 24px;
   color: ${colors.black};
   font-size: 16;
   align-self: flex-start;
+  margin-top: 24px;
+`
+
+const StyledButton = styled.TouchableOpacity`
+
+`
+
+const StyledCalendarButton = styled.Image`
+  width: 42px;
+  height: 42px;
+  margin-top: 12px;
+  align-self: flex-end;
+`
+
+const StyledFavoriteButton = styled.Image`
+  width: 42px;
+  height: 42px;
+  margin-top: 11px;
+  margin-right: 20px
+  align-self: flex-end;
 `
 
 /* Component */
@@ -96,23 +130,26 @@ export default class CardScreen extends React.Component {
     const regularDateFormat = 'DD[ de ]MMMM[ de ]YYYY';
     const todayDateFormat = '[Hoy es ]DD[ de ]MMMM[ de ]YYYY';
     const expireDateFormatCalendar = 'YYYY-MM-DD';
-    let expireDate = moment('18/08/2017', 'DD/MM/YYYY');
-    let expireDateCalendar = expireDate.format(expireDateFormatCalendar)
     const today = moment();
+    const {cardData} = this.props.navigation.state.params;
     
     this.state = {
       expireDate: '',
       expireDateCalendar: '',
+      expireDateFormatted: '',
       today: today.format(todayDateFormat),
-      cardId: this.props.navigation.state.params.cardData.cardId,
-      cardName: this.props.navigation.state.params.cardData.cardName,
+      cardId: cardData.cardId,
+      cardName: cardData.cardName,
+      cards: null,
       done: false,
     }
   }
 
   componentDidMount() {
-    AsyncStorage.getItem("cards").then((value) => {
-      this.setState({"cards": value});
+    AsyncStorage.getItem("cards").then((result) => {
+      if(result){
+        this.setState({"cards": JSON.parse(result)});
+      }
     }).done();
 
     const body = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultaSaldoTarjeta1><tem:sNumeroTP>${this.state.cardId}</tem:sNumeroTP><tem:sLenguaje>es</tem:sLenguaje><tem:sTipoApp>APP_SALDO_ANDROID</tem:sTipoApp></tem:ConsultaSaldoTarjeta1></soapenv:Body></soapenv:Envelope>`
@@ -132,38 +169,95 @@ export default class CardScreen extends React.Component {
       $ = cheerio.load($('a\\:sResulXMLField').text(), {xmlMode:true})
 
       let result;
-      if($('titulos').find("[desc='Fecha de caducidad de la carga']").html()!==null){
-          result = $('titulos').find("[desc='Fecha de caducidad de la carga']")[0].attribs.value;
+      let resultRecarga;
+      let resultCarga;
+      let $titulos = $('titulos');
+      
+      if ($titulos.find("[desc='Fecha de caducidad de la recarga']").html() !== null) {
+        resultRecarga = $titulos.find("[desc='Fecha de caducidad de la recarga']")[0].attribs.value;
+        resultRecarga = moment(resultRecarga, "YYYY-MM-DD");
+      }
+
+      if ($titulos.find("[desc='Fecha de caducidad de la carga']").html() !== null) {
+        resultCarga = $titulos.find("[desc='Fecha de caducidad de la carga']")[0].attribs.value;
+        resultCarga = moment(resultCarga, "YYYY-MM-DD");
+      }
+
+      if(resultRecarga && resultCarga) {
+        result = resultRecarga.isAfter(resultCarga) ? resultRecarga : resultCarga;  
+      } else if (resultRecarga) {
+        result = resultRecarga;
+      } else {
+        result = resultCarga;
+      }
+      
+      if(!result){
+        throw CardError;
       }
 
       let expireDate;
-      if(result){
-          expireDate = moment(result, 'YYYY-MM-DD');
-          expireDate = expireDate.format('DD[ de ]MMMM[ de ]YYYY');
-      }
+      let expireDateFormatted;
+
+      expireDate = result.format("DD/MM/YYYY").toString();
+      expireDateFormatted = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
+      result = result.format("YYYY-MM-DD").toString();
 
       this.setState({
         expireDate: expireDate,
+        expireDateFormatted: expireDateFormatted,
         expireDateCalendar: result,
         done: true
       })
     }).catch((error) => {
-      Alert.alert(error)
+      Alert.alert('','No se ha podido hacer la consulta al servidor del CRTM, vuelva a intentarlo o corrija el número')
+      return this.props.navigation.navigate('Home');
     });
   }
 
   saveData(value) {
-    AsyncStorage.setItem('cards', value);
-    this.setState({'cards': value});
-  }
 
-  merge(arrArg) {
-    return arrArg.filter((elem, pos, arr) => {
-      return arr.indexOf(elem) == pos;
-    });
+ // AsyncStorage.setItem('cards', JSON.stringify(ORIG), () => {
+ //   AsyncStorage.mergeItem('cards', JSON.stringify(DELTA), () => {
+ //     AsyncStorage.getItem('cards', (err, result) => {
+ //       console.log('cards result of merged object: %O', JSON.parse(result))
+ //     })
+ //   })
+ // })
+    AsyncStorage.mergeItem('cards', JSON.stringify(value)).done()
+
+    // AsyncStorage.getItem("cards").then((cards) => {
+    //   AsyncStorage.mergeItem('cards', JSON.stringify(value))
+    // }).done();
+
+    // AsyncStorage.getItem("cards").then((cards) => {
+    //   const result = this.editOrPushCard(JSON.parse(cards), value)
+    //   this.setState({"cards": result});
+    // }).done();
+    // AsyncStorage.setItem('cards', JSON.stringify(this.state.cards));
   }
 
   render() {
+    const today = moment();
+    const cardsData = {
+      '2510010062803': {
+        cardName: 'Tarjeta de Mengano',
+        cardExpireDate: today.format("DD/MM/YYYY")
+      },
+      '0010000323869': {
+        cardName: 'Tarjeta de Fulano',
+        cardExpireDate: today.format("DD/MM/YYYY")
+      }
+    }
+    const expireDateFormatted = moment(this.state.expireDate).format('DD/MM/YYYY');
+    const newCard = {
+        [this.state.cardId]: {
+          cardName: this.state.cardName,
+          cardExpireDate: expireDateFormatted,
+        }
+    }
+
+    // this.saveData(newCard)
+
     return (
       <StyledView>
         { this.state.done ?
@@ -212,7 +306,17 @@ export default class CardScreen extends React.Component {
               textDayHeaderFontSize: 16
             }}
           />
-          <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
+          <StyledFooter>
+            <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
+            <StyledWrapper2>
+              <StyledButton>
+                <StyledFavoriteButton source={require('./assets/img/favorite-button.png')} />
+              </StyledButton>
+              <StyledButton>
+                <StyledCalendarButton source={require('./assets/img/calendar-button.png')} />
+              </StyledButton>
+            </StyledWrapper2>
+          </StyledFooter>
         </StyledWrapper>
         :
         <CardLoading />
@@ -221,3 +325,18 @@ export default class CardScreen extends React.Component {
     );
   }
 }
+
+
+// <Prompt
+//     title="Pon el nombre de la tarjeta"
+//     placeholder="Tarjeta de Fulano"
+//     defaultValue="Hello"
+//     visible={ this.state.promptVisible }
+//     onCancel={ () => this.setState({
+//       promptVisible: false,
+//       message: "You cancelled"
+//     }) }
+//     onSubmit={ (value) => this.setState({
+//       promptVisible: false,
+//       message: `You said "${value}"`
+//     }) }/>

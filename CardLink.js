@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 import colors from './colors'
 
 const StyledCardsView = styled.View`
@@ -17,7 +17,7 @@ const StyledCardsSubtitle = styled.Text`
   margin-bottom: 12;
 `
 
-const StyledCardLink = styled.TouchableHighlight`
+const StyledCardLink = styled.TouchableOpacity`
   width: 100%;
 `
 
@@ -49,8 +49,8 @@ export default class CardLink extends React.Component {
 
   render() {
     const cardData = {
-        cardName: this.props.cardName, 
         cardId: this.props.cardId, 
+        cardName: this.props.cardName, 
         cardExpireDate: this.props.cardExpireDate,
     }
     return (

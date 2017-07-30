@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Platform, AppRegistry, AsyncStorage, StyleSheet, Text, View, ScrollView, TextInput, TouchableHighlight, Image, Alert } from 'react-native'
-import CardLink from './CardLink'
-import moment from 'moment/min/moment-with-locales'
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert } from 'react-native'
+import CardsView from './CardsView'
 import colors from './colors'
 
 const StyledView = styled.ScrollView.attrs({
@@ -19,7 +18,7 @@ const StyledView = styled.ScrollView.attrs({
   padding: 30px;
 `
 
-  /* font-family: 'Roboto'; */
+  /* Add this when project is ejected font-family: 'Roboto'; */
 
 const StyledMainTitle = styled.Text`
   color: ${colors.black};
@@ -45,7 +44,7 @@ const StyledInput = styled.TextInput`
   border-bottom-color: ${colors.red};
 `
 
-const StyledCta = styled.TouchableHighlight`
+const StyledCta = styled.TouchableOpacity`
   background-color: ${colors.red};
   width: 100%;
   padding: 12px 22px;
@@ -75,7 +74,7 @@ const StyledCardsSubtitle = styled.Text`
   margin-bottom: 12;
 `
 
-const StyledHelpLink = styled.TouchableHighlight`
+const StyledHelpLink = styled.TouchableOpacity`
   margin-top: 30px;
   align-self: flex-end;
 `
@@ -88,13 +87,34 @@ const StyledHelp = styled.Image`
 export default class HomesScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {cardId: ''};
+    this.onPressCTA = this.onPressCTA.bind(this);
+    this.onChangeText = this.onChangeText.bind(this);
+  }
+
+  onPressCTA(navigate, cardData) {
+    const minNumCard = 13;
+    const maxNumCard = 22;
+
+    if(this.state.cardId === '' || this.state.cardId.length < minNumCard || this.state.cardId.length > maxNumCard) {
+      Alert.alert('Debes poner un número de tarjeta válido')
+      return;
+    }
+
+    navigate('Card', {cardData});
+  }
+
+  onChangeText(cardId) {
+    const validCardId = cardId.replace(/\s/g,'').replace(/\D/g, '');
+    this.setState({cardId: validCardId});
   }
 
   render() {
     const { navigate } = this.props.navigation;
     const cardData = {
-        cardId: this.state.text, 
+        cardId: this.state.cardId, 
+        cardName: null, 
+        cardExpireDate: null,
     }
     return (
       <StyledView>
@@ -113,17 +133,13 @@ export default class HomesScreen extends React.Component {
             underlineColor='transparent'
             keyboardType='numeric'
             maxLength={22}
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(cardId) => this.onChangeText(cardId)}
           />          
         </StyledInputView>
-        <StyledCta onPress={() => navigate('Card', {cardData})}>
+        <StyledCta onPress={() => this.onPressCTA(navigate, cardData)}>
           <StyledCtaText>{"Consultar mis datos".toUpperCase()}</StyledCtaText>
         </StyledCta>
-        <StyledCardsView>
-          <StyledCardsSubtitle>Tus tarjetas</StyledCardsSubtitle>
-          <CardLink cardId="2510010062803" cardName="Tarjeta Dani" cardExpireDate="18/08/2017" navigate={navigate}/>
-          <CardLink cardId="0010000323869" cardName="Tarjeta Ana" cardExpireDate="18/08/2017" navigate={navigate}/>
-        </StyledCardsView>
+        <CardsView navigate={navigate} />
       </StyledView>
     )
   }
