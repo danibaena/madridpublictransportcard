@@ -95,9 +95,11 @@ const MAX_NUM_CARD = 22;
 export default class HomesScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {cardId: ''};
     this.onPressCTA = this.onPressCTA.bind(this);
     this.onChangeText = this.onChangeText.bind(this);
+    this.state = {
+      cardId: '',
+    };
   }
 
   onPressCTA(navigate, cardData) {
@@ -122,10 +124,11 @@ export default class HomesScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     const cardData = {
-        cardId: this.state.cardId, 
-        cardName: null, 
-        cardExpireDate: null,
+          cardId: this.state.cardId, 
+          cardName: null, 
+          cardExpireDate: null,
     }
+
     return (
       <StyledView keyboardShouldPersistTaps="always">
         <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>

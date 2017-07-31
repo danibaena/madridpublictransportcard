@@ -30,9 +30,11 @@ export default class CardsView extends React.Component {
 
   componentDidMount() {
     AsyncStorage.getItem("cards").then((result) => {
-      if(result) {
+      const cards = JSON.parse(result);
+
+      if(cards && Object.keys(cards).length != 0) {
         this.setState({
-          "cards": JSON.parse(result),
+          "cards": cards,
           "visible": true,
         })
       }
@@ -43,7 +45,8 @@ export default class CardsView extends React.Component {
     if(cards) {
       return Object.keys(cards).map((cardId) => {
         const card = cards[cardId];
-        return(<CardLink cardId={cardId} cardName={card.cardName} cardExpireDate={card.cardExpireDate} navigate={navigate}/>)
+
+        return(card ? <CardLink key={cardId} cardId={cardId} cardName={card.cardName} cardExpireDate={card.cardExpireDate} navigate={navigate} /> : null)
       });
     }
   }
@@ -55,7 +58,7 @@ export default class CardsView extends React.Component {
           <StyledCardsSubtitle>Tus tarjetas</StyledCardsSubtitle>
         }
         { this.state.visible &&
-          this.renderCardLinks(cardsMock, this.props.navigate)
+          this.renderCardLinks(this.state.cards, this.props.navigate)
         }
       </StyledCardsView> 
     )

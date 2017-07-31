@@ -99,10 +99,10 @@ export default class CardLoading extends React.Component {
         </StyledDiv>
         <StyledText animation="pulse" easing="ease-in-out" iterationCount="infinite" />
         <StyledText animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-        <StyledCalendarHeader>
-          <StyledArrows animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-          <StyledMonthName animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-          <StyledArrows animation="pulse" easing="ease-in-out" iterationCount="infinite" />
+        <StyledCalendarHeader animation="pulse" easing="ease-in-out" iterationCount="infinite">
+          <StyledArrows />
+          <StyledMonthName />
+          <StyledArrows />
         </StyledCalendarHeader>
         <StyledCalendar animation="pulse" easing="ease-in-out" iterationCount="infinite" />
         <StyledLine animation="pulse" easing="ease-in-out" iterationCount="infinite" />
@@ -111,5 +111,3 @@ export default class CardLoading extends React.Component {
     )
   }
 }
-
-// <Animatable.Text>Taka</Animatable.Text>
