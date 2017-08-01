@@ -105,7 +105,6 @@ const StyledCurrentDate = styled.Text`
 `
 
 const StyledButton = styled.TouchableOpacity`
-
 `
 
 const StyledCalendarButton = styled.Image`
@@ -139,13 +138,35 @@ const StyledDeleteButton = styled.Image`
   align-self: flex-end;
 `
 
+const StyledBackButton = styled.Image`
+  width: 25px;
+  height: 25px;
+`
+
 const StyledPrompt = styled(Prompt)`
   border-radius: 0;
+`
+
+const StyledBox = styled.View`
+  width: 40px;
+  height: 40px;
+  padding: 10px 20px;
+  align-self: flex-start;
 `
 
 /* Component */
 
 export default class CardScreen extends React.Component {
+  static navigationOptions = {
+    headerLeft: (
+      <TouchableOpacity title="Back" onPress={() => this.props.navigation.navigate('Home')}>
+        <StyledBox>
+          <StyledBackButton  source={require('./assets/img/back-button.png')} />
+        </StyledBox>
+      </TouchableOpacity>
+    ),
+  };
+
   constructor(props) {
     super(props);
     this.onSubmitPrompt = this.onSubmitPrompt.bind(this);

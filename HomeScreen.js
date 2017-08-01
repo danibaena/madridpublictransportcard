@@ -4,6 +4,11 @@ import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyb
 import CardsView from './CardsView'
 import colors from './colors'
 
+/* Constants */
+
+const MIN_NUM_CARD = 13;
+const MAX_NUM_CARD = 22;
+
 /* Styled Components */
 
 const StyledView = styled.ScrollView.attrs({
@@ -84,11 +89,6 @@ const StyledHelp = styled.Image`
   width: 40px;
   height: 40px;
 `
-
-/* Constants */
-
-const MIN_NUM_CARD = 13;
-const MAX_NUM_CARD = 22;
 
 /* Component */
 
