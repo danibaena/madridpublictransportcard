@@ -45,6 +45,7 @@ const StyledView = styled.ScrollView.attrs({
 const StyledDiv = styled.View`
   flex: 1;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
 `
@@ -56,6 +57,7 @@ const StyledWrapperButtons = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
+  flex-wrap: wrap;
 `
 
 const StyledFooter = styled.View`
@@ -138,8 +140,8 @@ const StyledDeleteButton = styled.Image`
   align-self: flex-end;
 `
 const StyledBackButton = styled.Image`
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 `
 const StyledBox = styled.View`
   width: 40px;
@@ -164,22 +166,13 @@ export default class CardScreen extends React.Component {
       </TouchableOpacity>
     ),
   })
-  // static navigationOptions = {
-  //   headerLeft: (
-  //     <TouchableOpacity title="Back" onPress={() => navigation.navigate('Home')}>
-  //       <StyledBox>
-  //         <StyledBackButton  source={require('./assets/img/back-button.png')} />
-  //       </StyledBox>
-  //     </TouchableOpacity>
-  //   ),
-  // };
 
   constructor(props) {
     super(props);
     this.onSubmitPrompt = this.onSubmitPrompt.bind(this);
     this.readyToRefreshDate = this.readyToRefreshDate.bind(this);
 
-    const todayDateFormat = "[Hoy es ]DD[ de ]MMMM[ de ]YYYY";
+    const todayDateFormat = "[Hoy es ]D[ de ]MMMM[ de ]YYYY";
     const today = moment();
     const {cardData} = this.props.navigation.state.params;
     let expireDate;
