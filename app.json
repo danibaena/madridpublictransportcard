@@ -1,5 +1,17 @@
 {
   "expo": {
-    "sdkVersion": "19.0.0"
+    "name": "Madrid Tarjeta Transporte Público",
+    "description": "Consulta cuándo caduca tu tarjeta y añade recordatorios a tu calendario para que no se te vuelva a pasar",
+    "icon": "./assets/icon/app-icon.png",
+    "primaryColor": "#ffffff",
+    "version": "1.0.0",
+    "slug": "madrid-tarjeta-transporte-publico",
+    "sdkVersion": "19.0.0",
+    "ios": {
+      "bundleIdentifier": "com.danibaena.mttp"
+    },
+    "android": {
+      "package": "com.yourcompany.mttp"
+    }
   }
 }

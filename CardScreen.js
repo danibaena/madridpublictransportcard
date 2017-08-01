@@ -137,16 +137,10 @@ const StyledDeleteButton = styled.Image`
   margin-right: 20px
   align-self: flex-end;
 `
-
 const StyledBackButton = styled.Image`
   width: 25px;
   height: 25px;
 `
-
-const StyledPrompt = styled(Prompt)`
-  border-radius: 0;
-`
-
 const StyledBox = styled.View`
   width: 40px;
   height: 40px;
@@ -154,18 +148,31 @@ const StyledBox = styled.View`
   align-self: flex-start;
 `
 
+const StyledPrompt = styled(Prompt)`
+  border-radius: 0;
+`
+
 /* Component */
 
 export default class CardScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => ({
     headerLeft: (
-      <TouchableOpacity title="Back" onPress={() => this.props.navigation.navigate('Home')}>
+      <TouchableOpacity title="Back" onPress={() => navigation.navigate('Home')}>
         <StyledBox>
           <StyledBackButton  source={require('./assets/img/back-button.png')} />
         </StyledBox>
       </TouchableOpacity>
     ),
-  };
+  })
+  // static navigationOptions = {
+  //   headerLeft: (
+  //     <TouchableOpacity title="Back" onPress={() => navigation.navigate('Home')}>
+  //       <StyledBox>
+  //         <StyledBackButton  source={require('./assets/img/back-button.png')} />
+  //       </StyledBox>
+  //     </TouchableOpacity>
+  //   ),
+  // };
 
   constructor(props) {
     super(props);

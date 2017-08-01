@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard } from 'react-native'
+import ActionButton from 'react-native-action-button'
 import CardsView from './CardsView'
 import colors from './colors'
 
@@ -80,14 +81,21 @@ const StyledCardsSubtitle = styled.Text`
   margin-bottom: 12;
 `
 
-const StyledHelpLink = styled.TouchableOpacity`
-  margin-top: 30px;
-  align-self: flex-end;
+const StyledHelpButton = styled.Image`
+  width: 58px;
+  height: 58px;
 `
 
-const StyledHelp = styled.Image`
-  width: 40px;
-  height: 40px;
+const StyledActionButtonLink = styled.TouchableOpacity`
+
+`
+
+const StyledActionButton = styled(ActionButton)`
+  width: 90px;
+  height: 90px;
+  position: relative;
+  left: 30px;
+  align-self: flex-end;
 `
 
 /* Component */
@@ -132,9 +140,6 @@ export default class HomesScreen extends React.Component {
     return (
       <StyledView keyboardShouldPersistTaps="always">
         <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>
-        <StyledHelpLink onPress={() => navigate('Help')}>
-          <StyledHelp source={require('./assets/img/help-button.png')} />
-        </StyledHelpLink>
         <StyledInputView>
           <StyledInput 
             placeholder="Pon tu número de tarjeta"
@@ -153,6 +158,14 @@ export default class HomesScreen extends React.Component {
           <StyledCtaText>{"Consultar mis datos".toUpperCase()}</StyledCtaText>
         </StyledCta>
         <CardsView navigate={navigate} />
+        <StyledActionButton
+          buttonColor="rgba(255,255,255,1)"
+          bgColor="#ffffff"
+          icon={<StyledActionButtonLink onPress={() => { navigate('Help')}}><StyledHelpButton source={require('./assets/img/help-button.png')} /></StyledActionButtonLink>}
+          degrees={0}
+          offsetY={0}
+          hideShadow={true}
+          />
       </StyledView>
     )
   }
