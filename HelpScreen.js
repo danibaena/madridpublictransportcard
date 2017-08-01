@@ -18,6 +18,12 @@ const StyledView = styled.ScrollView.attrs({
   padding: 10px 30px 30px;
 `
 
+const StyledImageWrapper = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+`
+
 const StyledTitle = styled.Text`
   color: ${colors.black};
   font-size: 24;
@@ -35,6 +41,8 @@ const StyledParagraph = styled.Text`
 const StyledImage = styled.Image`
   margin-top: 15px;
   align-self: center;
+  flex-shrink: 1;
+  height: 200;
 `
 
 const StyledFooter = styled.Text`
@@ -54,7 +62,9 @@ export default class CardScreen extends React.Component {
     return (
       <StyledView>
         <StyledTitle>¿Cómo sé cuál es el número de mi Tarjeta Transporte Público?</StyledTitle>
-        <StyledImage source={require('./assets/img/ttp.png')} />
+        <StyledImageWrapper>
+          <StyledImage resizeMode="contain" source={require('./assets/img/ttp.png')} />
+        </StyledImageWrapper>
         <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle>Question</StyledTitle>
         <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
