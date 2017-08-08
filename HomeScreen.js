@@ -24,6 +24,8 @@ const StyledView = styled.ScrollView.attrs({
   background-color: #fff;
   flex-direction: column;
   padding: 30px;
+  width: 100%;
+  height: 100%;
 `
 /* Add this to StyledView when project is ejected: font-family: 'Roboto'; */
 
@@ -72,6 +74,7 @@ const StyledCardsView = styled.View`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  height: 100%;
 `
 
 const StyledCardsSubtitle = styled.Text`
@@ -87,7 +90,7 @@ const StyledHelpButton = styled.Image`
 `
 
 const StyledActionButtonLink = styled.TouchableOpacity`
-
+  height: 100%;
 `
 
 const StyledActionButton = styled(ActionButton)`
@@ -96,6 +99,7 @@ const StyledActionButton = styled(ActionButton)`
   position: relative;
   left: 30px;
   align-self: flex-end;
+  margin-bottom: 60px;
 `
 
 /* Component */

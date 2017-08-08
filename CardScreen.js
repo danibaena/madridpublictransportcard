@@ -40,6 +40,7 @@ const StyledView = styled.ScrollView.attrs({
   flex-direction: column;
   padding: 10px 30px 30px;
   width: 100%;
+  height: 100%;
 `
 
 const StyledDiv = styled.View`
@@ -54,10 +55,12 @@ const StyledWrapper = styled.View`
 `
 
 const StyledWrapperButtons = styled.View`
+  margin-bottom: 40px;
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
   flex-wrap: wrap;
+  align-items: flex-end;
 `
 
 const StyledFooter = styled.View`
@@ -65,6 +68,7 @@ const StyledFooter = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
 `
 
 const StyledCardsSubtitle = styled.Text`
@@ -104,40 +108,36 @@ const StyledCurrentDate = styled.Text`
   font-size: 16;
   align-self: flex-start;
   margin-top: 24px;
+  margin-bottom: 40px;
+  height: 100%;
 `
 
 const StyledButton = styled.TouchableOpacity`
+  margin-top: 12px;
 `
 
 const StyledCalendarButton = styled.Image`
   width: 42px;
   height: 42px;
-  margin-top: 12px;
-  align-self: flex-end;
+  margin-left: 20px;
 `
 
 const StyledFavoriteButton = styled.Image`
   width: 42px;
   height: 42px;
-  margin-top: 11px;
-  margin-right: 20px
-  align-self: flex-end;
+  margin-left: 20px;
 `
 
 const StyledEditNameButton = styled.Image`
   width: 42px;
   height: 42px;
-  margin-top: 10px;
-  margin-right: 20px
-  align-self: flex-end;
+  margin-left: 20px;
 `
 
 const StyledDeleteButton = styled.Image`
   width: 42px;
   height: 42px;
-  margin-top: 10px;
-  margin-right: 20px
-  align-self: flex-end;
+  margin-left: 20px;
 `
 const StyledBackButton = styled.Image`
   width: 20px;
@@ -178,12 +178,16 @@ export default class CardScreen extends React.Component {
     let expireDate;
     let expireDateFormatted;
     let expireDateCalendar;
+    let expireDateWeekDay;
+    let daysLeftToExpire;
     let done = false
 
     if(cardData.cardExpireDate) {
       expireDate = moment(cardData.cardExpireDate, "DD/MM/YYYY");
       expireDateFormatted = expireDate.format("DD[ de ]MMMM[ de ]YYYY").toString();
       expireDateCalendar = expireDate.format("YYYY-MM-DD").toString();
+      expireDateWeekDay = expireDate.format("dddd").toString()
+      daysLeftToExpire = expireDate.diff(today.add(-1, "days"), "days").toString();
       done = true;
     }
   
@@ -191,6 +195,8 @@ export default class CardScreen extends React.Component {
       expireDate: cardData.cardExpireDate,
       expireDateCalendar: expireDateCalendar,
       expireDateFormatted: expireDateFormatted,
+      expireDateWeekDay: expireDateWeekDay,
+      daysLeftToExpire: daysLeftToExpire,
       today: today.format(todayDateFormat),
       cardId: cardData.cardId,
       cardName: cardData.cardName,
@@ -272,15 +278,22 @@ export default class CardScreen extends React.Component {
 
         let expireDate;
         let expireDateFormatted;
+        let expireDateWeekDay;
+        let daysLeftToExpire;
+        let today = moment();
 
         expireDate = result.format("DD/MM/YYYY").toString();
         expireDateFormatted = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
+        expireDateWeekDay = result.format("dddd").toString()
+        daysLeftToExpire = result.diff(today.add(-1, "days"), "days").toString();
         result = result.format("YYYY-MM-DD").toString();
 
         this.setState({
           expireDate: expireDate,
           expireDateFormatted: expireDateFormatted,
           expireDateCalendar: result,
+          expireDateWeekDay: expireDateWeekDay,
+          daysLeftToExpire: daysLeftToExpire,
           done: true
         })
       }).catch((error) => {
@@ -389,7 +402,8 @@ export default class CardScreen extends React.Component {
             <StyledCardLinkText>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
           </StyledDiv>
           <StyledText>Número de tarjeta: {this.state.cardId}</StyledText>
-          <StyledText>Expira el día {this.state.expireDate}</StyledText>
+          <StyledText>Expira el día {this.state.expireDate}, {this.state.expireDateWeekDay}</StyledText>
+          <StyledText>Quedan {this.state.daysLeftToExpire} días de uso</StyledText>
           <StyledCalendar 
             current={this.state.expireDateCalendar}
             markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
