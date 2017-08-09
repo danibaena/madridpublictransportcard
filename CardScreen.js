@@ -194,7 +194,7 @@ export default class CardScreen extends React.Component {
       expireDateFormatted = expireDate.format("DD[ de ]MMMM[ de ]YYYY").toString();
       expireDateCalendar = expireDate.format("YYYY-MM-DD").toString();
       expireDateWeekDay = expireDate.format("dddd").toString()
-      daysLeftToExpire = expireDate.diff(today.add(-1, "days"), "days");
+      daysLeftToExpire = expireDate.diff(moment().add(-1, "days"), "days");
       daysLeftToExpire = daysLeftToExpire < 1 ? '0' : daysLeftToExpire.toString();
       expireDate = expireDate.format("DD[ de ]MMMM[ de ]YYYY").toString();
       done = true;
@@ -289,12 +289,11 @@ export default class CardScreen extends React.Component {
         let expireDateFormatted;
         let expireDateWeekDay;
         let daysLeftToExpire;
-        let today = moment();
 
         expireDate = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
         expireDateFormatted = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
         expireDateWeekDay = result.format("dddd").toString()
-        daysLeftToExpire = result.diff(today.add(-1, "days"), "days");
+        daysLeftToExpire = result.diff(moment().add(-1, "days"), "days");
         daysLeftToExpire = daysLeftToExpire < 1 ? '0' : daysLeftToExpire.toString();
         result = result.format("YYYY-MM-DD").toString();
 
@@ -306,6 +305,33 @@ export default class CardScreen extends React.Component {
           daysLeftToExpire: daysLeftToExpire,
           done: true
         })
+
+        if(this.readyToRefreshDate(this.state.cardExpireDate)) {
+          const expireDateToSave = moment(this.state.expireDate, "DD[ de ]MMMM[ de ]YYYY");
+          expireDateToSave = expireDateToSave.format("DD/MM/YYYY").toString()
+          const cardData = {
+            [this.state.cardId]: {
+              cardName: value,
+              cardExpireDate: expireDateToSave,
+            }
+          }
+
+          AsyncStorage.mergeItem(CARDS, JSON.stringify(cardData)).then(() => {
+            this.setState({
+              cardName: value,
+            })
+          }).then(() => {
+            AsyncStorage.getItem(CARDS).then((result) => {
+              if(result){
+                this.setState({[CARDS]: JSON.parse(result)});
+                return;
+              }
+
+              this.setState({[CARDS]: null});
+              return;
+            })
+          }).done()
+        }
       }).catch((error) => {
         Alert.alert(`Número de tarjeta: ${this.state.cardId}`,'No se ha podido hacer la consulta al servidor del CRTM, vuelva a intentarlo o corrija el número')
         return this.props.navigation.navigate('Home');

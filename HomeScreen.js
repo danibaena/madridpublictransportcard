@@ -151,7 +151,14 @@ export default class HomesScreen extends React.Component {
     }
 
     return (
-      <StyledView keyboardShouldPersistTaps="always">
+      <StyledView 
+        keyboardShouldPersistTaps="always"
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        enableAutoAutomaticScroll={true}
+        enableResetScrollToCoords={true}
+        enableOnAndroid={true}
+        extraScrollHeight={120}
+      >
         <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>
         <StyledInputView>
           <StyledInput 
