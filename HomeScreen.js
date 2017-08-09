@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard } from 'react-native'
 import ActionButton from 'react-native-action-button'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import CardsView from './CardsView'
 import colors from './colors'
 
@@ -20,7 +21,7 @@ SelectableText.defaultProps = {
 
 /* Styles */
 
-const StyledView = styled.ScrollView.attrs({
+const StyledView = styled(KeyboardAwareScrollView).attrs({
   contentContainerStyle: props => {
     return {
       alignItems: 'center',
@@ -156,14 +157,16 @@ export default class HomesScreen extends React.Component {
           <StyledInput 
             placeholder="Pon el número de tarjeta"
             placeholderTextColor={colors.black}
-            multiline={true}
+            multiline={false}
             editable={true}
             autoCorrect={false}
+            blurOnSubmit={false}
             underlineColorAndroid='transparent'
             underlineColor='transparent'
             keyboardType='numeric'
             maxLength={22}
             onChangeText={(cardId) => this.onChangeText(cardId)}
+            onSubmitEditing={() => this.onPressCTA(navigate, cardData)}
           />          
         </StyledInputView>
         <StyledCta onPress={() => this.onPressCTA(navigate, cardData)}>
