@@ -10,7 +10,15 @@ import colors from './colors'
 const MIN_NUM_CARD = 13;
 const MAX_NUM_CARD = 22;
 
-/* Styled Components */
+/* Helper Components */
+
+const SelectableText = (props) => <Text {...props} />
+
+SelectableText.defaultProps = {
+  selectable: true,
+}
+
+/* Styles */
 
 const StyledView = styled.ScrollView.attrs({
   contentContainerStyle: props => {
@@ -29,7 +37,7 @@ const StyledView = styled.ScrollView.attrs({
 `
 /* Add this to StyledView when project is ejected: font-family: 'Roboto'; */
 
-const StyledMainTitle = styled.Text`
+const StyledMainTitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: 46;
   font-weight: bold;
@@ -38,7 +46,7 @@ const StyledMainTitle = styled.Text`
 
 const StyledInputView = styled.View`
   width: 100%;
-  margin-top: 60;
+  margin-top: 112;
 `
 
 const StyledInput = styled.TextInput`
@@ -62,7 +70,7 @@ const StyledCta = styled.TouchableOpacity`
   margin-bottom: 36;
 `
 
-const StyledCtaText = styled.Text`
+const StyledCtaText = styled(SelectableText)`
   color: ${colors.white};
   font-size: 18;
   font-weight: 500;
@@ -77,7 +85,7 @@ const StyledCardsView = styled.View`
   height: 100%;
 `
 
-const StyledCardsSubtitle = styled.Text`
+const StyledCardsSubtitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: 24;
   font-weight: bold;
@@ -85,8 +93,8 @@ const StyledCardsSubtitle = styled.Text`
 `
 
 const StyledHelpButton = styled.Image`
-  width: 58px;
-  height: 58px;
+  width: 55px;
+  height: 55px;
 `
 
 const StyledActionButtonLink = styled.TouchableOpacity`
@@ -146,7 +154,7 @@ export default class HomesScreen extends React.Component {
         <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>
         <StyledInputView>
           <StyledInput 
-            placeholder="Pon tu número de tarjeta"
+            placeholder="Pon el número de tarjeta"
             placeholderTextColor={colors.black}
             multiline={true}
             editable={true}
@@ -159,7 +167,7 @@ export default class HomesScreen extends React.Component {
           />          
         </StyledInputView>
         <StyledCta onPress={() => this.onPressCTA(navigate, cardData)}>
-          <StyledCtaText>{"Consultar mis datos".toUpperCase()}</StyledCtaText>
+          <StyledCtaText>{"Consultar los datos".toUpperCase()}</StyledCtaText>
         </StyledCta>
         <CardsView navigate={navigate} />
         <StyledActionButton

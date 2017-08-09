@@ -4,6 +4,26 @@ import { View, Text } from 'react-native'
 import * as Animatable from 'react-native-animatable';
 import colors from './colors'
 
+/* Helper Components */
+
+const AnimatedView = (props) => <Animatable.View {...props} />
+
+AnimatedView.defaultProps = {
+  animation: "pulse",
+  easing: "ease-in-out",
+  iterationCount: "infinite",
+}
+
+const AnimatedText = (props) => <Animatable.Text {...props} />
+
+AnimatedText.defaultProps = {
+  animation: "pulse",
+  easing: "ease-in-out",
+  iterationCount: "infinite",
+}
+
+/* Styles */
+
 const StyledView = styled.View`
   flex: 1;
   background-color: #fff;
@@ -12,7 +32,7 @@ const StyledView = styled.View`
   width: 100%;
 `
 
-const StyledDiv = styled(Animatable.View)`
+const StyledDiv = styled(AnimatedView)`
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
@@ -20,14 +40,14 @@ const StyledDiv = styled(Animatable.View)`
   margin-top: 10;
 `
 
-const StyledCardsSubtitle = styled(Animatable.Text)`
+const StyledCardsSubtitle = styled(AnimatedText)`
   background-color: ${colors.softgrey};
   height: 28;
   width: 106;
   margin-bottom: 35;
 `
 
-const StyledCardLinkText = styled(Animatable.View)`
+const StyledCardLinkText = styled(AnimatedView)`
   background-color: ${colors.softgrey};
   margin-bottom: 20;
   width: 120;
@@ -42,7 +62,7 @@ const StyledCalendarHeader = styled(StyledDiv)`
   borderStyle: solid;
 `
 
-const StyledCalendar = styled(Animatable.View)`
+const StyledCalendar = styled(AnimatedView)`
   background-color: ${colors.softgrey};
   margin-top: 16;
   margin-bottom: 16;
@@ -51,7 +71,7 @@ const StyledCalendar = styled(Animatable.View)`
   align-self: center;
 `
 
-const StyledText = styled(Animatable.View)`
+const StyledText = styled(AnimatedView)`
   background-color: ${colors.softgrey};
   height: 19;
   margin-bottom: 12px;
@@ -59,20 +79,20 @@ const StyledText = styled(Animatable.View)`
   align-self: flex-start;
 `
 
-const StyledMonthName = styled(Animatable.View)`
+const StyledMonthName = styled(AnimatedView)`
   background-color: ${colors.softgrey};
   width: 106;
   height: 22;
   margin-bottom: 12px;
 `
 
-const StyledArrows = styled(Animatable.View)`
+const StyledArrows = styled(AnimatedView)`
   background-color: ${colors.disabled};
   width: 12;
   height: 22;
 `
 
-const StyledCurrentDate = styled(Animatable.View)`
+const StyledCurrentDate = styled(AnimatedView)`
   margin-top: 12;
   padding-top: 12;
   background-color: ${colors.softgrey};
@@ -81,7 +101,7 @@ const StyledCurrentDate = styled(Animatable.View)`
   align-self: flex-start;
 `
 
-const StyledLine = styled(Animatable.View)`
+const StyledLine = styled(AnimatedView)`
   margin-top: 10;
   margin-bottom: 10;
   border-bottom-width: 1;
@@ -89,24 +109,27 @@ const StyledLine = styled(Animatable.View)`
   borderStyle: solid;
 `
 
+/* Component */
+
 export default class CardLoading extends React.Component {
   render() {
     return (
       <StyledView>
         <StyledDiv>
-          <StyledCardsSubtitle animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-          <StyledCardLinkText animation="pulse" easing="ease-in-out" iterationCount="infinite" />
+          <StyledCardsSubtitle/>
+          <StyledCardLinkText/>
         </StyledDiv>
-        <StyledText animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-        <StyledText animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-        <StyledCalendarHeader animation="pulse" easing="ease-in-out" iterationCount="infinite">
+        <StyledText/>
+        <StyledText/>
+        <StyledText/>
+        <StyledCalendarHeader>
           <StyledArrows />
           <StyledMonthName />
           <StyledArrows />
         </StyledCalendarHeader>
-        <StyledCalendar animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-        <StyledLine animation="pulse" easing="ease-in-out" iterationCount="infinite" />
-        <StyledCurrentDate animation="pulse" easing="ease-in-out" iterationCount="infinite" />
+        <StyledCalendar/>
+        <StyledLine/>
+        <StyledCurrentDate/>
       </StyledView>
     )
   }

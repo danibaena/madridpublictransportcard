@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 import { Text, View, TouchableOpacity } from 'react-native'
 import colors from './colors'
 
+/* Styles */
+
 const StyledCardsView = styled.View`
   flex: 1;
   justify-content: flex-start;
@@ -39,8 +41,9 @@ const StyledView = styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: space-between;
-
 `
+
+/* Component */
 
 export default class CardLink extends React.Component {
   constructor(props) {

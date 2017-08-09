@@ -3,6 +3,22 @@ import styled from 'styled-components/native'
 import { Text, View, ScrollView, Image } from 'react-native'
 import colors from './colors'
 
+/* Helper Components */
+
+const Title = (props) => <Text {...props} />
+
+Title.defaultProps = {
+  selectable: true,
+}
+
+const Paragraph = (props) => <Text {...props} />
+
+Paragraph.defaultProps = {
+  selectable: true,
+}
+
+/* Styles */
+
 const StyledView = styled.ScrollView.attrs({
   contentContainerStyle: props => {
     return {
@@ -24,13 +40,13 @@ const StyledImageWrapper = styled.View`
   justify-content: flex-start;
 `
 
-const StyledTitle = styled.Text`
+const StyledTitle = styled(Title)`
   color: ${colors.black};
   font-size: 24;
   font-weight: bold;
 `
 
-const StyledParagraph = styled.Text`
+const StyledParagraph = styled(Paragraph)`
   margin-top: 15px;
   margin-bottom: 30px;
   color: ${colors.black};
@@ -45,13 +61,15 @@ const StyledImage = styled.Image`
   height: 200;
 `
 
-const StyledFooter = styled.Text`
+const StyledFooter = styled(Paragraph)`
   font-size: 12;
   font-weight: 500;
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
 `
+
+/* Component */
 
 export default class CardScreen extends React.Component {
   constructor(props) {
@@ -65,15 +83,15 @@ export default class CardScreen extends React.Component {
         <StyledImageWrapper>
           <StyledImage resizeMode="contain" source={require('./assets/img/ttp.png')} />
         </StyledImageWrapper>
-        <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle>Question</StyledTitle>
-        <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle>Question</StyledTitle>
-        <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle>Question</StyledTitle>
-        <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle>Question</StyledTitle>
-        <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledFooter>Crafted with ❤️ from Madrid</StyledFooter>
       </StyledView>
     );

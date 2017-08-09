@@ -4,6 +4,8 @@ import { AsyncStorage, Text, View } from 'react-native'
 import CardLink from './CardLink'
 import colors from './colors'
 
+/* Styles */
+
 const StyledCardsView = styled.View`
   flex: 1;
   justify-content: flex-start;
@@ -17,6 +19,8 @@ const StyledCardsSubtitle = styled.Text`
   font-weight: bold;
   margin-bottom: 12;
 `
+
+/* Component */
 
 export default class CardsView extends React.Component {
   constructor(props) {

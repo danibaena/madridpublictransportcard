@@ -5,6 +5,8 @@ import HomeScreen from './HomeScreen'
 import CardScreen from './CardScreen'
 import HelpScreen from './HelpScreen'
 
+/* Navigation Routes */
+
 const App = StackNavigator(
   {
     Home: {
