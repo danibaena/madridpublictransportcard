@@ -83,7 +83,7 @@ const StyledCardsSubtitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: 24;
   font-weight: bold;
-  margin-bottom: 35;
+  margin-bottom: 10;
 `
 
 const StyledCardLinkText = styled(SelectableText)`
@@ -91,6 +91,22 @@ const StyledCardLinkText = styled(SelectableText)`
   font-size: 18;
   font-weight: 400;
   text-align: right;
+`
+
+const StyledNotification = styled.TouchableOpacity`
+  background-color: ${colors.red};
+  width: 100%;
+  padding: 2px 23px;
+  border-radius: 5;
+  margin-top: 0;
+  margin-bottom: 9;
+`
+
+const StyledNotificationText = styled(SelectableText)`
+  color: ${colors.white};
+  font-size: 14;
+  font-weight: 400;
+  text-align: center;
 `
 
 const StyledCalendar = styled(Calendar)`
@@ -124,29 +140,12 @@ const StyledButton = styled.TouchableOpacity`
   margin-top: 12px;
 `
 
-const StyledCalendarButton = styled.Image`
+const StyledButtonIcon = styled.Image`
   width: 42px;
   height: 42px;
   margin-left: 20px;
 `
 
-const StyledFavoriteButton = styled.Image`
-  width: 42px;
-  height: 42px;
-  margin-left: 20px;
-`
-
-const StyledEditNameButton = styled.Image`
-  width: 42px;
-  height: 42px;
-  margin-left: 20px;
-`
-
-const StyledDeleteButton = styled.Image`
-  width: 42px;
-  height: 42px;
-  margin-left: 20px;
-`
 const StyledBackButton = styled.Image`
   width: 20px;
   height: 20px;
@@ -319,7 +318,7 @@ export default class CardScreen extends React.Component {
       return false;
     }
 
-    const today = moment("28/08/2017", "DD/MM/YYYY"); // revert this, hardcoded for testing purposes
+    const today = moment();
     const currentSaveDate = moment(cardExpireDate, "DD/MM/YYYY")
 
     if(today.isBefore(currentSaveDate)) {
@@ -414,6 +413,11 @@ export default class CardScreen extends React.Component {
             <StyledCardsSubtitle>Tus datos</StyledCardsSubtitle>
             <StyledCardLinkText>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
           </StyledDiv>
+          {this.readyToRefreshDate(this.state.cardExpireDate) && 
+            <StyledNotification>
+              <StyledNotificationText>Fecha actualizada, añade el evento a tu calendario</StyledNotificationText>
+            </StyledNotification>
+          }
           <StyledText>Número de tarjeta: {this.state.cardId}</StyledText>
           <StyledText>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>
           <StyledText>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso</StyledText>
@@ -449,7 +453,7 @@ export default class CardScreen extends React.Component {
             <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
             <StyledWrapperButtons>
               {this.state.favoriteVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledFavoriteButton source={require('./assets/img/favorite-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/favorite-button.png')} />
                 <Prompt
                   title="Pon el nombre de la tarjeta"
                   placeholder="Tarjeta de..."
@@ -465,7 +469,7 @@ export default class CardScreen extends React.Component {
                 />
               </StyledButton> }
               {this.state.editnameVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledEditNameButton source={require('./assets/img/editname-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/editname-button.png')} />
                 <Prompt
                   title="Edita el nombre de la tarjeta"
                   placeholder={this.state.cardName}
@@ -481,10 +485,10 @@ export default class CardScreen extends React.Component {
                 />
               </StyledButton> }
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
-                <StyledDeleteButton source={require('./assets/img/delete-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/delete-button.png')} />
               </StyledButton> }
               <StyledButton>
-                <StyledCalendarButton source={require('./assets/img/calendar-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/calendar-button.png')} />
               </StyledButton>
             </StyledWrapperButtons>
           </StyledFooter>
