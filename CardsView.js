@@ -15,7 +15,7 @@ const StyledCardsView = styled.View`
 
 const StyledCardsSubtitle = styled.Text`
   color: ${colors.black};
-  font-size: 24;
+  font-size: ${props => props.window.width < 400 ? '18': '24'};
   font-weight: bold;
   margin-bottom: 12;
 `
@@ -50,7 +50,7 @@ export default class CardsView extends React.Component {
       return Object.keys(cards).map((cardId) => {
         const card = cards[cardId];
 
-        return(card ? <CardLink key={cardId} cardId={cardId} cardName={card.cardName} cardExpireDate={card.cardExpireDate} navigate={navigate} /> : null)
+        return(card ? <CardLink key={cardId} cardId={cardId} cardName={card.cardName} cardExpireDate={card.cardExpireDate} navigate={navigate} window={this.props.window} /> : null)
       });
     }
   }
@@ -59,7 +59,7 @@ export default class CardsView extends React.Component {
     return (
       <StyledCardsView>
         { this.state.visible &&
-          <StyledCardsSubtitle>Tus tarjetas</StyledCardsSubtitle>
+          <StyledCardsSubtitle window={this.props.window}>Tus tarjetas</StyledCardsSubtitle>
         }
         { this.state.visible &&
           this.renderCardLinks(this.state.cards, this.props.navigate)

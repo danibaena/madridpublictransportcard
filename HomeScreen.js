@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard } from 'react-native'
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard, Dimensions } from 'react-native'
 import ActionButton from 'react-native-action-button'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import CardsView from './CardsView'
@@ -32,7 +32,7 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
   flex: 1;
   background-color: #fff;
   flex-direction: column;
-  padding: 30px;
+  padding: ${props => props.window.width < 400 ? '20px': '30px'};
   width: 100%;
   height: 100%;
 `
@@ -40,19 +40,19 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
 
 const StyledMainTitle = styled(SelectableText)`
   color: ${colors.black};
-  font-size: 46;
+  font-size: ${props => props.window.width < 400 ? '40': '46'};
   font-weight: bold;
   align-self: flex-start;
 `
 
 const StyledInputView = styled.View`
   width: 100%;
-  margin-top: 112;
+  margin-top: ${props => props.window.width < 400 ? '80': '112'};
 `
 
 const StyledInput = styled.TextInput`
   color: ${colors.black};
-  font-size: 18;
+  font-size: ${props => props.window.width < 400 ? '14': '18'};
   font-weight: 500;
   padding: 0
   padding-bottom: 7;
@@ -73,7 +73,7 @@ const StyledCta = styled.TouchableOpacity`
 
 const StyledCtaText = styled(SelectableText)`
   color: ${colors.white};
-  font-size: 18;
+  font-size: ${props => props.window.width < 400 ? '14': '18'};
   font-weight: 500;
   text-align: center;
 `
@@ -149,6 +149,7 @@ export default class HomesScreen extends React.Component {
           cardName: null, 
           cardExpireDate: null,
     }
+    const window = Dimensions.get('window');
 
     return (
       <StyledView 
@@ -157,10 +158,11 @@ export default class HomesScreen extends React.Component {
         enableAutoAutomaticScroll={true}
         enableResetScrollToCoords={true}
         enableOnAndroid={true}
-        extraScrollHeight={120}
+        extraScrollHeight={window.width < 400 ? 60 : 120}
+        window={window}
       >
-        <StyledMainTitle>Madrid Tarjeta Transporte Público</StyledMainTitle>
-        <StyledInputView>
+        <StyledMainTitle window={window}>Madrid Tarjeta Transporte Público</StyledMainTitle>
+        <StyledInputView window={window}>
           <StyledInput 
             placeholder="Pon el número de tarjeta"
             placeholderTextColor={colors.black}
@@ -174,12 +176,13 @@ export default class HomesScreen extends React.Component {
             maxLength={22}
             onChangeText={(cardId) => this.onChangeText(cardId)}
             onSubmitEditing={() => this.onPressCTA(navigate, cardData)}
+            window={window}
           />          
         </StyledInputView>
-        <StyledCta onPress={() => this.onPressCTA(navigate, cardData)}>
-          <StyledCtaText>{"Consultar los datos".toUpperCase()}</StyledCtaText>
+        <StyledCta onPress={() => this.onPressCTA(navigate, cardData)} window={window}>
+          <StyledCtaText window={window}>{"Consultar los datos".toUpperCase()}</StyledCtaText>
         </StyledCta>
-        <CardsView navigate={navigate} />
+        <CardsView navigate={navigate} window={window}/>
         <StyledActionButton
           buttonColor="rgba(255,255,255,1)"
           bgColor="#ffffff"

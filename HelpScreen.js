@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, Image } from 'react-native'
+import { Text, View, ScrollView, Image, Dimensions } from 'react-native'
 import colors from './colors'
 
 /* Helper Components */
@@ -9,6 +9,7 @@ const Title = (props) => <Text {...props} />
 
 Title.defaultProps = {
   selectable: true,
+  window: Dimensions.get('window'),
 }
 
 const Paragraph = (props) => <Text {...props} />
@@ -31,7 +32,7 @@ const StyledView = styled.ScrollView.attrs({
   height: 100%;
   flex: 1;
   flex-direction: column;
-  padding: 10px 30px 30px;
+  padding: ${props => props.window.width < 400 ? '10px 20px 20px': '10px 30px 30px'};
 `
 
 const StyledImageWrapper = styled.View`
@@ -42,15 +43,15 @@ const StyledImageWrapper = styled.View`
 
 const StyledTitle = styled(Title)`
   color: ${colors.black};
-  font-size: 24;
+  font-size: ${props => props.window.width < 400 ? '20': '24'};
   font-weight: bold;
 `
 
 const StyledParagraph = styled(Paragraph)`
-  margin-top: 15px;
-  margin-bottom: 30px;
+  margin-top: ${props => props.window.width < 400 ? '7px': '15px'};
+  margin-bottom: ${props => props.window.width < 400 ? '15px': '30px'};
   color: ${colors.black};
-  font-size: 16;
+  font-size: ${props => props.window.width < 400 ? '14': '16'};
   align-self: flex-start;
 `
 
@@ -77,21 +78,23 @@ export default class CardScreen extends React.Component {
   }
 
   render() {
+    const window = Dimensions.get('window');
+
     return (
-      <StyledView>
-        <StyledTitle>¿Cómo sé cuál es el número de mi Tarjeta Transporte Público?</StyledTitle>
+      <StyledView window={window}>
+        <StyledTitle window={window}>¿Cómo sé cuál es el número de mi Tarjeta Transporte Público?</StyledTitle>
         <StyledImageWrapper>
           <StyledImage resizeMode="contain" source={require('./assets/img/ttp.png')} />
         </StyledImageWrapper>
-        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle>Question</StyledTitle>
-        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle>Question</StyledTitle>
-        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle>Question</StyledTitle>
-        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle>Question</StyledTitle>
-        <StyledParagraph >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledTitle window={window}>Question</StyledTitle>
+        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledTitle window={window}>Question</StyledTitle>
+        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledTitle window={window}>Question</StyledTitle>
+        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
+        <StyledTitle window={window}>Question</StyledTitle>
+        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledFooter>Crafted with ❤️ from Madrid</StyledFooter>
       </StyledView>
     );

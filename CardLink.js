@@ -27,13 +27,13 @@ const StyledCardLinkText = styled.Text`
   padding-top: 8;
   padding-bottom: 6;
   color: ${colors.red};
-  font-size: 18;
+  font-size: ${props => props.window.width < 400 ? '14': '18'};
   font-weight: 400;
 `
 
 const StyledCardLinkDate = styled.Text`
   color: ${colors.red};
-  font-size: 22;
+  font-size: ${props => props.window.width < 400 ? '18': '22'};
   font-weight: 500;
 `
 
@@ -59,8 +59,8 @@ export default class CardLink extends React.Component {
     return (
       <StyledCardLink onPress={() => this.props.navigate('Card', {cardData})}>
         <StyledView>
-          <StyledCardLinkText>{this.props.cardName}</StyledCardLinkText>
-          <StyledCardLinkDate>{this.props.cardExpireDate}</StyledCardLinkDate>
+          <StyledCardLinkText window={this.props.window}>{this.props.cardName}</StyledCardLinkText>
+          <StyledCardLinkDate window={this.props.window}>{this.props.cardExpireDate}</StyledCardLinkDate>
         </StyledView>
       </StyledCardLink>
     )

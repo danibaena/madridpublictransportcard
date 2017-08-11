@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, Alert, AsyncStorage, BackHandler } from 'react-native'
+import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, Alert, AsyncStorage, BackHandler, Dimensions } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
 import Prompt from 'react-native-prompt'
 import CalendarEvents from 'react-native-calendar-events'
@@ -46,7 +46,7 @@ const StyledView = styled.ScrollView.attrs({
   flex: 1;
   background-color: #fff;
   flex-direction: column;
-  padding: 10px 30px 30px;
+  padding: ${props => props.window.width < 400 ? '0px 20px 20px': '10px 30px 30px'};
   width: 100%;
   height: 100%;
 `
@@ -81,14 +81,14 @@ const StyledFooter = styled.View`
 
 const StyledCardsSubtitle = styled(SelectableText)`
   color: ${colors.black};
-  font-size: 24;
+  font-size: ${props => props.window.width < 400 ? '20': '24'};
   font-weight: bold;
   margin-bottom: 10;
 `
 
 const StyledCardLinkText = styled(SelectableText)`
   color: ${colors.red};
-  font-size: 18;
+  font-size: ${props => props.window.width < 400 ? '16': '18'};
   font-weight: 400;
   text-align: right;
 `
@@ -110,7 +110,7 @@ const StyledNotificationText = styled(SelectableText)`
 `
 
 const StyledCalendar = styled(Calendar)`
-  margin-top: 32px;
+  margin-top: ${props => props.window.width < 400 ? '10px': '32px'};
   width: 100%;
   align-self: flex-start;
   border-bottom-width: 0.5;
@@ -119,20 +119,20 @@ const StyledCalendar = styled(Calendar)`
 `
 
 const StyledText = styled(SelectableText)`
-  font-size: 16;
+  font-size: ${props => props.window.width < 400 ? '14': '16'};
   color: ${colors.black};
   font-weight: 400;
-  padding-bottom: 12px;
+  padding-bottom: ${props => props.window.width < 400 ? '6px': '12px'};
   width: 100%;
   text-align: left;
 `
 
 const StyledCurrentDate = styled(SelectableText)`
   color: ${colors.black};
-  font-size: 16;
+  font-size: ${props => props.window.width < 400 ? '12': '16'};
   align-self: flex-start;
-  margin-top: 24px;
-  margin-bottom: 40px;
+  margin-top: ${props => props.window.width < 400 ? '18px': '24px'};
+  margin-bottom: ${props => props.window.width < 400 ? '20px': '40px'};
   height: 100%;
 `
 
@@ -141,9 +141,9 @@ const StyledButton = styled.TouchableOpacity`
 `
 
 const StyledButtonIcon = styled.Image`
-  width: 42px;
-  height: 42px;
-  margin-left: 20px;
+  width: ${props => props.window.width < 400 ? '32px': '42px'};
+  height: ${props => props.window.width < 400 ? '32px': '42px'};
+  margin-left: ${props => props.window.width < 400 ? '10px': '20px'};
 `
 
 const StyledBackButton = styled.Image`
@@ -168,7 +168,7 @@ export default class CardScreen extends React.Component {
     headerLeft: (
       <TouchableOpacity title="Back" onPress={() => navigation.navigate('Home')}>
         <StyledBox>
-          <StyledBackButton  source={require('./assets/img/back-button.png')} />
+          <StyledBackButton source={require('./assets/img/back-button.png')} />
         </StyledBox>
       </TouchableOpacity>
     ),
@@ -431,22 +431,24 @@ export default class CardScreen extends React.Component {
   }
 
   render() {
+    const window = Dimensions.get('window');
+
     return (
-      <StyledView>
+      <StyledView window={window}>
         { this.state.done ?
         <StyledWrapper>
           <StyledDiv>
-            <StyledCardsSubtitle>Tus datos</StyledCardsSubtitle>
-            <StyledCardLinkText>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
+            <StyledCardsSubtitle window={window}>Tus datos</StyledCardsSubtitle>
+            <StyledCardLinkText window={window}>{this.state.cardName?this.state.cardName:null}</StyledCardLinkText>
           </StyledDiv>
           {this.readyToRefreshDate(this.state.cardExpireDate) && 
             <StyledNotification>
               <StyledNotificationText>Fecha actualizada, añade el evento a tu calendario</StyledNotificationText>
             </StyledNotification>
           }
-          <StyledText>Número de tarjeta: {this.state.cardId}</StyledText>
-          <StyledText>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>
-          <StyledText>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso</StyledText>
+          <StyledText window={window}>Número de tarjeta: {this.state.cardId}</StyledText>
+          <StyledText window={window}>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>
+          <StyledText window={window}>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso</StyledText>
           <StyledCalendar 
             current={this.state.expireDateCalendar}
             markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
@@ -474,12 +476,13 @@ export default class CardScreen extends React.Component {
               textMonthFontSize: 16,
               textDayHeaderFontSize: 16
             }}
+            window={window}
           />
           <StyledFooter>
-            <StyledCurrentDate>{this.state.today}</StyledCurrentDate>
-            <StyledWrapperButtons>
+            <StyledCurrentDate window={window}>{this.state.today}</StyledCurrentDate>
+            <StyledWrapperButtons window={window}>
               {this.state.favoriteVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledButtonIcon source={require('./assets/img/favorite-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/favorite-button.png')} window={window} />
                 <Prompt
                   title="Pon el nombre de la tarjeta"
                   placeholder="Tarjeta de..."
@@ -495,7 +498,7 @@ export default class CardScreen extends React.Component {
                 />
               </StyledButton> }
               {this.state.editnameVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledButtonIcon source={require('./assets/img/editname-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/editname-button.png')} window={window} />
                 <Prompt
                   title="Edita el nombre de la tarjeta"
                   placeholder={this.state.cardName}
@@ -511,10 +514,10 @@ export default class CardScreen extends React.Component {
                 />
               </StyledButton> }
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
-                <StyledButtonIcon source={require('./assets/img/delete-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/delete-button.png')} window={window} />
               </StyledButton> }
               <StyledButton>
-                <StyledButtonIcon source={require('./assets/img/calendar-button.png')} />
+                <StyledButtonIcon source={require('./assets/img/calendar-button.png')} window={window} />
               </StyledButton>
             </StyledWrapperButtons>
           </StyledFooter>
