@@ -469,9 +469,7 @@ export default class CardScreen extends React.Component {
               selectedDotColor: `${colors.white}`,
               arrowColor: `${colors.red}`,
               monthTextColor: `${colors.black}`,
-              textDayFontFamily: 'Roboto',
-              textMonthFontFamily: 'Roboto',
-              textDayHeaderFontFamily: 'Roboto',
+              
               textDayFontSize: 12,
               textMonthFontSize: 16,
               textDayHeaderFontSize: 16
