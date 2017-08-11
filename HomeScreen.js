@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard, Dimensions } from 'react-native'
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard, Dimensions, Platform } from 'react-native'
 import ActionButton from 'react-native-action-button'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import CardsView from './CardsView'
@@ -33,6 +33,7 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
   background-color: #fff;
   flex-direction: column;
   padding: ${props => props.window.width < 400 ? '20px': '30px'};
+  padding-top: ${Platform.OS === 'ios' ? '40px' : '30px'}
   width: 100%;
   height: 100%;
 `

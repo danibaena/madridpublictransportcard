@@ -13,5 +13,7 @@
     "android": {
       "package": "com.yourcompany.mttp"
     }
-  }
+  },
+  "name": "mttp",
+  "displayName": "Madrid Tarjeta Transporte Público"
 }
