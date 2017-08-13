@@ -57,9 +57,6 @@ const StyledCardLinkText = styled(AnimatedView)`
 const StyledCalendarHeader = styled(StyledDiv)`
   margin-top: 50;
   margin-bottom: 24;
-  border-bottom-width: 1;
-  borderColor: ${colors.black};
-  borderStyle: solid;
 `
 
 const StyledCalendar = styled(AnimatedView)`
@@ -101,14 +98,6 @@ const StyledCurrentDate = styled(AnimatedView)`
   align-self: flex-start;
 `
 
-const StyledLine = styled(AnimatedView)`
-  margin-top: 10;
-  margin-bottom: 10;
-  border-bottom-width: 1;
-  borderColor: ${colors.black};
-  borderStyle: solid;
-`
-
 /* Component */
 
 export default class CardLoading extends React.Component {
@@ -128,7 +117,6 @@ export default class CardLoading extends React.Component {
           <StyledArrows />
         </StyledCalendarHeader>
         <StyledCalendar/>
-        <StyledLine/>
         <StyledCurrentDate/>
       </StyledView>
     )

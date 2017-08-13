@@ -112,7 +112,7 @@ const StyledNotificationText = styled(SelectableText)`
 `
 
 const StyledCalendar = styled(Calendar)`
-  margin-top: ${props => props.window.width < 400 ? '10px': '32px'};
+  margin-top: ${props => props.window.width < 400 ? '10px': '20px'};
   width: 100%;
   align-self: flex-start;
 `
@@ -157,7 +157,7 @@ const StyledBox = styled.View`
 `
 
 const StyledPrompt = styled(Prompt)`
-  border-radius: 0;
+  color: ${colors.black};
 `
 
 const backButton = Platform.OS === 'ios' ? require('./assets/img/back-button-ios.png') : require('./assets/img/back-button-android.png');
@@ -224,8 +224,10 @@ export default class CardScreen extends React.Component {
 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', () => {
+      BackHandler.removeEventListener('hardwareBackPress', () => {
         this.props.navigation.navigate('Home');
         return true;
+      })
     });
   }
 
@@ -292,12 +294,14 @@ export default class CardScreen extends React.Component {
         let expireDateFormatted;
         let expireDateWeekDay;
         let daysLeftToExpire;
+        let cardExpireDate;
 
         expireDate = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
         expireDateFormatted = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
         expireDateWeekDay = result.format("dddd").toString()
         daysLeftToExpire = result.diff(moment().add(-1, "days"), "days");
         daysLeftToExpire = daysLeftToExpire < 1 ? '0' : daysLeftToExpire.toString();
+        cardExpireDate = result.format("DD/MM/YYYY");
         result = result.format("YYYY-MM-DD").toString();
 
         this.setState({
@@ -306,6 +310,7 @@ export default class CardScreen extends React.Component {
           expireDateCalendar: result,
           expireDateWeekDay: expireDateWeekDay,
           daysLeftToExpire: daysLeftToExpire,
+          cardExpireDate: cardExpireDate,
           done: true
         })
 
@@ -433,7 +438,7 @@ export default class CardScreen extends React.Component {
     })
   }
 
-  addEventCalendar(cardId, date) {
+  addEventCalendar(cardId, date, name) {
     // Let's get access before doing anything
     calendarEvents.authorizationStatus()
     .then(status => {
@@ -461,11 +466,12 @@ export default class CardScreen extends React.Component {
     .catch(error => console.warn('Calendar authentication Error: ', error));
 
     let parsedDate = moment(date, "DD/MM/YYYY").toISOString();
-
-    calendarEvents.saveEvent(`Expira tu Tarjeta Transporte Público ${cardId}`, {
+    const description = 'Recuerda que podrás usar tu tarjeta todo el día'; 
+ 
+    calendarEvents.saveEvent(`Expira ${name? name: 'tu Tarjeta Transporte Público'} con número ${cardId}`, {
       allowsModifications: false,
-      notes: 'Recuerda que podrás usar tu tarjeta todo el día',
-      description: 'Recuerda que podrás usar tu tarjeta todo el día',
+      notes: description,
+      description: description,
       startDate: parsedDate,
       endDate: parsedDate,
       allDay: true,
@@ -475,7 +481,7 @@ export default class CardScreen extends React.Component {
       }],
     })
     .then(id => {
-      Alert.alert("Saved!")
+      Alert.alert("Evento guardado en tu calendario") 
       // we can get the event ID here if we need it
       // Linking.URL(`cal:${firstTime.getTime()}`);
     }).catch(error => console.log('Save Event Error: ', error));
@@ -535,7 +541,7 @@ export default class CardScreen extends React.Component {
             <StyledWrapperButtons window={window}>
               {this.state.favoriteVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
                 <StyledButtonIcon source={require('./assets/img/favorite-button.png')} window={window} />
-                <Prompt
+                <StyledPrompt
                   title="Pon el nombre de la tarjeta"
                   placeholder="Tarjeta de..."
                   visible={ this.state.promptVisible }
@@ -551,7 +557,7 @@ export default class CardScreen extends React.Component {
               </StyledButton> }
               {this.state.editnameVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
                 <StyledButtonIcon source={require('./assets/img/editname-button.png')} window={window} />
-                <Prompt
+                <StyledPrompt
                   title="Edita el nombre de la tarjeta"
                   placeholder={this.state.cardName}
                   visible={ this.state.promptVisible }
@@ -568,7 +574,7 @@ export default class CardScreen extends React.Component {
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
                 <StyledButtonIcon source={require('./assets/img/delete-button.png')} window={window} />
               </StyledButton> }
-              <StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate)}}>
+              <StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate, this.state.cardName)}}>
                 <StyledButtonIcon source={require('./assets/img/calendar-button.png')} window={window} />
               </StyledButton>
             </StyledWrapperButtons>

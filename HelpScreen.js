@@ -64,6 +64,7 @@ const StyledImage = styled.Image`
 const StyledFooter = styled(Paragraph)`
   font-size: 12;
   font-weight: 500;
+  color: ${colors.black};
   width: 100%;
   text-align: center;
   padding-bottom: ${props => props.window.width < 400 ? '40px': '60px'};
