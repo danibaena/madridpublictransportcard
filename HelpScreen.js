@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, Image, Dimensions } from 'react-native'
+import { Text, View, ScrollView, Image, Dimensions, Platform } from 'react-native'
 import colors from './colors'
 
 /* Helper Components */
@@ -9,7 +9,6 @@ const Title = (props) => <Text {...props} />
 
 Title.defaultProps = {
   selectable: true,
-  window: Dimensions.get('window'),
 }
 
 const Paragraph = (props) => <Text {...props} />
@@ -32,7 +31,7 @@ const StyledView = styled.ScrollView.attrs({
   height: 100%;
   flex: 1;
   flex-direction: column;
-  padding: ${props => props.window.width < 400 ? '10px 20px 20px': '10px 30px 30px'};
+  padding: ${props => props.window.width < 400 ? '20px': '30px'};
 `
 
 const StyledImageWrapper = styled.View`
@@ -67,7 +66,7 @@ const StyledFooter = styled(Paragraph)`
   font-weight: 500;
   width: 100%;
   text-align: center;
-  margin-bottom: 40px;
+  padding-bottom: ${props => props.window.width < 400 ? '40px': '60px'};
 `
 
 /* Component */
@@ -95,7 +94,7 @@ export default class CardScreen extends React.Component {
         <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle window={window}>Question</StyledTitle>
         <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledFooter>Crafted with ❤️ from Madrid</StyledFooter>
+        <StyledFooter window={window}>Crafted with ❤️ from Madrid</StyledFooter>
       </StyledView>
     );
   }

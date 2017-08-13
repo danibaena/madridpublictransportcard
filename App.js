@@ -18,7 +18,10 @@ const App = StackNavigator(
     Card: {
       screen: CardScreen,
       navigationOptions: ({ navigation }) => ({
-
+        headerStyle: {
+          elevation: Platform.OS === 'ios' ? 1 : 0,
+          shadowOpacity: Platform.OS === 'ios' ? 1 : 0,
+        },
       })
     },
     Help: {
@@ -34,7 +37,6 @@ const App = StackNavigator(
   },
   {
     cardStyle: {
-      paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
       shadowColor: 'transparent'
     },
     navigationOptions: {

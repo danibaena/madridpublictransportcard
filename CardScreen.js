@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, Alert, AsyncStorage, BackHandler, Dimensions } from 'react-native'
+import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, Alert, AsyncStorage, BackHandler, Dimensions, Platform } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
 import Prompt from 'react-native-prompt'
 import CalendarEvents from 'react-native-calendar-events'
@@ -8,6 +8,7 @@ import CardLoading from './CardLoading'
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment/min/moment-with-locales'
 import colors from './colors'
+import calendarEvents from 'react-native-calendar-events'
 
 /* Constants */
 
@@ -47,6 +48,7 @@ const StyledView = styled.ScrollView.attrs({
   background-color: #fff;
   flex-direction: column;
   padding: ${props => props.window.width < 400 ? '0px 20px 20px': '10px 30px 30px'};
+  padding-top: ${Platform.OS === 'ios' ? '20px' : '10px'}
   width: 100%;
   height: 100%;
 `
@@ -113,9 +115,6 @@ const StyledCalendar = styled(Calendar)`
   margin-top: ${props => props.window.width < 400 ? '10px': '32px'};
   width: 100%;
   align-self: flex-start;
-  border-bottom-width: 0.5;
-  borderColor: ${colors.black};
-  borderStyle: solid;
 `
 
 const StyledText = styled(SelectableText)`
@@ -141,25 +140,27 @@ const StyledButton = styled.TouchableOpacity`
 `
 
 const StyledButtonIcon = styled.Image`
-  width: ${props => props.window.width < 400 ? '32px': '42px'};
-  height: ${props => props.window.width < 400 ? '32px': '42px'};
-  margin-left: ${props => props.window.width < 400 ? '10px': '20px'};
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
 `
 
 const StyledBackButton = styled.Image`
-  width: 20px;
-  height: 20px;
+  width: ${Platform.OS === 'ios' ? '28px' : '20px'};
+  height: ${Platform.OS === 'ios' ? '28px' : '20px'};
 `
 const StyledBox = styled.View`
   width: 40px;
   height: 40px;
-  padding: 10px 20px;
+  padding: ${Platform.OS === 'ios' ? '6px 6px 6px 1px' : '10px 20px'};
   align-self: flex-start;
 `
 
 const StyledPrompt = styled(Prompt)`
   border-radius: 0;
 `
+
+const backButton = Platform.OS === 'ios' ? require('./assets/img/back-button-ios.png') : require('./assets/img/back-button-android.png');
 
 /* Component */
 
@@ -168,7 +169,7 @@ export default class CardScreen extends React.Component {
     headerLeft: (
       <TouchableOpacity title="Back" onPress={() => navigation.navigate('Home')}>
         <StyledBox>
-          <StyledBackButton source={require('./assets/img/back-button.png')} />
+          <StyledBackButton source={backButton} />
         </StyledBox>
       </TouchableOpacity>
     ),
@@ -178,6 +179,7 @@ export default class CardScreen extends React.Component {
     super(props);
     this.onSubmitPrompt = this.onSubmitPrompt.bind(this);
     this.readyToRefreshDate = this.readyToRefreshDate.bind(this);
+    this.addEventCalendar = this.addEventCalendar.bind(this);
 
     const todayDateFormat = "[Hoy es ]D[ de ]MMMM[ de ]YYYY";
     const today = moment();
@@ -216,6 +218,7 @@ export default class CardScreen extends React.Component {
       favoriteVisible: cardData.cardExpireDate ? false : true,
       editnameVisible: cardData.cardExpireDate ? true : false,
       deleteVisible: cardData.cardExpireDate ? true : false,
+      calendar_auth: '',
     }
   }
 
@@ -430,6 +433,54 @@ export default class CardScreen extends React.Component {
     })
   }
 
+  addEventCalendar(cardId, date) {
+    // Let's get access before doing anything
+    calendarEvents.authorizationStatus()
+    .then(status => {
+      // if the status was previous accepted, set the authorized status to state
+      this.setState({ calendar_auth: status })
+      if(status === 'undetermined') {
+        // if we made it this far, we need to ask the user for access 
+        calendarEvents.authorizeEventStore()
+        .then((out) => {
+          if(out == 'authorized') {
+            // set the new status to the auth state
+            this.setState({ calendar_auth: out })
+          }
+        })
+      }
+
+      // calendarEvents.findCalendars()
+      // .then(calendars => {
+      //   console.log(JSON.stringify(calendars, null, 2))
+      // })
+      // .catch(error => {
+      //   // handle error
+      // });
+    })
+    .catch(error => console.warn('Calendar authentication Error: ', error));
+
+    let parsedDate = moment(date, "DD/MM/YYYY").toISOString();
+
+    calendarEvents.saveEvent(`Expira tu Tarjeta Transporte Público ${cardId}`, {
+      allowsModifications: false,
+      notes: 'Recuerda que podrás usar tu tarjeta todo el día',
+      description: 'Recuerda que podrás usar tu tarjeta todo el día',
+      startDate: parsedDate,
+      endDate: parsedDate,
+      allDay: true,
+      calendar: ['My Calendar'],
+      alarm: [{
+        date: -1
+      }],
+    })
+    .then(id => {
+      Alert.alert("Saved!")
+      // we can get the event ID here if we need it
+      // Linking.URL(`cal:${firstTime.getTime()}`);
+    }).catch(error => console.log('Save Event Error: ', error));
+  }
+
   render() {
     const window = Dimensions.get('window');
 
@@ -469,7 +520,10 @@ export default class CardScreen extends React.Component {
               selectedDotColor: `${colors.white}`,
               arrowColor: `${colors.red}`,
               monthTextColor: `${colors.black}`,
-              
+              // Uncomment when font is available for the project
+              // textDayFontFamily: 'Roboto',
+              // textMonthFontFamily: 'Roboto',
+              // textDayHeaderFontFamily: 'Roboto',
               textDayFontSize: 12,
               textMonthFontSize: 16,
               textDayHeaderFontSize: 16
@@ -514,7 +568,7 @@ export default class CardScreen extends React.Component {
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
                 <StyledButtonIcon source={require('./assets/img/delete-button.png')} window={window} />
               </StyledButton> }
-              <StyledButton>
+              <StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate)}}>
                 <StyledButtonIcon source={require('./assets/img/calendar-button.png')} window={window} />
               </StyledButton>
             </StyledWrapperButtons>

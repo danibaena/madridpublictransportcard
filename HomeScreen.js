@@ -32,8 +32,8 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
   flex: 1;
   background-color: #fff;
   flex-direction: column;
-  padding: ${props => props.window.width < 400 ? '20px': '30px'};
-  padding-top: ${Platform.OS === 'ios' ? '40px' : '30px'}
+  padding: ${props => props.window.width > 414 ? '30px': props.window.width > 375 ? '25px' : '20px'};
+  padding-top: ${Platform.OS === 'ios' ? '40px' : (props => props.window.width > 414 ? '30px': props.window.width > 375 ? '25px' : '20px')}
   width: 100%;
   height: 100%;
 `
