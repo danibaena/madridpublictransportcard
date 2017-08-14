@@ -18,20 +18,12 @@ const App = StackNavigator(
     Card: {
       screen: CardScreen,
       navigationOptions: ({ navigation }) => ({
-        headerStyle: {
-          elevation: Platform.OS === 'ios' ? 1 : 0,
-          shadowOpacity: Platform.OS === 'ios' ? 1 : 0,
-        },
       })
     },
     Help: {
       screen: HelpScreen,
       navigationOptions: ({ navigation }) => ({
         title: 'Ayuda',
-        headerStyle: {
-          elevation: 1,
-          shadowOpacity: 1,
-        }
       })
     }
   },
@@ -41,8 +33,8 @@ const App = StackNavigator(
     },
     navigationOptions: {
         headerStyle: {
-            elevation: 0,
-            shadowOpacity: 0,
+            elevation: 1,
+            shadowOpacity: 1,
         }
     },
     headerMode: 'screen',

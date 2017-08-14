@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, Alert, AsyncStorage, BackHandler, Dimensions, Platform } from 'react-native'
+import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, TouchableNativeFeedback, Alert, AsyncStorage, BackHandler, Dimensions, Platform } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
 import Prompt from 'react-native-prompt'
 import CalendarEvents from 'react-native-calendar-events'
@@ -27,13 +27,22 @@ moment.updateLocale('es', localeData);
 LocaleConfig.locales['es'] = localeData;
 LocaleConfig.defaultLocale = 'es';
 
-/* Helper Components */
+/* Helper Components and data */
+
+const backButton = Platform.OS === 'ios' ? require('./assets/img/back-button-ios.png') : require('./assets/img/back-button-android.png');
 
 const SelectableText = (props) => <Text {...props} />
 
 SelectableText.defaultProps = {
   selectable: true,
 }
+
+const TouchableItem = (props) => {
+  return Platform.OS === 'android' ? 
+    (<TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(0, 0, 0, .32)', true)} delayPressIn={0} {...props} />)
+    : (<TouchableOpacity {...props} />);
+}
+
 
 /* Styles */
 
@@ -66,6 +75,7 @@ const StyledWrapper = styled.View`
 
 const StyledWrapperButtons = styled.View`
   margin-bottom: 40px;
+  height: 100%;
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
@@ -77,6 +87,7 @@ const StyledFooter = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
   height: 100%;
 `
@@ -85,7 +96,7 @@ const StyledCardsSubtitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '20': '24'};
   font-weight: bold;
-  margin-bottom: 10;
+  margin-bottom: 15px;
 `
 
 const StyledCardLinkText = styled(SelectableText)`
@@ -95,7 +106,7 @@ const StyledCardLinkText = styled(SelectableText)`
   text-align: right;
 `
 
-const StyledNotification = styled.TouchableOpacity`
+const StyledNotification = styled(TouchableItem)`
   background-color: ${colors.red};
   width: 100%;
   padding: 2px 23px;
@@ -112,7 +123,7 @@ const StyledNotificationText = styled(SelectableText)`
 `
 
 const StyledCalendar = styled(Calendar)`
-  margin-top: ${props => props.window.width < 400 ? '10px': '20px'};
+  margin-top: 10px;
   width: 100%;
   align-self: flex-start;
 `
@@ -128,16 +139,21 @@ const StyledText = styled(SelectableText)`
 
 const StyledCurrentDate = styled(SelectableText)`
   color: ${colors.black};
-  font-size: ${props => props.window.width < 400 ? '12': '16'};
+  font-size: ${props => props.window.width < 400 ? '14': '16'};
   align-self: flex-start;
   margin-top: ${props => props.window.width < 400 ? '18px': '24px'};
   margin-bottom: ${props => props.window.width < 400 ? '20px': '40px'};
   height: 100%;
 `
 
-const StyledButton = styled.TouchableOpacity`
-  margin-top: 12px;
+const StyledTouchableItem = styled(TouchableItem)`
+  height: 100%;
+  width: 100%;
 `
+
+const StyledButton = styled.TouchableOpacity`
+`
+
 
 const StyledButtonIcon = styled.Image`
   width: 32px;
@@ -146,32 +162,33 @@ const StyledButtonIcon = styled.Image`
 `
 
 const StyledBackButton = styled.Image`
+  margin-left: ${Platform.OS === 'ios' ? '5px' : '20px'};
+  margin-top: ${Platform.OS === 'ios' ? '7px' : '20px'};
   width: ${Platform.OS === 'ios' ? '28px' : '20px'};
   height: ${Platform.OS === 'ios' ? '28px' : '20px'};
 `
 const StyledBox = styled.View`
-  width: 40px;
-  height: 40px;
-  padding: ${Platform.OS === 'ios' ? '6px 6px 6px 1px' : '10px 20px'};
   align-self: flex-start;
+  padding-right: 20px;
+  height: 100%;
+  width: 100%;
 `
 
 const StyledPrompt = styled(Prompt)`
   color: ${colors.black};
 `
 
-const backButton = Platform.OS === 'ios' ? require('./assets/img/back-button-ios.png') : require('./assets/img/back-button-android.png');
 
 /* Component */
 
 export default class CardScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     headerLeft: (
-      <TouchableOpacity title="Back" onPress={() => navigation.navigate('Home')}>
+      <StyledTouchableItem title="Back" onPress={() => navigation.navigate('Home')}>
         <StyledBox>
           <StyledBackButton source={backButton} />
         </StyledBox>
-      </TouchableOpacity>
+      </StyledTouchableItem>
     ),
   })
 
@@ -475,7 +492,7 @@ export default class CardScreen extends React.Component {
       startDate: parsedDate,
       endDate: parsedDate,
       allDay: true,
-      calendar: ['My Calendar'],
+      calendar: ['Calendar'],
       alarm: [{
         date: -1
       }],
@@ -531,7 +548,7 @@ export default class CardScreen extends React.Component {
               // textMonthFontFamily: 'Roboto',
               // textDayHeaderFontFamily: 'Roboto',
               textDayFontSize: 12,
-              textMonthFontSize: 16,
+              textMonthFontSize: 14,
               textDayHeaderFontSize: 16
             }}
             window={window}
