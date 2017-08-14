@@ -483,25 +483,54 @@ export default class CardScreen extends React.Component {
     .catch(error => console.warn('Calendar authentication Error: ', error));
 
     let parsedDate = moment(date, "DD/MM/YYYY").toISOString();
-    const description = 'Recuerda que podrás usar tu tarjeta todo el día'; 
- 
-    calendarEvents.saveEvent(`Expira ${name? name: 'tu Tarjeta Transporte Público'} con número ${cardId}`, {
-      allowsModifications: false,
+    const description = 'Recuerda que podrás usar tu tarjeta todo el día';
+    const eventTitle = `Expira ${name ? name : 'tu Tarjeta Transporte Público'} con número ${cardId}`;
+
+    const event = {
       notes: description,
       description: description,
       startDate: parsedDate,
       endDate: parsedDate,
       allDay: true,
-      calendar: ['Calendar'],
       alarm: [{
         date: -1
       }],
-    })
-    .then(id => {
-      Alert.alert("Evento guardado en tu calendario") 
-      // we can get the event ID here if we need it
-      // Linking.URL(`cal:${firstTime.getTime()}`);
-    }).catch(error => console.log('Save Event Error: ', error));
+    }
+
+    if(Platform.OS === 'ios') {
+      calendarEvents.saveEvent(eventTitle, event)
+      .then(id => {
+        Alert.alert("Evento guardado en tu calendario") 
+        // we can get the event ID here if we need it
+        // Linking.URL(`cal:${firstTime.getTime()}`);
+      }).catch(error => {
+        Alert.alert("No se ha podido guardar el evento")
+        console.log('Save Event Error: ', error)
+      });
+    } else {
+      calendarEvents.findCalendars()
+      .then(calendars => {
+        const { id } = calendars[0];
+
+        console.log(JSON.stringify(calendars, null, 2))
+
+        if(id) {
+          calendarEvents.saveEvent(eventTitle, Object.assign(event, {calendarId: `${id}`}))
+          .then(id => {
+            Alert.alert("Evento guardado en tu calendario") 
+            // we can get the event ID here if we need it
+            // Linking.URL(`cal:${firstTime.getTime()}`);
+          }).catch(error => {
+            Alert.alert("No se ha podido guardar el evento")
+            console.log('Save Event Error: ', error)
+          })
+        }
+      })
+      .catch(error => {
+        Alert.alert("No se ha podido guardar el evento") 
+        console.log('Save Event Error: ', error)
+      });
+    }
   }
 
   render() {
