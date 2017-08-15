@@ -459,7 +459,7 @@ export default class CardScreen extends React.Component {
     // Let's get access before doing anything
     calendarEvents.authorizationStatus()
     .then(status => {
-      // if the status was previous accepted, set the authorized status to state
+      // if the status was previously accepted, set the authorized status to state
       this.setState({ calendar_auth: status })
       if(status === 'undetermined') {
         // if we made it this far, we need to ask the user for access 
@@ -471,18 +471,10 @@ export default class CardScreen extends React.Component {
           }
         })
       }
-
-      // calendarEvents.findCalendars()
-      // .then(calendars => {
-      //   console.log(JSON.stringify(calendars, null, 2))
-      // })
-      // .catch(error => {
-      //   // handle error
-      // });
     })
     .catch(error => console.warn('Calendar authentication Error: ', error));
 
-    let parsedDate = moment(date, "DD/MM/YYYY").toISOString();
+    let parsedDate = moment.utc(date, "DD/MM/YYYY").toISOString();
     const description = 'Recuerda que podrás usar tu tarjeta todo el día';
     const eventTitle = `Expira ${name ? name : 'tu Tarjeta Transporte Público'} con número ${cardId}`;
 
@@ -500,9 +492,7 @@ export default class CardScreen extends React.Component {
     if(Platform.OS === 'ios') {
       calendarEvents.saveEvent(eventTitle, event)
       .then(id => {
-        Alert.alert("Evento guardado en tu calendario") 
-        // we can get the event ID here if we need it
-        // Linking.URL(`cal:${firstTime.getTime()}`);
+        Alert.alert("Evento guardado en tu calendario por defecto") 
       }).catch(error => {
         Alert.alert("No se ha podido guardar el evento")
         console.log('Save Event Error: ', error)
@@ -510,14 +500,18 @@ export default class CardScreen extends React.Component {
     } else {
       calendarEvents.findCalendars()
       .then(calendars => {
-        const { id } = calendars[0];
+        const availableCalendars = calendars.filter((value) => {
+            return value.allowsModifications;
+        })
 
-        console.log(JSON.stringify(calendars, null, 2))
+        /* I take the first valid calendar, maybe I could add a little to prompt to let user choose whatever calendar he wants */
+        const { id } = availableCalendars[0];
+        const { title } = availableCalendars[0]
 
         if(id) {
           calendarEvents.saveEvent(eventTitle, Object.assign(event, {calendarId: `${id}`}))
           .then(id => {
-            Alert.alert("Evento guardado en tu calendario") 
+            Alert.alert(`Evento guardado en el calendario ${title}`) 
             // we can get the event ID here if we need it
             // Linking.URL(`cal:${firstTime.getTime()}`);
           }).catch(error => {
