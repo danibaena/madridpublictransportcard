@@ -4,10 +4,10 @@ import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, To
 import { Calendar, LocaleConfig } from 'react-native-calendars'
 import Prompt from 'react-native-prompt'
 import CalendarEvents from 'react-native-calendar-events'
-import CardLoading from './CardLoading'
+import CardLoading from '../CardLoading'
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment/min/moment-with-locales'
-import colors from './colors'
+import colors from '../../helpers/colors'
 import calendarEvents from 'react-native-calendar-events'
 
 /* Constants */
@@ -29,7 +29,7 @@ LocaleConfig.defaultLocale = 'es';
 
 /* Helper Components and data */
 
-const backButton = Platform.OS === 'ios' ? require('./assets/img/back-button-ios.png') : require('./assets/img/back-button-android.png');
+const backButton = Platform.OS === 'ios' ? require('../../../assets/img/back-button-ios.png') : require('../../../assets/img/back-button-android.png');
 
 const SelectableText = (props) => <Text {...props} />
 
@@ -580,7 +580,7 @@ export default class CardScreen extends React.Component {
             <StyledCurrentDate window={window}>{this.state.today}</StyledCurrentDate>
             <StyledWrapperButtons window={window}>
               {this.state.favoriteVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledButtonIcon source={require('./assets/img/favorite-button.png')} window={window} />
+                <StyledButtonIcon source={require('../../../assets/img/favorite-button.png')} window={window} />
                 <StyledPrompt
                   title="Pon el nombre de la tarjeta"
                   placeholder="Tarjeta de..."
@@ -596,7 +596,7 @@ export default class CardScreen extends React.Component {
                 />
               </StyledButton> }
               {this.state.editnameVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledButtonIcon source={require('./assets/img/editname-button.png')} window={window} />
+                <StyledButtonIcon source={require('../../../assets/img/editname-button.png')} window={window} />
                 <StyledPrompt
                   title="Edita el nombre de la tarjeta"
                   placeholder={this.state.cardName}
@@ -612,10 +612,10 @@ export default class CardScreen extends React.Component {
                 />
               </StyledButton> }
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
-                <StyledButtonIcon source={require('./assets/img/delete-button.png')} window={window} />
+                <StyledButtonIcon source={require('../../../assets/img/delete-button.png')} window={window} />
               </StyledButton> }
               <StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate, this.state.cardName)}}>
-                <StyledButtonIcon source={require('./assets/img/calendar-button.png')} window={window} />
+                <StyledButtonIcon source={require('../../../assets/img/calendar-button.png')} window={window} />
               </StyledButton>
             </StyledWrapperButtons>
           </StyledFooter>

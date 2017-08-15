@@ -3,8 +3,8 @@ import styled from 'styled-components/native'
 import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard, Dimensions, Platform } from 'react-native'
 import ActionButton from 'react-native-action-button'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import CardsView from './CardsView'
-import colors from './colors'
+import CardsView from '../CardsView'
+import colors from '../../helpers/colors'
 
 /* Constants */
 
@@ -187,7 +187,7 @@ export default class HomesScreen extends React.Component {
         <StyledActionButton
           buttonColor="rgba(255,255,255,1)"
           bgColor="#ffffff"
-          icon={<StyledActionButtonLink onPress={() => { navigate('Help')}}><StyledHelpButton source={require('./assets/img/help-button.png')} /></StyledActionButtonLink>}
+          icon={<StyledActionButtonLink onPress={() => { navigate('Help')}}><StyledHelpButton source={require('../../../assets/img/help-button.png')} /></StyledActionButtonLink>}
           degrees={0}
           offsetY={0}
           hideShadow={true}

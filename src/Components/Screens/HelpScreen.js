@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text, View, ScrollView, Image, Dimensions, Platform } from 'react-native'
-import colors from './colors'
+import colors from '../../helpers/colors'
 
 /* Helper Components */
 
@@ -84,7 +84,7 @@ export default class CardScreen extends React.Component {
       <StyledView window={window}>
         <StyledTitle window={window}>¿Cómo sé cuál es el número de mi Tarjeta Transporte Público?</StyledTitle>
         <StyledImageWrapper>
-          <StyledImage resizeMode="contain" source={require('./assets/img/ttp.png')} />
+          <StyledImage resizeMode="contain" source={require('../../../assets/img/ttp.png')} />
         </StyledImageWrapper>
         <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
         <StyledTitle window={window}>Question</StyledTitle>

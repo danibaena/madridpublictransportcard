@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { AsyncStorage, Text, View } from 'react-native'
 import CardLink from './CardLink'
-import colors from './colors'
+import colors from '../helpers/colors'
 
 /* Styles */
 

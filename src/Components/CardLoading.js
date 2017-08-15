@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { View, Text } from 'react-native'
 import * as Animatable from 'react-native-animatable';
-import colors from './colors'
+import colors from '../helpers/colors'
 
 /* Helper Components */
 

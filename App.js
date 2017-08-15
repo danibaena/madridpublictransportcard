@@ -1,9 +1,9 @@
 import React from 'react'
-import { Platform, StatusBar, AppRegistry } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './HomeScreen'
-import CardScreen from './CardScreen'
-import HelpScreen from './HelpScreen'
+import HomeScreen from './src/Components/Screens/HomeScreen'
+import CardScreen from './src/Components/Screens/CardScreen'
+import HelpScreen from './src/Components/Screens/HelpScreen'
 
 /* Navigation Routes */
 
@@ -40,7 +40,5 @@ const App = StackNavigator(
     headerMode: 'screen',
   }
 );
-
-AppRegistry.registerComponent('App', () => App);
 
 export default App;
