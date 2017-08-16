@@ -241,8 +241,8 @@ export default class CardScreen extends React.Component {
 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', () => {
+      this.props.navigation.navigate('Home')
       BackHandler.removeEventListener('hardwareBackPress', () => {
-        this.props.navigation.navigate('Home');
         return true;
       })
     });
