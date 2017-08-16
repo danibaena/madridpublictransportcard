@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "jest-expo": "~19.0.0",
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "scripts": {
@@ -13,7 +12,7 @@
     "test": "node node_modules/jest/bin/jest.js --watch"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native"
   },
   "dependencies": {
     "cheerio-without-node-native": "^0.20.2",
@@ -26,7 +25,6 @@
     "react-native-calendars": "git://github.com/danibaena/react-native-calendars.git#v.1.5.10",
     "react-native-keyboard-aware-scroll-view": "^0.3.0",
     "react-native-prompt": "^1.0.0",
-    "react-native-svg-image": "^1.1.4",
     "react-navigation": "^1.0.0-beta.11",
     "styled-components": "^2.1.2"
   }
