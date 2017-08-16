@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity, Platform } from 'react-native'
 import colors from '../helpers/colors'
 
 /* Styles */
@@ -16,6 +16,7 @@ const StyledCardsSubtitle = styled.Text`
   color: ${colors.black};
   font-size: 24;
   font-weight: bold;
+  font-family: 'Roboto';
   margin-bottom: 12;
 `
 
@@ -28,13 +29,13 @@ const StyledCardLinkText = styled.Text`
   padding-bottom: 6;
   color: ${colors.red};
   font-size: ${props => props.window.width < 400 ? '14': '18'};
-  font-weight: 400;
+  font-family: 'Roboto';
 `
 
 const StyledCardLinkDate = styled.Text`
   color: ${colors.red};
   font-size: ${props => props.window.width < 400 ? '18': '22'};
-  font-weight: 500;
+  ${Platform.OS === 'android' ? "font-family: 'Roboto-Medium';" : 'font-weight: 500;' }
 `
 
 const StyledView = styled.View`

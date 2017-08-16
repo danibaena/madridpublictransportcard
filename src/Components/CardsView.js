@@ -17,6 +17,7 @@ const StyledCardsSubtitle = styled.Text`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '18': '24'};
   font-weight: bold;
+  font-family: 'Roboto';
   margin-bottom: 12;
 `
 

@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Text, View, Image, ScrollView, TouchableOpacity, TouchableNativeFeedback, Alert, AsyncStorage, BackHandler, Dimensions, Platform } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
-import Prompt from 'react-native-prompt'
 import CalendarEvents from 'react-native-calendar-events'
 import CardLoading from '../CardLoading'
+import prompt from 'react-native-prompt-android';
 import cheerio from 'cheerio-without-node-native'
 import moment from 'moment/min/moment-with-locales'
 import colors from '../../helpers/colors'
@@ -57,7 +57,7 @@ const StyledView = styled.ScrollView.attrs({
   background-color: #fff;
   flex-direction: column;
   padding: ${props => props.window.width < 400 ? '0px 20px 20px': '10px 30px 30px'};
-  padding-top: ${Platform.OS === 'ios' ? '20px' : '10px'}
+  padding-top: ${Platform.OS === 'ios' ? '20px' : '20px'}
   width: 100%;
   height: 100%;
 `
@@ -96,13 +96,14 @@ const StyledCardsSubtitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '20': '24'};
   font-weight: bold;
+  font-family: 'Roboto';
   margin-bottom: 15px;
 `
 
 const StyledCardLinkText = styled(SelectableText)`
   color: ${colors.red};
   font-size: ${props => props.window.width < 400 ? '16': '18'};
-  font-weight: 400;
+  font-family: 'Roboto';
   text-align: right;
 `
 
@@ -118,7 +119,7 @@ const StyledNotification = styled(TouchableItem)`
 const StyledNotificationText = styled(SelectableText)`
   color: ${colors.white};
   font-size: 14;
-  font-weight: 400;
+  font-family: 'Roboto';
   text-align: center;
 `
 
@@ -129,9 +130,9 @@ const StyledCalendar = styled(Calendar)`
 `
 
 const StyledText = styled(SelectableText)`
-  font-size: ${props => props.window.width < 400 ? '14': '16'};
   color: ${colors.black};
-  font-weight: 400;
+  font-size: ${props => props.window.width < 400 ? '14': '16'};
+  font-family: 'Roboto';
   padding-bottom: ${props => props.window.width < 400 ? '6px': '12px'};
   width: 100%;
   text-align: left;
@@ -140,6 +141,7 @@ const StyledText = styled(SelectableText)`
 const StyledCurrentDate = styled(SelectableText)`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '14': '16'};
+  font-family: 'Roboto';
   align-self: flex-start;
   margin-top: ${props => props.window.width < 400 ? '18px': '24px'};
   margin-bottom: ${props => props.window.width < 400 ? '20px': '40px'};
@@ -172,10 +174,6 @@ const StyledBox = styled.View`
   padding-right: 20px;
   height: 100%;
   width: 100%;
-`
-
-const StyledPrompt = styled(Prompt)`
-  color: ${colors.black};
 `
 
 
@@ -231,7 +229,6 @@ export default class CardScreen extends React.Component {
       cardExpireDate: cardData.cardExpireDate,
       cards: null,
       done: done,
-      promptVisible: false,
       favoriteVisible: cardData.cardExpireDate ? false : true,
       editnameVisible: cardData.cardExpireDate ? true : false,
       deleteVisible: cardData.cardExpireDate ? true : false,
@@ -430,7 +427,6 @@ export default class CardScreen extends React.Component {
 
       AsyncStorage.mergeItem(CARDS, JSON.stringify(cardData)).then(() => {
         this.setState({
-          promptVisible: false,
           favoriteVisible: false,
           editnameVisible: true,
           deleteVisible: true,
@@ -450,10 +446,6 @@ export default class CardScreen extends React.Component {
 
       return;
     }
-
-    this.setState({
-      promptVisible: false,
-    })
   }
 
   addEventCalendar(cardId, date, name) {
@@ -549,7 +541,7 @@ export default class CardScreen extends React.Component {
           }
           <StyledText window={window}>Número de tarjeta: {this.state.cardId}</StyledText>
           <StyledText window={window}>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>
-          <StyledText window={window}>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso</StyledText>
+          <StyledText window={window}>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso a partir de hoy</StyledText>
           <StyledCalendar 
             current={this.state.expireDateCalendar}
             markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
@@ -570,10 +562,9 @@ export default class CardScreen extends React.Component {
               selectedDotColor: `${colors.white}`,
               arrowColor: `${colors.red}`,
               monthTextColor: `${colors.black}`,
-              // Uncomment when font is available for the project
-              // textDayFontFamily: 'Roboto',
-              // textMonthFontFamily: 'Roboto',
-              // textDayHeaderFontFamily: 'Roboto',
+              textDayFontFamily: 'Roboto',
+              textMonthFontFamily: 'Roboto',
+              textDayHeaderFontFamily: 'Roboto',
               textDayFontSize: 12,
               textMonthFontSize: 14,
               textDayHeaderFontSize: 16
@@ -583,38 +574,38 @@ export default class CardScreen extends React.Component {
           <StyledFooter>
             <StyledCurrentDate window={window}>{this.state.today}</StyledCurrentDate>
             <StyledWrapperButtons window={window}>
-              {this.state.favoriteVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledButtonIcon source={require('../../../assets/img/favorite-button.png')} window={window} />
-                <StyledPrompt
-                  title="Pon el nombre de la tarjeta"
-                  placeholder="Tarjeta de..."
-                  visible={ this.state.promptVisible }
-                  cancelText="Cancelar"
-                  onCancel={ () => this.setState({
-                    promptVisible: false,
-                    message: "You cancelled"
-                  }) }
-                  submitText="Ok"
-                  onSubmit={ (value) => this.onSubmitPrompt(value) }                  
-                  borderColor="transparent"
-                />
-              </StyledButton> }
-              {this.state.editnameVisible && <StyledButton onPress={()=>{this.setState({promptVisible: !this.state.promptVisible})}}>
-                <StyledButtonIcon source={require('../../../assets/img/editname-button.png')} window={window} />
-                <StyledPrompt
-                  title="Edita el nombre de la tarjeta"
-                  placeholder={this.state.cardName}
-                  visible={ this.state.promptVisible }
-                  cancelText="Cancelar"
-                  onCancel={ () => this.setState({
-                    promptVisible: false,
-                    message: "You cancelled"
-                  }) }
-                  submitText="Ok"
-                  onSubmit={ (value) => this.onSubmitPrompt(value) } 
-                  borderColor="transparent"
-                />
-              </StyledButton> }
+              {this.state.favoriteVisible && 
+                <StyledButton onPress={()=>{prompt(
+                  '',
+                  'Pon el nombre de la tarjeta',
+                  [
+                   {text: 'Cancelar', onPress: () => {}, style: 'cancel'},
+                   {text: 'OK', onPress: (value) => this.onSubmitPrompt(value)},
+                  ],
+                  {
+                      type: 'plain-text',
+                      cancelable: true,
+                      placeholder: 'Tarjeta de...'
+                  }
+                )}}>
+                  <StyledButtonIcon source={require('../../../assets/img/favorite-button.png')} window={window} />
+                </StyledButton> }
+              {this.state.editnameVisible && 
+                <StyledButton onPress={()=>{prompt(
+                    '',
+                    'Edita el nombre de la tarjeta',
+                    [
+                     {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                     {text: 'OK', onPress: (value) => this.onSubmitPrompt(value)},
+                    ],
+                    {
+                        type: 'plain-text',
+                        cancelable: true,
+                        placeholder: this.state.cardName
+                    }
+                )}}>
+                  <StyledButtonIcon source={require('../../../assets/img/editname-button.png')} window={window} />
+                </StyledButton> }
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
                 <StyledButtonIcon source={require('../../../assets/img/delete-button.png')} window={window} />
               </StyledButton> }

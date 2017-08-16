@@ -44,6 +44,7 @@ const StyledTitle = styled(Title)`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '20': '24'};
   font-weight: bold;
+  font-family: 'Roboto';
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -51,6 +52,7 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: ${props => props.window.width < 400 ? '15px': '30px'};
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '14': '16'};
+  font-family: 'Roboto';
   align-self: flex-start;
 `
 
@@ -63,7 +65,7 @@ const StyledImage = styled.Image`
 
 const StyledFooter = styled(Paragraph)`
   font-size: 12;
-  font-weight: 500;
+  ${Platform.OS === 'android' ? "font-family: 'Roboto-Medium';" : 'font-weight: 500;' }
   color: ${colors.black};
   width: 100%;
   text-align: center;

@@ -1,5 +1,5 @@
 {
-  "name": "mtp",
+  "name": "mttp",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -14,6 +14,11 @@
   "jest": {
     "preset": "react-native"
   },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
+  },
   "dependencies": {
     "cheerio-without-node-native": "^0.20.2",
     "moment": "^2.18.1",
@@ -24,7 +29,7 @@
     "react-native-calendar-events": "^1.4.1",
     "react-native-calendars": "git://github.com/danibaena/react-native-calendars.git#v.1.5.10",
     "react-native-keyboard-aware-scroll-view": "^0.3.0",
-    "react-native-prompt": "^1.0.0",
+    "react-native-prompt-android": "^0.3.0",
     "react-navigation": "^1.0.0-beta.11",
     "styled-components": "^2.1.2"
   }

@@ -25,7 +25,7 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
   contentContainerStyle: props => {
     return {
       alignItems: 'center',
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     }
   }
 })`
@@ -37,12 +37,12 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
   width: 100%;
   height: 100%;
 `
-/* Add this to StyledView when project is ejected: font-family: 'Roboto'; */
 
 const StyledMainTitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '40': '46'};
   font-weight: bold;
+  font-family: 'Roboto';
   align-self: flex-start;
 `
 
@@ -54,7 +54,7 @@ const StyledInputView = styled.View`
 const StyledInput = styled.TextInput`
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '14': '18'};
-  font-weight: 500;
+  ${Platform.OS === 'android' ? "font-family: 'Roboto-Medium';" : 'font-weight: 500;' }
   padding: 0
   padding-bottom: 7;
   border-width: 0;
@@ -75,7 +75,7 @@ const StyledCta = styled.TouchableOpacity`
 const StyledCtaText = styled(SelectableText)`
   color: ${colors.white};
   font-size: ${props => props.window.width < 400 ? '14': '18'};
-  font-weight: 500;
+  ${Platform.OS === 'android' ? "font-family: 'Roboto-Medium';" : 'font-weight: 500;' }
   text-align: center;
 `
 
@@ -91,6 +91,7 @@ const StyledCardsSubtitle = styled(SelectableText)`
   color: ${colors.black};
   font-size: 24;
   font-weight: bold;
+  font-family: 'Roboto';
   margin-bottom: 12;
 `
 
