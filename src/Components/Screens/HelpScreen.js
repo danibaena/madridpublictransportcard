@@ -81,7 +81,10 @@ export default class CardScreen extends React.Component {
     const window = Dimensions.get('window');
 
     return (
-      <StyledView window={window}>
+      <StyledView 
+        keyboardShouldPersistTaps="always"
+        window={window}
+        >
         <StyledTitle window={window}>¿Cómo sé cuál es el número de mi Tarjeta Transporte Público?</StyledTitle>
         <StyledImageWrapper>
           <StyledImage resizeMode="contain" source={require('../../../assets/img/ttp.png')} />

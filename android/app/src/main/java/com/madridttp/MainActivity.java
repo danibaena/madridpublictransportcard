@@ -1,4 +1,4 @@
-package com.mttp;
+package com.madridttp;
 
 import com.facebook.react.ReactActivity;
 

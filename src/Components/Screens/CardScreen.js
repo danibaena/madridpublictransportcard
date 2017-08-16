@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, TouchableHighlight, Image, ScrollView, TouchableOpacity, TouchableNativeFeedback, Alert, AsyncStorage, BackHandler, Dimensions, Platform } from 'react-native'
+import { Text, View, Image, ScrollView, TouchableOpacity, TouchableNativeFeedback, Alert, AsyncStorage, BackHandler, Dimensions, Platform } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars'
 import Prompt from 'react-native-prompt'
 import CalendarEvents from 'react-native-calendar-events'
@@ -245,6 +245,7 @@ export default class CardScreen extends React.Component {
       BackHandler.removeEventListener('hardwareBackPress', () => {
         return true;
       })
+      return true;
     });
   }
 
@@ -531,7 +532,10 @@ export default class CardScreen extends React.Component {
     const window = Dimensions.get('window');
 
     return (
-      <StyledView window={window}>
+      <StyledView
+        keyboardShouldPersistTaps="always"
+        window={window}
+      >
         { this.state.done ?
         <StyledWrapper>
           <StyledDiv>
