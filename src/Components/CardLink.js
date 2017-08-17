@@ -12,14 +12,6 @@ const StyledCardsView = styled.View`
   width: 100%;
 `
 
-const StyledCardsSubtitle = styled.Text`
-  color: ${colors.black};
-  font-size: 24;
-  font-weight: bold;
-  font-family: 'Roboto';
-  margin-bottom: 12;
-`
-
 const StyledCardLink = styled.TouchableOpacity`
   width: 100%;
 `

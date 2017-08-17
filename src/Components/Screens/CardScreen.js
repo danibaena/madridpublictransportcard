@@ -54,8 +54,8 @@ const StyledView = styled.ScrollView.attrs({
   }
 })`
   flex: 1;
-  background-color: #fff;
   flex-direction: column;
+  background-color: #fff;
   padding: ${props => props.window.width < 400 ? '0px 20px 20px': '10px 30px 30px'};
   padding-top: ${Platform.OS === 'ios' ? '20px' : '20px'}
   width: 100%;
@@ -71,25 +71,27 @@ const StyledDiv = styled.View`
 `
 
 const StyledWrapper = styled.View`
+  width: 100%;
 `
 
-const StyledWrapperButtons = styled.View`
-  margin-bottom: 40px;
-  height: 100%;
+const StyledFooter = styled.View`
+  width: 100%;
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
   flex-wrap: wrap;
-  align-items: flex-end;
+  height: 100%;
+  margin-top: ${props => props.window.width < 400 ? '18px': '24px'};
+  margin-bottom: 30px;
 `
 
-const StyledFooter = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+const StyledWrapperButtons = styled.View`  
   width: 100%;
   height: 100%;
+  flex: 1;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: flex-end;
 `
 
 const StyledCardsSubtitle = styled(SelectableText)`
@@ -107,13 +109,13 @@ const StyledCardLinkText = styled(SelectableText)`
   text-align: right;
 `
 
-const StyledNotification = styled(TouchableItem)`
+const StyledNotification = styled.View`
   background-color: ${colors.red};
   width: 100%;
-  padding: 2px 23px;
+  padding: 4px 8px;
   border-radius: 5;
   margin-top: 0;
-  margin-bottom: 9;
+  margin-bottom: ${props => props.lastDay ? 0 : '10px'};
 `
 
 const StyledNotificationText = styled(SelectableText)`
@@ -139,13 +141,12 @@ const StyledText = styled(SelectableText)`
 `
 
 const StyledCurrentDate = styled(SelectableText)`
+  flex: 1.5;
   color: ${colors.black};
   font-size: ${props => props.window.width < 400 ? '14': '16'};
   font-family: 'Roboto';
-  align-self: flex-start;
-  margin-top: ${props => props.window.width < 400 ? '18px': '24px'};
-  margin-bottom: ${props => props.window.width < 400 ? '20px': '40px'};
   height: 100%;
+  width: auto;
 `
 
 const StyledTouchableItem = styled(TouchableItem)`
@@ -154,13 +155,16 @@ const StyledTouchableItem = styled(TouchableItem)`
 `
 
 const StyledButton = styled.TouchableOpacity`
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 `
 
 
 const StyledButtonIcon = styled.Image`
   width: 32px;
   height: 32px;
-  margin-left: 10px;
 `
 
 const StyledBackButton = styled.Image`
@@ -169,13 +173,13 @@ const StyledBackButton = styled.Image`
   width: ${Platform.OS === 'ios' ? '28px' : '20px'};
   height: ${Platform.OS === 'ios' ? '28px' : '20px'};
 `
+
 const StyledBox = styled.View`
   align-self: flex-start;
   padding-right: 20px;
   height: 100%;
   width: 100%;
 `
-
 
 /* Component */
 
@@ -194,6 +198,7 @@ export default class CardScreen extends React.Component {
     super(props);
     this.onSubmitPrompt = this.onSubmitPrompt.bind(this);
     this.readyToRefreshDate = this.readyToRefreshDate.bind(this);
+    this.isLastDayOfCardUse = this.isLastDayOfCardUse.bind(this);
     this.addEventCalendar = this.addEventCalendar.bind(this);
 
     const todayDateFormat = "[Hoy es ]D[ de ]MMMM[ de ]YYYY";
@@ -294,7 +299,7 @@ export default class CardScreen extends React.Component {
         }
 
         if(resultRecarga && resultCarga) {
-          result = resultRecarga.isAfter(resultCarga) ? resultRecarga : resultCarga;  
+          result = resultRecarga.isSameOrAfter(resultCarga, 'day') ? resultRecarga : resultCarga;  
         } else if (resultRecarga) {
           result = resultRecarga;
         } else {
@@ -368,13 +373,28 @@ export default class CardScreen extends React.Component {
     }
 
     const today = moment();
-    const currentSaveDate = moment(cardExpireDate, "DD/MM/YYYY")
+    const currentSavedDate = moment(cardExpireDate, "DD/MM/YYYY")
 
-    if(today.isBefore(currentSaveDate)) {
+    if(today.isSameOrBefore(currentSavedDate, 'day')) {
       return false;
     }
 
     return true;
+  }
+
+  isLastDayOfCardUse(cardExpireDate) {
+    if(cardExpireDate === null) {
+      return false;
+    }
+
+    const today = moment();
+    const currentSavedDate = moment(cardExpireDate, "DD/MM/YYYY")
+
+    if(today.isSame(currentSavedDate, 'day')) {
+      return true;
+    }
+
+    return false;
   }
 
   deleteCard(cardId) {
@@ -497,9 +517,14 @@ export default class CardScreen extends React.Component {
             return value.allowsModifications;
         })
 
-        /* I take the first valid calendar, maybe I could add a little to prompt to let user choose whatever calendar he wants */
+        /* If no calendars available we throw an error */
+        if(!availableCalendars[0]){
+          throw CalendarError;
+        }
+
+        /* I take the first valid calendar, maybe I could add a little prompt to let user choose whatever calendar he wants (probably Android only) */
         const { id } = availableCalendars[0];
-        const { title } = availableCalendars[0]
+        const { title } = availableCalendars[0];
 
         if(id) {
           calendarEvents.saveEvent(eventTitle, Object.assign(event, {calendarId: `${id}`}))
@@ -540,39 +565,50 @@ export default class CardScreen extends React.Component {
             </StyledNotification>
           }
           <StyledText window={window}>Número de tarjeta: {this.state.cardId}</StyledText>
-          <StyledText window={window}>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>
-          <StyledText window={window}>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso a partir de hoy</StyledText>
-          <StyledCalendar 
-            current={this.state.expireDateCalendar}
-            markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
-            monthFormat={'MMMM yyyy'}
-            hideArrows={false}
-            hideExtraDays={false}
-            disableMonthChange={false}
-            firstDay={1}
-            theme={{
-              calendarBackground: '#ffffff',
-              textSectionTitleColor: `${colors.red}`,
-              selectedDayBackgroundColor: `${colors.red}`,
-              selectedDayTextColor: '#ffffff',
-              todayTextColor: `${colors.black}`,
-              dayTextColor: `${colors.red}`,
-              textDisabledColor: `${colors.disabled}`,
-              dotColor: `${colors.black}`,
-              selectedDotColor: `${colors.white}`,
-              arrowColor: `${colors.red}`,
-              monthTextColor: `${colors.black}`,
-              textDayFontFamily: 'Roboto',
-              textMonthFontFamily: 'Roboto',
-              textDayHeaderFontFamily: 'Roboto',
-              textDayFontSize: 12,
-              textMonthFontSize: 14,
-              textDayHeaderFontSize: 16
-            }}
-            window={window}
-          />
-          <StyledFooter>
-            <StyledCurrentDate window={window}>{this.state.today}</StyledCurrentDate>
+          {!this.isLastDayOfCardUse(this.state.cardExpireDate) && [
+            <StyledText key={0} window={window}>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>,
+            <StyledText key={1} window={window}>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso a partir de hoy</StyledText>,
+            <StyledCalendar
+              key={2}
+              current={this.state.expireDateCalendar}
+              markedDates={{[this.state.expireDateCalendar]: {selected: true, marked: true}}}
+              monthFormat={'MMMM yyyy'}
+              hideArrows={false}
+              hideExtraDays={false}
+              disableMonthChange={false}
+              firstDay={1}
+              theme={{
+                calendarBackground: '#ffffff',
+                textSectionTitleColor: `${colors.red}`,
+                selectedDayBackgroundColor: `${colors.red}`,
+                selectedDayTextColor: '#ffffff',
+                todayTextColor: `${colors.black}`,
+                dayTextColor: `${colors.red}`,
+                textDisabledColor: `${colors.disabled}`,
+                dotColor: `${colors.black}`,
+                selectedDotColor: `${colors.white}`,
+                arrowColor: `${colors.red}`,
+                monthTextColor: `${colors.black}`,
+                textDayFontFamily: 'Roboto',
+                textMonthFontFamily: 'Roboto-Medium',
+                textDayHeaderFontFamily: 'Roboto-Medium',
+                textDayFontSize: 12,
+                textMonthFontSize: 14,
+                textDayHeaderFontSize: 16
+              }}
+              window={window}
+            />,
+            ]
+          }
+          {this.isLastDayOfCardUse(this.state.cardExpireDate) && 
+            <StyledNotification lastDay={true}>
+              <StyledNotificationText>Hoy es el último día de uso de la tarjeta, no olvides recargarla si vas a usarla a partir de mañana</StyledNotificationText>
+            </StyledNotification>
+          }
+          <StyledFooter window={window}>
+            {!this.isLastDayOfCardUse(this.state.cardExpireDate) && (
+              <StyledCurrentDate window={window}>{this.state.today}</StyledCurrentDate>)
+            }
             <StyledWrapperButtons window={window}>
               {this.state.favoriteVisible && 
                 <StyledButton onPress={()=>{prompt(
@@ -609,9 +645,12 @@ export default class CardScreen extends React.Component {
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
                 <StyledButtonIcon source={require('../../../assets/img/delete-button.png')} window={window} />
               </StyledButton> }
-              <StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate, this.state.cardName)}}>
-                <StyledButtonIcon source={require('../../../assets/img/calendar-button.png')} window={window} />
-              </StyledButton>
+              {!this.isLastDayOfCardUse(this.state.cardExpireDate) ?
+                (<StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate, this.state.cardName)}}>
+                  <StyledButtonIcon source={require('../../../assets/img/calendar-button.png')} window={window} />
+                </StyledButton>):
+                null
+              }
             </StyledWrapperButtons>
           </StyledFooter>
         </StyledWrapper>

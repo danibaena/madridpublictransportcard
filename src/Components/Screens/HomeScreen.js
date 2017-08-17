@@ -102,15 +102,16 @@ const StyledHelpButton = styled.Image`
 
 const StyledActionButtonLink = styled.TouchableOpacity`
   height: 100%;
+  width: 100%;
 `
 
 const StyledActionButton = styled(ActionButton)`
   width: 90px;
-  height: 90px;
+  height: 75px;
   position: relative;
   left: 30px;
   align-self: flex-end;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `
 
 /* Component */

@@ -2,7 +2,7 @@
 
 App made in react-native that allows you to read, save and add event to your calendar for the expire date of your card.
 
-I've seen myself too many times failing to remember the date and having to pay a single ticket to get me where I wanted to be. And I've seen many people feel the same way, usually at the bus. The situation is like this. You enter on the bus, you use your card, red light blinks, your face turns slightly red and you end up feeling like a fool. It shouldn't be so complicated, that's why I made this.
+I've seen myself too many times failing to remember the date and having to pay a single ticket to get me where I wanted to be. And I've seen many people feel the same way, usually at the bus. The situation is like this. You enter on the bus, you use your card, red led blinks, your face turns slightly red and you end up feeling like a fool. It shouldn't be so complicated, that's why I made this.
 
 With this app you can check your card's expire date, save the card to check it next month or even add an event to your calendar on the expire date.
 
