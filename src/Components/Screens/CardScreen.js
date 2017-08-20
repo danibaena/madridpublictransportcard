@@ -196,7 +196,7 @@ export default class CardScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onSubmitPrompt = this.onSubmitPrompt.bind(this);
+    this.saveCardData = this.saveCardData.bind(this);
     this.readyToRefreshDate = this.readyToRefreshDate.bind(this);
     this.isLastDayOfCardUse = this.isLastDayOfCardUse.bind(this);
     this.addEventCalendar = this.addEventCalendar.bind(this);
@@ -209,9 +209,9 @@ export default class CardScreen extends React.Component {
     let expireDateCalendar;
     let expireDateWeekDay;
     let daysLeftToExpire;
-    let done = false
+    let done = false;
 
-    if(cardData.cardExpireDate) {
+    if(cardData.cardExpireDate && !this.readyToRefreshDate(cardData.cardExpireDate)) {
       expireDate = moment(cardData.cardExpireDate, "DD/MM/YYYY");
       expireDateFormatted = expireDate.format("DD[ de ]MMMM[ de ]YYYY").toString();
       expireDateCalendar = expireDate.format("YYYY-MM-DD").toString();
@@ -244,15 +244,14 @@ export default class CardScreen extends React.Component {
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', () => {
       this.props.navigation.navigate('Home')
-      BackHandler.removeEventListener('hardwareBackPress', () => {
-        return true;
-      })
       return true;
     });
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress')
+    BackHandler.removeEventListener('hardwareBackPress', () => {
+      return true;
+    })
   }
 
   componentDidMount() {
@@ -334,19 +333,21 @@ export default class CardScreen extends React.Component {
           done: true
         })
 
-        if(this.readyToRefreshDate(this.state.cardExpireDate)) {
-          const expireDateToSave = moment(this.state.expireDate, "DD[ de ]MMMM[ de ]YYYY");
-          expireDateToSave = expireDateToSave.format("DD/MM/YYYY").toString()
+        const oldCardData = this.props.navigation.state.params.cardData;
+
+        if(oldCardData.cardExpireDate && this.readyToRefreshDate(oldCardData.cardExpireDate)) {
           const cardData = {
-            [this.state.cardId]: {
-              cardName: value,
-              cardExpireDate: expireDateToSave,
+            [oldCardData.cardId]: {
+              cardName: oldCardData.cardName,
+              cardExpireDate: cardExpireDate,
             }
           }
 
           AsyncStorage.mergeItem(CARDS, JSON.stringify(cardData)).then(() => {
             this.setState({
-              cardName: value,
+              favoriteVisible: false,
+              editnameVisible: true,
+              deleteVisible: true,
             })
           }).then(() => {
             AsyncStorage.getItem(CARDS).then((result) => {
@@ -434,7 +435,7 @@ export default class CardScreen extends React.Component {
     );
   }
 
-  onSubmitPrompt(value) {
+  saveCardData(value) {
     if(value) {  
       const expireDate = moment(this.state.expireDate, "DD[ de ]MMMM[ de ]YYYY");
       expireDate = expireDate.format("DD/MM/YYYY").toString()
@@ -616,7 +617,7 @@ export default class CardScreen extends React.Component {
                   'Pon el nombre de la tarjeta',
                   [
                    {text: 'Cancelar', onPress: () => {}, style: 'cancel'},
-                   {text: 'OK', onPress: (value) => this.onSubmitPrompt(value)},
+                   {text: 'OK', onPress: (value) => this.saveCardData(value)},
                   ],
                   {
                       type: 'plain-text',
@@ -632,7 +633,7 @@ export default class CardScreen extends React.Component {
                     'Edita el nombre de la tarjeta',
                     [
                      {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                     {text: 'OK', onPress: (value) => this.onSubmitPrompt(value)},
+                     {text: 'OK', onPress: (value) => this.saveCardData(value)},
                     ],
                     {
                         type: 'plain-text',

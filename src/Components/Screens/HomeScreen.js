@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard, Dimensions, Platform } from 'react-native'
+import { Text, View, ScrollView, TextInput, TouchableOpacity, Image, Alert, Keyboard, Dimensions, Platform, BackHandler } from 'react-native'
 import ActionButton from 'react-native-action-button'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import CardsView from '../CardsView'
@@ -40,7 +40,7 @@ const StyledView = styled(KeyboardAwareScrollView).attrs({
 
 const StyledMainTitle = styled(SelectableText)`
   color: ${colors.black};
-  font-size: ${props => props.window.width < 400 ? '40': '46'};
+  font-size: ${props => props.window.width < 400 ? '30': '36'};
   font-weight: bold;
   font-family: 'Roboto';
   align-self: flex-start;
@@ -48,7 +48,7 @@ const StyledMainTitle = styled(SelectableText)`
 
 const StyledInputView = styled.View`
   width: 100%;
-  margin-top: ${props => props.window.width < 400 ? '80': '112'};
+  margin-top: ${props => props.window.width < 400 ? '80': '120'};
 `
 
 const StyledInput = styled.TextInput`
@@ -143,6 +143,19 @@ export default class HomesScreen extends React.Component {
       validCardId = validCardId.substr(validCardId.length - MIN_NUM_CARD)
     }
     this.setState({cardId: validCardId});
+  }
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      BackHandler.exitApp();
+      return true;
+    });
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', () => {
+      return true;
+    })
   }
 
   render() {
