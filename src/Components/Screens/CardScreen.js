@@ -199,6 +199,7 @@ export default class CardScreen extends React.Component {
     this.saveCardData = this.saveCardData.bind(this);
     this.readyToRefreshDate = this.readyToRefreshDate.bind(this);
     this.isLastDayOfCardUse = this.isLastDayOfCardUse.bind(this);
+    this.isTheCrtmDateWrongAgain = this.isTheCrtmDateWrongAgain.bind(this);
     this.addEventCalendar = this.addEventCalendar.bind(this);
 
     const todayDateFormat = "[Hoy es ]D[ de ]MMMM[ de ]YYYY";
@@ -208,6 +209,7 @@ export default class CardScreen extends React.Component {
     let expireDateFormatted;
     let expireDateCalendar;
     let expireDateWeekDay;
+    let realDaysLeftToExpire;
     let daysLeftToExpire;
     let done = false;
 
@@ -216,8 +218,8 @@ export default class CardScreen extends React.Component {
       expireDateFormatted = expireDate.format("DD[ de ]MMMM[ de ]YYYY").toString();
       expireDateCalendar = expireDate.format("YYYY-MM-DD").toString();
       expireDateWeekDay = expireDate.format("dddd").toString()
-      daysLeftToExpire = expireDate.diff(moment().add(-1, "days"), "days");
-      daysLeftToExpire = daysLeftToExpire < 1 ? '0' : daysLeftToExpire.toString();
+      realDaysLeftToExpire = expireDate.diff(moment().add(-1, "days"), "days");
+      daysLeftToExpire = realDaysLeftToExpire < 1 ? '0' : realDaysLeftToExpire.toString();
       expireDate = expireDate.format("DD[ de ]MMMM[ de ]YYYY").toString();
       done = true;
     }
@@ -227,6 +229,7 @@ export default class CardScreen extends React.Component {
       expireDateCalendar: expireDateCalendar,
       expireDateFormatted: expireDateFormatted,
       expireDateWeekDay: expireDateWeekDay,
+      realDaysLeftToExpire: realDaysLeftToExpire,
       daysLeftToExpire: daysLeftToExpire,
       today: today.format(todayDateFormat),
       cardId: cardData.cardId,
@@ -312,14 +315,15 @@ export default class CardScreen extends React.Component {
         let expireDate;
         let expireDateFormatted;
         let expireDateWeekDay;
+        let realDaysLeftToExpire;
         let daysLeftToExpire;
         let cardExpireDate;
 
         expireDate = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
         expireDateFormatted = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
         expireDateWeekDay = result.format("dddd").toString()
-        daysLeftToExpire = result.diff(moment().add(-1, "days"), "days");
-        daysLeftToExpire = daysLeftToExpire < 1 ? '0' : daysLeftToExpire.toString();
+        realDaysLeftToExpire = result.diff(moment().add(-1, "days"), "days");
+        daysLeftToExpire = realDaysLeftToExpire < 1 ? '0' : realDaysLeftToExpire.toString();
         cardExpireDate = result.format("DD/MM/YYYY");
         result = result.format("YYYY-MM-DD").toString();
 
@@ -328,6 +332,7 @@ export default class CardScreen extends React.Component {
           expireDateFormatted: expireDateFormatted,
           expireDateCalendar: result,
           expireDateWeekDay: expireDateWeekDay,
+          realDaysLeftToExpire: realDaysLeftToExpire,
           daysLeftToExpire: daysLeftToExpire,
           cardExpireDate: cardExpireDate,
           done: true
@@ -392,6 +397,18 @@ export default class CardScreen extends React.Component {
     const currentSavedDate = moment(cardExpireDate, "DD/MM/YYYY")
 
     if(today.isSame(currentSavedDate, 'day')) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isTheCrtmDateWrongAgain(realDaysLeftToExpire) {
+    if(realDaysLeftToExpire === null) {
+      return false;
+    }
+
+    if(realDaysLeftToExpire < 0) {
       return true;
     }
 
@@ -499,7 +516,7 @@ export default class CardScreen extends React.Component {
       endDate: parsedDate,
       allDay: true,
       alarm: [{
-        date: -1
+        date: parsedDate
       }],
     }
 
@@ -566,7 +583,7 @@ export default class CardScreen extends React.Component {
             </StyledNotification>
           }
           <StyledText window={window}>Número de tarjeta: {this.state.cardId}</StyledText>
-          {!this.isLastDayOfCardUse(this.state.cardExpireDate) && [
+          {(!this.isLastDayOfCardUse(this.state.cardExpireDate) && !this.isTheCrtmDateWrongAgain(this.state.realDaysLeftToExpire)) && [
             <StyledText key={0} window={window}>Expira el {this.state.expireDateWeekDay} {this.state.expireDate}</StyledText>,
             <StyledText key={1} window={window}>{this.state.daysLeftToExpire != 1 ? 'Quedan ': 'Queda '}{this.state.daysLeftToExpire}{this.state.daysLeftToExpire != 1 ? ' días': ' día'} de uso a partir de hoy</StyledText>,
             <StyledCalendar
@@ -604,6 +621,11 @@ export default class CardScreen extends React.Component {
           {this.isLastDayOfCardUse(this.state.cardExpireDate) && 
             <StyledNotification lastDay={true}>
               <StyledNotificationText>Hoy es el último día de uso de la tarjeta, no olvides recargarla si vas a usarla a partir de mañana</StyledNotificationText>
+            </StyledNotification>
+          }
+          {this.isTheCrtmDateWrongAgain(this.state.realDaysLeftToExpire) && 
+            <StyledNotification>
+              <StyledNotificationText>Los datos que devuelve el servidor del CRTM no son válidos, vuelve a intentarlo mañana. Lamentamos las molestias</StyledNotificationText>
             </StyledNotification>
           }
           <StyledFooter window={window}>
@@ -646,7 +668,7 @@ export default class CardScreen extends React.Component {
               {this.state.deleteVisible && <StyledButton onPress={()=>{this.deleteCard(this.state.cardId)}}>
                 <StyledButtonIcon source={require('../../../assets/img/delete-button.png')} window={window} />
               </StyledButton> }
-              {!this.isLastDayOfCardUse(this.state.cardExpireDate) ?
+              {(!this.isLastDayOfCardUse(this.state.cardExpireDate) && !this.isTheCrtmDateWrongAgain(this.state.realDaysLeftToExpire)) ?
                 (<StyledButton onPress={()=>{this.addEventCalendar(this.state.cardId, this.state.cardExpireDate, this.state.cardName)}}>
                   <StyledButtonIcon source={require('../../../assets/img/calendar-button.png')} window={window} />
                 </StyledButton>):

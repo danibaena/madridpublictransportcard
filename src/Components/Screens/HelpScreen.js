@@ -45,19 +45,32 @@ const StyledTitle = styled(Title)`
   font-size: ${props => props.window.width < 400 ? '20': '24'};
   font-weight: bold;
   font-family: 'Roboto';
+  margin-bottom: ${props => props.window.width < 400 ? '10px': '15px'};
+  ${props => props.inner ? 'margin-top: 10px;' : null}
 `
 
 const StyledParagraph = styled(Paragraph)`
   margin-top: ${props => props.window.width < 400 ? '7px': '15px'};
   margin-bottom: ${props => props.window.width < 400 ? '15px': '30px'};
   color: ${colors.black};
-  font-size: ${props => props.window.width < 400 ? '14': '16'};
+  font-size: ${props => props.window.width < 400 ? '13': '15'};
   font-family: 'Roboto';
   align-self: flex-start;
 `
 
+const StyledInnerParagraph = styled(StyledParagraph)`
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-bottom: ${props => props.window.width < 400 ? '5px': '10px'};
+`
+const StyledSocial = styled.Image`
+  width: 20px;
+  height: 20px;
+  flex-shrink: 1;
+`
+
 const StyledImage = styled.Image`
-  margin-top: 15px;
+  margin-bottom: ${props => props.window.width < 400 ? '10px': '15px'};
   align-self: center;
   flex-shrink: 1;
   height: 200;
@@ -69,7 +82,8 @@ const StyledFooter = styled(Paragraph)`
   color: ${colors.black};
   width: 100%;
   text-align: center;
-  padding-bottom: ${props => props.window.width < 400 ? '40px': '60px'};
+  padding-top: ${props => props.last ? '0px' : '20px'}
+  padding-bottom: ${props => props.last ? ((props.window.width < 400 ? '40px': '60px')) : '10px'}
 `
 
 /* Component */
@@ -87,20 +101,35 @@ export default class CardScreen extends React.Component {
         keyboardShouldPersistTaps="always"
         window={window}
         >
-        <StyledTitle window={window}>¿Cómo sé cuál es el número de mi Tarjeta Transporte Público?</StyledTitle>
+        <StyledTitle window={window}>¿Qué tarjeta es compatible?</StyledTitle>
+        <StyledInnerParagraph window={window}>Sólo la Tarjeta Transporte Público que expede el CRTM (Consorcio Regional de Transportes de Madrid), para títulos de 30 días</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Quizá en el futuro y si tiene sentido, se haga algo para la tarjeta Multi, si hay alguna API de consulta de datos disponible</StyledInnerParagraph>
+        <StyledTitle window={window} inner={true}>¿Cuál es mi número de TTP?</StyledTitle>
         <StyledImageWrapper>
-          <StyledImage resizeMode="contain" source={require('../../../assets/img/ttp.png')} />
+          <StyledImage resizeMode="contain" source={require('../../../assets/img/ttp.png')} window={window} />
         </StyledImageWrapper>
-        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle window={window}>Question</StyledTitle>
-        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle window={window}>Question</StyledTitle>
-        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle window={window}>Question</StyledTitle>
-        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledTitle window={window}>Question</StyledTitle>
-        <StyledParagraph window={window}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pharetra massa ac semper. Suspendisse nec arcu nunc. Curabitur gravida molestie velit. Maecenas pellentesque ligula vitae tincidunt accumsan. Phasellus sit amet magna quis odio dignissim ornare molestie at lacus. Donec viverra pharetra accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent pellentesque dui nec risus bibendum tincidunt.</StyledParagraph>
-        <StyledFooter window={window}>Crafted with ❤️ from Madrid</StyledFooter>
+        <StyledInnerParagraph window={window}>Son los números que aparecen en la imagen. Puedes meter el número entero o sólo los números dentro de los recuadros rojos</StyledInnerParagraph>
+        <StyledTitle window={window} inner={true}>¿Cómo de fiable es el servicio?</StyledTitle>
+        <StyledInnerParagraph window={window}>Consultamos los datos directamente al servidor del CRTM, así que todo lo fiable que sea su servicio</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>En ocasiones éste devuelve resultados sin sentido, como fechas de expiración anteriores al día de hoy y otros misterios</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Por suerte, se suele arreglar sólo tras un par de días, y ya devuelve la fecha correcta</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Por desgracia, no hay mucho más que pueda hacer en el lado de la app para arreglarlo ya que depende directamente de ellos</StyledInnerParagraph>
+        <StyledTitle window={window} inner={true}>¿Qué se obtiene de mi TTP?</StyledTitle>
+        <StyledInnerParagraph window={window}>El número de la tarjeta, la fecha de expiración de la tarjeta y otras fechas relacionadas con el título cargado. Y de esos datos sólo se consideran el número de tarjeta y la fecha de expiración. El resto se ignora.</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>No se guarda ningún tipo de dato personal ni se sabe a quién pertenece la tarjeta</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Tus datos siguen siendo tuyos, ya que además guardamos la información de las tarjetas sólo en tu dispositivo</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Ésta última funcionalidad permite poder guardar el mismo número de tarjeta en múltiples dispositivos, útil para poder controlar varias tarjetas por varias personas (por ej. para familias)</StyledInnerParagraph>
+        <StyledTitle window={window} inner={true}>¿Qué puedo hacer con esta app?</StyledTitle>
+        <StyledInnerParagraph window={window}>Con esta aplicación puedes consultar de forma sencilla la fecha de expiración de tu TTP</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Además puedes guardar tu tarjeta u otras tarjetas y añadir un evento directamente a tu calendario para que te avise el día que caduca tu TTP</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>De esa manera, cada vez que recargues el título podrás consultar la aplicación para crear un evento en tu calendario y que no se te olvide nunca</StyledInnerParagraph>
+        <StyledTitle window={window} inner={true}>¿Por qué usar esta app y no la oficial?</StyledTitle>
+        <StyledInnerParagraph window={window}>La aplicación oficial digamos que está un poco anticuada, y echaba de menos alguna funcionalidades</StyledInnerParagraph>
+        <StyledInnerParagraph window={window}>Yo quería una forma sencilla de saber cuándo me caduca el título TTP y no descubrirlo al llegar al metro o al bus, y con su aplicación no me era suficiente</StyledInnerParagraph>
+        <StyledTitle window={window} inner={true}>¿Funcionará con NFC?</StyledTitle>
+        <StyledInnerParagraph window={window}>Está planeado sí</StyledInnerParagraph>
+        <StyledFooter window={window}>madridttp.app@gmail.com</StyledFooter>
+        <StyledFooter window={window} last={true}>Crafted with ❤️ from Madrid</StyledFooter>
       </StyledView>
     );
   }

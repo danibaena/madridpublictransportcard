@@ -1,0 +1,3020 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ava",
+				"availableCalendars"
+			],
+			[
+				"Touc",
+				"TouchableItem"
+			],
+			[
+				"align",
+				"align-items"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"ali",
+				"align-self"
+			],
+			[
+				"navigation",
+				"navigationOptions〔variable〕"
+			],
+			[
+				"Touch",
+				"TouchableOpacity〔variable〕"
+			],
+			[
+				"dele",
+				"deleteCard"
+			],
+			[
+				"card",
+				"cardExpireDate"
+			],
+			[
+				"resul",
+				"resultRecarga"
+			],
+			[
+				"res",
+				"resultRecarga"
+			],
+			[
+				"resu",
+				"resultCarga"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"shad",
+				"shadowOpacity"
+			],
+			[
+				"onPress",
+				"onPressCTA"
+			],
+			[
+				"JSON",
+				"JSON.stringify"
+			],
+			[
+				"new",
+				"newCard〔argument〕"
+			],
+			[
+				"format",
+				"formatDate"
+			],
+			[
+				"align-",
+				"align-self"
+			],
+			[
+				"flex",
+				"flex-start"
+			],
+			[
+				"toggle",
+				"toggleClass"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"pass",
+				"password_confirmation"
+			],
+			[
+				"coincPri",
+				"coincPriceSpan〔variable〕"
+			],
+			[
+				"units",
+				"units_18n"
+			],
+			[
+				"zoom",
+				"zoomPinchImg"
+			],
+			[
+				"select",
+				"selected"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"m",
+				"middle"
+			],
+			[
+				"re",
+				"row-reverse"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"fl",
+				"flex"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"backgro",
+				"background-color"
+			],
+			[
+				"backgo",
+				"background"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"func",
+				"function〔keyword〕"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"if",
+				"ifel\tif else(handlebars)"
+			],
+			[
+				"isI",
+				"isInRange〔function〕"
+			],
+			[
+				"Tex",
+				"TextInput"
+			],
+			[
+				"back",
+				"background-position"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"space",
+				"space-between"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"alig",
+				"align-items"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"box",
+				"box-sizing"
+			],
+			[
+				"Sour",
+				"sourcesanspro"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"speci",
+				"special-down"
+			],
+			[
+				"wr",
+				"wrap"
+			],
+			[
+				"susc",
+				"suscription-box"
+			],
+			[
+				"td",
+				"td\tTag"
+			],
+			[
+				"title",
+				"title-06"
+			],
+			[
+				"overlo",
+				"overflow-y"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"product",
+				"product-01"
+			],
+			[
+				"no",
+				"no-drop"
+			],
+			[
+				"text-",
+				"text-overflow"
+			],
+			[
+				"curre",
+				"currentBatchData"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"busq",
+				"busqueda-express-content"
+			],
+			[
+				"flex-",
+				"flex-start"
+			],
+			[
+				"curr",
+				"currentReport〔variable〕"
+			],
+			[
+				"f",
+				"function"
+			],
+			[
+				"report",
+				"reportData"
+			],
+			[
+				"cur",
+				"currentReport"
+			],
+			[
+				"reports",
+				"reportsData〔variable〕"
+			],
+			[
+				"previous",
+				"previousValue〔argument〕"
+			],
+			[
+				"handlebarsO",
+				"handlebarsOptionsDynamicContext〔variable〕"
+			],
+			[
+				"curren",
+				"currentReport"
+			],
+			[
+				"Obje",
+				"Object.assign"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"box-s",
+				"box-sizing"
+			],
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"bre",
+				"breadcrumb_height〔variable〕"
+			],
+			[
+				"handlebarsOp",
+				"handlebarsOptionsDynamicContext"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"text-a",
+				"text-align"
+			],
+			[
+				"c",
+				"center"
+			],
+			[
+				"colu",
+				"column"
+			],
+			[
+				"N",
+				"Nuevo"
+			],
+			[
+				"next_da",
+				"next_data_url〔variable〕"
+			],
+			[
+				"column",
+				"column-reverse"
+			],
+			[
+				"r",
+				"right"
+			],
+			[
+				"spce",
+				"space-between"
+			],
+			[
+				"order",
+				"order-additional-info"
+			],
+			[
+				"pagination",
+				"pagination-preference"
+			],
+			[
+				"crea",
+				"createItemPage"
+			],
+			[
+				"item",
+				"item_page〔variable〕"
+			],
+			[
+				"max-",
+				"max-height"
+			],
+			[
+				"lo",
+				"lookup"
+			],
+			[
+				"tab",
+				"tableProductTemplateData〔variable〕"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"module",
+				"moduleNames〔variable〕"
+			],
+			[
+				"s",
+				"stringify"
+			],
+			[
+				"transi",
+				"transition-delay"
+			],
+			[
+				"el_",
+				"el_height〔variable〕"
+			],
+			[
+				"bat",
+				"batchData〔variable〕"
+			],
+			[
+				"batch",
+				"batchData〔argument〕"
+			],
+			[
+				"ba",
+				"batchData"
+			],
+			[
+				"last",
+				"lastBatchDataName〔variable〕"
+			],
+			[
+				"html",
+				"htmlmin"
+			],
+			[
+				"navi",
+				"navigationTemplateData〔variable〕"
+			],
+			[
+				"parti",
+				"partialNames〔variable〕"
+			],
+			[
+				"togg",
+				"toggleClass"
+			],
+			[
+				"w",
+				"wrap"
+			],
+			[
+				"modu",
+				"moduleName"
+			],
+			[
+				"p",
+				"p\tTag"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"handle",
+				"handlebars:directory"
+			],
+			[
+				"st",
+				"style"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"btn",
+				"btn-google"
+			],
+			[
+				"mod",
+				"moduleName〔variable〕"
+			],
+			[
+				"ti",
+				"title-01"
+			],
+			[
+				"equal",
+				"equalTo"
+			],
+			[
+				"rul",
+				"ruleName"
+			],
+			[
+				"pas",
+				"passwordCheck"
+			],
+			[
+				"na",
+				"navigation"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Tarjeta Nena\n\n0010000323869\n\nTarjeta Dani\n\n2510010062803\n\ninnov8@campus",
+			"settings":
+			{
+				"buffer_size": 71,
+				"line_ending": "Unix",
+				"name": "Tarjeta Nena"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/android/gradle.properties",
+			"settings":
+			{
+				"buffer_size": 1061,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/App.js",
+			"settings":
+			{
+				"buffer_size": 954,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/HomeScreen.js",
+			"settings":
+			{
+				"buffer_size": 5563,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/CardScreen.js",
+			"settings":
+			{
+				"buffer_size": 21269,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/HelpScreen.js",
+			"settings":
+			{
+				"buffer_size": 5030,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/CardsView.js",
+			"settings":
+			{
+				"buffer_size": 1716,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/CardLink.js",
+			"settings":
+			{
+				"buffer_size": 1610,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/CardLoading.js",
+			"settings":
+			{
+				"buffer_size": 2549,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/colors.js",
+			"settings":
+			{
+				"buffer_size": 153,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/danielbaena/dev/research/mtp/package.json",
+			"settings":
+			{
+				"buffer_size": 990,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 147.0,
+		"last_filter": "jsx",
+		"selected_items":
+		[
+			[
+				"jsx",
+				"Set Syntax: JSX"
+			],
+			[
+				"syn js",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"syn js nex",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"syn jsn",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"syn json",
+				"Set Syntax: JSON"
+			],
+			[
+				"syn bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"syn dock",
+				"Set Syntax: Dockerfile"
+			],
+			[
+				"syn docker",
+				"Set Syntax: Dockerfile"
+			],
+			[
+				"syn html",
+				"Set Syntax: HTML"
+			],
+			[
+				"convert",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"syn pyt",
+				"Set Syntax: Python"
+			],
+			[
+				"syn c++",
+				"Set Syntax: C++"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"syn sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"syn ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"yaml",
+				"Set Syntax: YAML"
+			],
+			[
+				"syn rb",
+				"Set Syntax: Ruby"
+			],
+			[
+				"syn raisl",
+				"Set Syntax: Ruby on Rails"
+			],
+			[
+				"syn hand",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"syn hbs",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"syn css",
+				"Set Syntax: CSS"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"filemer",
+				"FileMerge: Show Diff"
+			],
+			[
+				"install packa",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"pretti",
+				"HTMLPrettify"
+			],
+			[
+				"syntax js",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"syn jsj",
+				"Set Syntax: JSON (Javascript Next)"
+			],
+			[
+				"js next",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"jspre",
+				"JsPrettier: Format JavaScript"
+			],
+			[
+				"syn jsx",
+				"Set Syntax: JSX"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"sy html",
+				"Set Syntax: HTML"
+			],
+			[
+				"nginx",
+				"Set Syntax: nginx"
+			],
+			[
+				"syn nginx",
+				"Set Syntax: nginx"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"sy xml",
+				"Set Syntax: XML"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"set sy hbs",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"syn htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"valida",
+				"Pretty JSON: Validate"
+			],
+			[
+				"syn ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"pretty json",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"synt css",
+				"Set Syntax: CSS"
+			],
+			[
+				"pretty va",
+				"Pretty JSON: Validate"
+			],
+			[
+				"pretty vali",
+				"Pretty JSON: Validate"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"handl",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"syn h",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn php",
+				"Set Syntax: PHP"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"syn jso",
+				"Set Syntax: JSON"
+			],
+			[
+				"alignm",
+				"Preferences: Alignment Key Bindings – Default"
+			],
+			[
+				"alig",
+				"Preferences: Alignment File Settings – Syntax Specific – User"
+			],
+			[
+				"alin",
+				"Preferences: Alignment File Settings – Default"
+			],
+			[
+				"align",
+				"Preferences: Alignment File Settings – User"
+			],
+			[
+				"syn ht\t",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn md",
+				"Set Syntax: Markdown"
+			],
+			[
+				"phpfmt",
+				"phpfmt: format now"
+			],
+			[
+				"prefere",
+				"Preferences: Settings"
+			],
+			[
+				"user",
+				"Preferences: Terminal Key Bindings – User"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pac",
+				"Install Package Control"
+			]
+		],
+		"width": 629.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/danielbaena/dev/research/mtp",
+		"/Users/danielbaena/dev/research/mtp/android",
+		"/Users/danielbaena/dev/research/mtp/android/app"
+	],
+	"file_history":
+	[
+		"/Users/danielbaena/dev/research/mtp/node_modules/react-native-calendars/src/calendar/header/style.js",
+		"/Users/danielbaena/dev/research/mtp/node_modules/react-native-calendars/src/calendar/style.js",
+		"/Users/danielbaena/dev/research/mtp/node_modules/react-native-calendars/src/calendar/day/basic/style.js",
+		"/Users/danielbaena/dev/research/mtp/node_modules/react-native/Libraries/Components/Touchable/Touchable.js",
+		"/Users/danielbaena/dev/research/mtp/android/app/my-release-key.keystore",
+		"/Users/danielbaena/dev/research/mtp/android/app/build.gradle",
+		"/Users/danielbaena/dev/research/mtp/android/app/src/main/AndroidManifest.xml",
+		"/Users/danielbaena/dev/research/mtp/app.json",
+		"/Users/danielbaena/dev/research/mtp/ios/mttp/Images.xcassets/AppIcon.appiconset/Contents.json",
+		"/Users/danielbaena/Downloads/Logo IOS/ios/README.md",
+		"/Users/danielbaena/dev/research/mtp/android/build.gradle",
+		"/Users/danielbaena/dev/research/mtp/android/my-release-key.keystore",
+		"/Users/danielbaena/dev/research/mtp/.gitignore",
+		"/Users/danielbaena/dev/research/mtp/android/local.properties",
+		"/Users/danielbaena/dev/research/mtp/ios/mttp/Info.plist",
+		"/Users/danielbaena/dev/research/mtp/ios/build/info.plist",
+		"/Users/danielbaena/dev/research/mtp/index.ios.js",
+		"/Users/danielbaena/dev/research/mtp/.flowconfig",
+		"/Users/danielbaena/dev/research/mtp/node_modules/styled-components/src/models/InlineStyle.js",
+		"/Users/danielbaena/dev/research/mtp/KeyboardHandler.js",
+		"/Users/danielbaena/Downloads/help_button.svg",
+		"/Users/danielbaena/dev/research/mtp/HelpScreen.js",
+		"/Users/danielbaena/dev/research/mtp/.babelrc",
+		"/Users/danielbaena/dev/research/mtp/HomeScreen.js",
+		"/Users/danielbaena/dev/research/mtp/HomesScreen.js",
+		"/Users/danielbaena/dev/research/mtp/CardScreen.js",
+		"/Users/danielbaena/dev/research/mtp/node_modules/react-native-scripts/build/bin/crna-entry.js",
+		"/Users/danielbaena/dev/research/mtp/package.json",
+		"/Users/danielbaena/dev/intranet/app/views/efforts/_list_header.html.erb",
+		"/Users/danielbaena/dev/intranet/config/environments/development.rb",
+		"/Users/danielbaena/dev/intranet/app/helpers/efforts_helper.rb",
+		"/Users/danielbaena/dev/intranet/app/controllers/efforts_controller.rb",
+		"/Users/danielbaena/dev/intranet/app/models/effort.rb",
+		"/Users/danielbaena/dev/intranet/app/models/pending_effort.rb",
+		"/Users/danielbaena/dev/intranet/app/assets/javascripts/neon-api.js",
+		"/Users/danielbaena/dev/intranet/app/views/layouts/devise.html.erb",
+		"/Users/danielbaena/dev/intranet/config/application.rb",
+		"/Users/danielbaena/dev/intranet/app/assets/javascripts/bootstrap.js",
+		"/Users/danielbaena/dev/intranet/app/assets/javascripts/neon-custom.js",
+		"/Users/danielbaena/dev/intranet/db/schema.rb",
+		"/Users/danielbaena/dev/intranet/db/migrate/20110822121532_add_avatar_to_users.rb",
+		"/Users/danielbaena/dev/intranet/my.cnf",
+		"/Users/danielbaena/dev/intranet/README",
+		"/Users/danielbaena/dev/intranet/db/seeds/users.rb",
+		"/Users/danielbaena/dev/intranet/.bashrc",
+		"/Users/danielbaena/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-trusty64/20170619.0.0/virtualbox/metadata.json",
+		"/Users/danielbaena/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-trusty64/20170619.0.0/virtualbox/Vagrantfile",
+		"/Users/danielbaena/dev/intranet/config/database.yml",
+		"/Users/danielbaena/dev/research/homestead/Homestead.yaml",
+		"/Users/danielbaena/dev/research/homestead/Vagrantfile",
+		"/Users/danielbaena/dev/intranet/.ruby-version",
+		"/Users/danielbaena/dev/intranet/db/migrate/20110808090029_add_is_credit_note_to_sell_invoices.rb",
+		"/Users/danielbaena/dev/intranet/Gemfile.lock",
+		"/Users/danielbaena/dev/intranet/Gemfile",
+		"/Users/danielbaena/dev/intranet/doc/README_FOR_APP",
+		"/Users/danielbaena/dev/intranet/db/seeds/tariffs_permission.rb",
+		"/Users/danielbaena/dev/intranet/db/seeds/entity_codes.yml",
+		"/Users/danielbaena/dev/intranet/db/seeds.rb",
+		"/Users/danielbaena/dev/intranet/db/seeds/permissions.rb",
+		"/Users/danielbaena/dev/intranet/Vagrantfile",
+		"/Users/danielbaena/dev/intranet/.env",
+		"/Users/danielbaena/dev/intranet/.env.example",
+		"/Users/danielbaena/.bashrc",
+		"/Users/danielbaena/dev/intranet/.env.sh",
+		"/Users/danielbaena/dev/intranet/.gitignore",
+		"/Users/danielbaena/dev/vms/centos/Vagrantfile",
+		"/Users/danielbaena/dev/intranet/config/.bashrc",
+		"/Users/danielbaena/dev/intranet/config/.bashrc.sh",
+		"/Users/danielbaena/Downloads/bashrc",
+		"/Users/danielbaena/dev/intranet/railsbox/development/Vagrantfile",
+		"/Users/danielbaena/Downloads/railsbox/development/Vagrantfile",
+		"/Users/danielbaena/dev/intranet/config.ru",
+		"/Users/danielbaena/.profile",
+		"/Users/danielbaena/dev/intranet/app/assets/images/people.png",
+		"/Users/danielbaena/dev/research/userscripts/userscripts/amazon_wishlist_sum.js",
+		"/Users/danielbaena/dev/research/userscripts/userscripts/coinc_amazon_discount_show.js",
+		"/Users/danielbaena/Downloads/Estilos Bodega/style.css",
+		"/Users/danielbaena/Downloads/Archivos Bodega Carrefour/style-production-prefixed.css",
+		"/Users/danielbaena/.bashrc.backup",
+		"/Users/danielbaena/.bash_profile",
+		"/Users/danielbaena/Downloads/style-ours.css",
+		"/Users/danielbaena/Downloads/new_style_orig.css",
+		"/Users/danielbaena/Downloads/new-style.css",
+		"/Users/danielbaena/Downloads/common_orig.css",
+		"/Users/danielbaena/Downloads/common.css",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/nav-recursive.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/modules/header.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/suggested-brands.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/reports/report-css-lint.json",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/portada-l3.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/table-product.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/report-css-lint.json",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/reports/.gitignore",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/modules/module-detalle-product.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/product.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/carrito.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/centro-ayuda.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/footer.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/package.json",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/.stylelintrc",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/public/style/css/style.css",
+		"/Users/danielbaena/Downloads/Archivos Bodega Carrefour/responsive.css",
+		"/Users/danielbaena/Downloads/Archivos Bodega Carrefour/new_style.js",
+		"/Users/danielbaena/Downloads/Archivos Bodega Carrefour/style.css",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/js/context/template.json",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/style/js/behaviour.js",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/style/js/style.js",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/js/context/product.json",
+		"/Users/danielbaena/Downloads/new_style.js",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/js/context/partials.json",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/head.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/card-master.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/home.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/js/context/carrito-product.json",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/modal-master.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/style/css/responsive.css",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/style/css/style.css",
+		"/Users/danielbaena/dev/useful_scripts/regexCSSwidthCalc.md",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/templates/partials/emotional-private.hbs",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/production.sh",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/carrefour.sh",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/gulpfile.js",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/js/context/lote.json",
+		"/Users/danielbaena/dev/machiina.com/style/css/main.css",
+		"/Users/danielbaena/dev/machiina.com/style/css/style.css",
+		"/Users/danielbaena/dev/25001_carrefour_atg11/app/style/css/style.css",
+		"/Users/danielbaena/dev/25001_carrefour_atg11/app/style/js/style.js",
+		"/Users/danielbaena/dev/25002_carrefour_tu_bodega/app/style/js/library/easyzoom.js"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			"<open folders>",
+			"/Users/danielbaena/dev/intranet/app/assets/javascripts",
+			"<open folders>",
+			"/Users/danielbaena/dev/25001_carrefour_atg11/app/",
+			"/Users/danielbaena/dev/25001_carrefour_atg11/app/templates"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"toIso",
+			"utc",
+			"\"allowsModifications\": true",
+			"allowsModifications",
+			"title",
+			"isPrimary",
+			"08-14 19:00:05.105  7721  7882 I ReactNativeJS:   ",
+			"No ha podido guardarse el evento",
+			" Platform.OS",
+			"TouchableItem",
+			"TouchableOpacity",
+			"StyledActionButtonLink",
+			"TouchableOpacity",
+			"StyledButton",
+			"TouchableItem",
+			"StyledNotification",
+			"TouchableItem",
+			"StyledTouchableItem",
+			"TouchableOpacity",
+			"TouchableItem",
+			"TouchableOpacity",
+			"0",
+			"StyledButton",
+			"StyledButtonIcon",
+			"StyledCalendar",
+			"StyledWrapper",
+			"StyledFooter",
+			"'Recuerda que podrás usar tu tarjeta todo el día'",
+			"addEventCalendar",
+			"StyledLine",
+			"Prompt",
+			"prompt",
+			"Prompt",
+			"prompt",
+			"Prompt",
+			"StyledPrompt",
+			"StyledFooter",
+			"cardExpireDate",
+			"result",
+			"this.state.expireDate",
+			"expireDate",
+			"ExpireDate",
+			"expireDate",
+			"'Recuerda que podrás usar tu tarjeta todo el día'",
+			"cardName",
+			"addEventCalendar",
+			"cardId",
+			"BackHandler",
+			"StyledCalendar",
+			"calendar",
+			"=*****",
+			"saved",
+			"calendar_auth",
+			"date.toISOString()",
+			"toISOString",
+			"calendarEvents",
+			"RNCalendarEvents",
+			"cal_auth",
+			"Paragraph",
+			"StyledParagraph",
+			"StyledTitle",
+			"Title",
+			"5px",
+			"Roboto",
+			"debug",
+			"expo",
+			"Platform",
+			"StyledMainTitle",
+			"StyledCardsSubtitle",
+			"StyledButton",
+			"StyledButtonIcon",
+			"StyledWrapperButtons",
+			"StyledBackButton",
+			"StyledCalendar",
+			"StyledWrapperButtons",
+			"<StyledParagraph >",
+			"<StyledTitle>",
+			"StyledInputView",
+			"StyledMainTitle",
+			"styled-components",
+			"add(-1, \"days\")",
+			"add",
+			"StyledInputView",
+			"KeyboardAwareScrollView",
+			"username",
+			"*",
+			"StyledInputView",
+			"StyledView",
+			"readyToRefreshDate",
+			"StyledCalendarButton",
+			"StyledButton",
+			"readyToRefreshDate",
+			"StyledInputView",
+			"this.state.expireDate",
+			"StyledText",
+			"StyledCardsSubtitle",
+			".Text`",
+			"Text",
+			" animation=\"pulse\" easing=\"ease-in-out\" iterationCount=\"infinite\" ",
+			"Animatable.View",
+			"AnimatedView",
+			"Title",
+			"daysLeftToExpire <",
+			"daysLeftToExpire",
+			"this.state.expireDate",
+			"Text",
+			"text",
+			"Text",
+			"text",
+			"Text",
+			"Paragraph",
+			".Text",
+			"Text",
+			"Title",
+			"StyledText",
+			" selectable={true}",
+			"Title",
+			"Base",
+			"<StyledTitle>",
+			"<StyledParagraph>",
+			"StyledParagraph>",
+			"StyledParagraph",
+			"StyledCurrentDate",
+			"StyledDiv",
+			"StyledWrapperButtons",
+			"console",
+			"StyledWrapperButtons",
+			"daysLeftToExpire"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			" ",
+			"    ",
+			"<!DOCTYPE HTML>\n<html lang=\"es\">\n{{> head}}\n\n<body>\n  <div id=\"general\">\n      {{> header}}\n      <main id=\"content\">            \n          <section class=\"content-inner\">\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t{{> carrito-title}}\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t{{> table-product}}\n\t\t\t\t\t\t\t\n\t\t\t\t\t    <footer class=\"content-footer\">\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<div class=\"content-paid fright\">\n\t\t\t\t\t\t\t\t\t<span class=\"title-03\">Total a pagar 37,61€*</span> <a class=\"btn\" title=\"Proceder al pago\" href=\"#\">Pagar</a>\n\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<div class=\"content-note fleft\">\n\t\t\t\t\t\t\t\t\t<p class=\"alert text-small\">*Los productos de peso variable pueden  variar de precio segun el peso final</p>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"button-content\">\n\t\t\t\t\t\t\t\t\t<a href=\"#\" title=\"Vaciar carrito\">Vaciar carrito…</a>\n\t\t\t\t\t\t\t\t\t<a class=\"icon-lists\" href=\"#\" title=\"Guardar como lista…\">Guardar como lista…</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t    </footer>\n\t\t\t\t\t    <!-- Fin .button-content -->\n\t\t\t\t\t\t\t{{> search-layer}}\n\t\t\t\t\t</section>\n      </main>\n      <!-- Fin #content -->\n\n      {{> footer}}\n\t\t\t \t\t\t\t\n  </div>\n  <!-- Fin #general -->\n</body>\n\n</html>\n",
+			"<main id=\"content\">"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 71,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27,
+								14
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Tarjeta Nena",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"default_dir": "/Users/danielbaena/dev/research/mtp",
+							"is_xml": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/danielbaena/dev/research/mtp/android/gradle.properties",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1061,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1007,
+								1001
+							],
+							[
+								1034,
+								1040
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Java/JavaProperties.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/danielbaena/dev/research/mtp/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 954,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 137.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/danielbaena/dev/research/mtp/HomeScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5563,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2141,
+								2141
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/danielbaena/dev/research/mtp/CardScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21269,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15715,
+								15678
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										16257,
+										16258
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										15415,
+										15416
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3359.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/danielbaena/dev/research/mtp/HelpScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1335,
+								1335
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 776.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/danielbaena/dev/research/mtp/CardsView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1716,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								400
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/danielbaena/dev/research/mtp/CardLink.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								161
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/Users/danielbaena/dev/research/mtp/CardLoading.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2020,
+								2020
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 291.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/Users/danielbaena/dev/research/mtp/colors.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								85,
+								85
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"is_xml": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/Users/danielbaena/dev/research/mtp/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								772,
+								772
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JSON (JavaScriptNext).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mtp.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"build",
+				"android/app/build.gradle"
+			],
+			[
+				"gradel",
+				"android/gradle.properties"
+			],
+			[
+				"androidm",
+				"android/app/src/main/AndroidManifest.xml"
+			],
+			[
+				"pac",
+				"package.json"
+			],
+			[
+				"gitig",
+				".gitignore"
+			],
+			[
+				"local",
+				"android/local.properties"
+			],
+			[
+				"info.p",
+				"ios/mttp/Info.plist"
+			],
+			[
+				"plist",
+				"ios/build/info.plist"
+			],
+			[
+				"help",
+				"HelpScreen.js"
+			],
+			[
+				"",
+				"HomeScreen.js"
+			],
+			[
+				"cardlink",
+				"CardLink.js"
+			],
+			[
+				"card",
+				"CardScreen.js"
+			],
+			[
+				"home",
+				"HomeScreen.js"
+			],
+			[
+				"docker",
+				"Dockerfile"
+			],
+			[
+				"holy",
+				"app/models/holiday.rb"
+			],
+			[
+				"neon-cor",
+				"app/assets/stylesheets/neon-core.css"
+			],
+			[
+				"bootsr",
+				"app/assets/javascripts/bootstrap.js"
+			],
+			[
+				"permissions",
+				"db/seeds/more_permissions.rb"
+			],
+			[
+				"user",
+				"app/controllers/users_controller.rb"
+			],
+			[
+				"readme",
+				"README"
+			],
+			[
+				"bootstrap",
+				"app/assets/javascripts/bootstrap.js"
+			],
+			[
+				"devise.css",
+				"app/assets/stylesheets/devise.css"
+			],
+			[
+				"effort",
+				"app/models/pending_effort.rb"
+			],
+			[
+				"effo",
+				"app/controllers/efforts_controller.rb"
+			],
+			[
+				"sugge",
+				"app/templates/partials/suggested-brands.hbs"
+			],
+			[
+				"nav-re",
+				"app/templates/partials/nav-recursive.hbs"
+			],
+			[
+				"header",
+				"app/templates/modules/header.hbs"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"centro",
+				"app/templates/centro-ayuda.hbs"
+			],
+			[
+				"footer",
+				"app/templates/partials/footer.hbs"
+			],
+			[
+				"l3",
+				"app/templates/portada-l3.hbs"
+			],
+			[
+				"table-produ",
+				"app/templates/partials/table-product.hbs"
+			],
+			[
+				"carrito",
+				"app/templates/carrito.hbs"
+			],
+			[
+				"behavi",
+				"app/style/js/behaviour.js"
+			],
+			[
+				"style.js",
+				"app/style/js/style.js"
+			],
+			[
+				"behaviou",
+				"app/style/js/behaviour.js"
+			],
+			[
+				"sugges",
+				"app/templates/partials/suggested-brands.hbs"
+			],
+			[
+				"product.",
+				"app/templates/partials/product.hbs"
+			],
+			[
+				"mod",
+				"app/templates/modules/module-detalle-product.hbs"
+			],
+			[
+				"head",
+				"app/templates/partials/head.hbs"
+			],
+			[
+				"template",
+				"app/js/context/template.json"
+			],
+			[
+				"partial",
+				"app/js/context/partials.json"
+			],
+			[
+				"products",
+				"app/js/context/product.json"
+			],
+			[
+				"modal-m",
+				"app/templates/modal-master.hbs"
+			],
+			[
+				"beha",
+				"app/style/js/behaviour.js"
+			],
+			[
+				"product",
+				"app/templates/partials/product.hbs"
+			],
+			[
+				"responsi",
+				"app/style/css/responsive.css"
+			],
+			[
+				"style.c",
+				"app/style/css/style.css"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"lote.json",
+				"app/js/context/lote.json"
+			],
+			[
+				"gulpfile",
+				"gulpfile.js"
+			],
+			[
+				"product.hbs",
+				"app/templates/partials/product.hbs"
+			],
+			[
+				"respon",
+				"app/style/css/responsive.css"
+			],
+			[
+				"emotional-private",
+				"app/templates/partials/emotional-private.hbs"
+			],
+			[
+				"style.cs",
+				"app/style/css/style.css"
+			],
+			[
+				"footer-s",
+				"machiina.com/inc/footer-slim.php"
+			],
+			[
+				"responsive",
+				"machiina.com/style/css/responsive.css"
+			],
+			[
+				"style",
+				"machiina.com/style/css/style.css"
+			],
+			[
+				"header-pri",
+				"25001_carrefour_atg11/app/templates/modules/header-private.hbs"
+			],
+			[
+				"style.css",
+				"25001_carrefour_atg11/app/style/css/style.css"
+			],
+			[
+				"partials.json",
+				"25001_carrefour_atg11/app/js/context/partials.json"
+			],
+			[
+				"product.json",
+				"25002_carrefour_tu_bodega/app/js/context/product.json"
+			],
+			[
+				"behav",
+				"25002_carrefour_tu_bodega/app/style/js/behaviour.js"
+			],
+			[
+				"easyzoom",
+				"25002_carrefour_tu_bodega/app/style/js/library/easyzoom.js"
+			],
+			[
+				"module",
+				"25001_carrefour_atg11/app/templates/modules/module-detalle-product.hbs"
+			],
+			[
+				"ficha",
+				"25002_carrefour_tu_bodega/app/templates/ficha-producto.hbs"
+			],
+			[
+				"portada-la",
+				"25001_carrefour_atg11/app/templates/portada-landing.hbs"
+			],
+			[
+				"head.hbs",
+				"25001_carrefour_atg11/app/templates/partials/head.hbs"
+			],
+			[
+				"sw.js",
+				"25001_carrefour_atg11/app/js/sw/sw.js"
+			],
+			[
+				"partials",
+				"25001_carrefour_atg11/app/js/context/partials.json"
+			],
+			[
+				"product.hb",
+				"25001_carrefour_atg11/app/templates/partials/product.hbs"
+			],
+			[
+				"carrito-pro",
+				"25001_carrefour_atg11/app/js/context/carrito-product.json"
+			],
+			[
+				"produ",
+				"25001_carrefour_atg11/app/js/context/product.json"
+			],
+			[
+				"mod-de",
+				"25001_carrefour_atg11/app/templates/modules/module-detalle-product.hbs"
+			],
+			[
+				"promotions",
+				"25001_carrefour_atg11/app/templates/partials/promotions-and-offers.hbs"
+			],
+			[
+				"moddetall",
+				"25001_carrefour_atg11/app/templates/modules/module-detalle-product.hbs"
+			],
+			[
+				"nav-rec",
+				"app/templates/partials/nav-recursive.hbs"
+			],
+			[
+				"porata",
+				"app/templates/portada-l1.hbs"
+			],
+			[
+				"private",
+				"app/templates/partials/private-offers.hbs"
+			],
+			[
+				"venta-pr",
+				"app/templates/venta-privada.hbs"
+			],
+			[
+				"delivery-address-invalid-address",
+				"app/templates/partials/delivery/delivery-address-invalid-address.hbs"
+			],
+			[
+				"delivery-address-error-conn",
+				"app/templates/partials/delivery/delivery-address-error-conn.hbs"
+			],
+			[
+				"step",
+				"app/templates/modules/mod-checkout-step-02.hbs"
+			],
+			[
+				"categorie",
+				"app/templates/partials/categories.hbs"
+			],
+			[
+				"navi",
+				"app/js/context/navigation-bodega.json"
+			],
+			[
+				"navigation",
+				"app/templates/partials/navigation.hbs"
+			],
+			[
+				"cate",
+				"app/templates/partials/categories-and-highlights.hbs"
+			],
+			[
+				"l1",
+				"app/templates/modules/l1.hbs"
+			],
+			[
+				"search",
+				"app/templates/modules/search-template.hbs"
+			],
+			[
+				"orders-t",
+				"app/templates/partials/orders-title.hbs"
+			],
+			[
+				"actua",
+				"app/mails/mails-bodega/actualiza-tu-navegador-movil.html"
+			],
+			[
+				"actuali",
+				"app/mails/mails-bodega/actualiza-tu-navegador-movil.html"
+			],
+			[
+				"checkout",
+				"app/templates/checkout.hbs"
+			],
+			[
+				"checkout-c",
+				"app/templates/checkout-confirmation.hbs"
+			],
+			[
+				"micuenta",
+				"app/templates/mi-cuenta.hbs"
+			],
+			[
+				"modstep03",
+				"app/templates/modules/mod-checkout-step-03.hbs"
+			],
+			[
+				"templa",
+				"app/js/context/template.json"
+			],
+			[
+				"check",
+				"app/templates/checkout.hbs"
+			],
+			[
+				"actualiza",
+				"app/mails/mails-bodega/actualiza-tu-navegador.html"
+			],
+			[
+				"lote",
+				"app/js/context/lote.json"
+			],
+			[
+				"order-t",
+				"app/templates/partials/orders-title.hbs"
+			],
+			[
+				"order-add",
+				"app/templates/modules/order-additional.hbs"
+			],
+			[
+				"register",
+				"app/templates/modules/module-login-register-password.hbs"
+			],
+			[
+				"lote.j",
+				"app/js/context/lote.json"
+			],
+			[
+				"error",
+				"app/templates/error.hbs"
+			],
+			[
+				"carrito-tiel",
+				"app/templates/modules/carrito-title.hbs"
+			],
+			[
+				"dont",
+				"app/templates/partials/dont-forget.hbs"
+			],
+			[
+				"mod-deta",
+				"app/templates/modules/module-detalle-product.hbs"
+			],
+			[
+				"order",
+				"app/templates/partials/my-orders-table.hbs"
+			],
+			[
+				"my-order",
+				"app/templates/partials/my-orders-table.hbs"
+			],
+			[
+				"moddetalle",
+				"app/templates/modules/module-detalle-product.hbs"
+			],
+			[
+				"produc",
+				"production.sh"
+			],
+			[
+				"venta",
+				"app/templates/venta-privada.hbs"
+			],
+			[
+				"orders-p",
+				"app/templates/partials/orders-progress.hbs"
+			],
+			[
+				"orders-ti",
+				"app/templates/partials/orders-title.hbs"
+			],
+			[
+				"private-off",
+				"app/templates/partials/private-offers.hbs"
+			],
+			[
+				"private-info",
+				"app/templates/partials/private-info.hbs"
+			],
+			[
+				"venta-pri",
+				"app/templates/venta-privada.hbs"
+			],
+			[
+				"modals",
+				"app/style/js/modals.js"
+			],
+			[
+				"search-tem",
+				"app/templates/modules/search-template.hbs"
+			],
+			[
+				"portada",
+				"app/templates/portada-l3.hbs"
+			],
+			[
+				"resul",
+				"app/templates/resultados-busqueda.hbs"
+			],
+			[
+				"promos",
+				"app/templates/portada-promos.hbs"
+			],
+			[
+				"emotional",
+				"app/templates/partials/emotional-header.hbs"
+			],
+			[
+				"table",
+				"app/templates/partials/table-product.hbs"
+			],
+			[
+				"categor",
+				"app/templates/partials/categories.hbs"
+			],
+			[
+				"l2",
+				"app/templates/modules/l2.hbs"
+			],
+			[
+				"prod",
+				"app/templates/partials/product.hbs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 325.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
