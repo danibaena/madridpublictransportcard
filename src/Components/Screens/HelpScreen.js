@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text, View, ScrollView, Image, Dimensions, Platform } from 'react-native'
+import { Text, View, TouchableOpacity, TouchableNativeFeedback, ScrollView, Image, Dimensions, Platform } from 'react-native'
 import colors from '../../helpers/colors'
 
 /* Helper Components */
@@ -15,6 +15,12 @@ const Paragraph = (props) => <Text {...props} />
 
 Paragraph.defaultProps = {
   selectable: true,
+}
+
+const TouchableItem = (props) => {
+  return Platform.OS === 'android' ? 
+    (<TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(0, 0, 0, .32)', true)} delayPressIn={0} {...props} />)
+    : (<TouchableOpacity {...props} />);
 }
 
 /* Styles */
@@ -63,9 +69,14 @@ const StyledInnerParagraph = styled(StyledParagraph)`
   margin-bottom: 0px;
   margin-bottom: ${props => props.window.width < 400 ? '5px': '10px'};
 `
+
+const StyledSocialWrapper = styled.View`
+  margin-right: 30px;
+`
+
 const StyledSocial = styled.Image`
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   flex-shrink: 1;
 `
 
@@ -89,6 +100,16 @@ const StyledFooter = styled(Paragraph)`
 /* Component */
 
 export default class CardScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerRight: (
+      <TouchableItem title="Compartir" onPress={() => navigation.navigate('Home')}>
+        <StyledSocialWrapper>
+          <StyledSocial source={require('../../../assets/img/share-button.png')} />
+        </StyledSocialWrapper>
+      </TouchableItem>
+    ),
+  })
+
   constructor(props) {
     super(props);
   }
@@ -126,8 +147,8 @@ export default class CardScreen extends React.Component {
         <StyledTitle window={window} inner={true}>¿Por qué usar esta app y no la oficial?</StyledTitle>
         <StyledInnerParagraph window={window}>La aplicación oficial digamos que está un poco anticuada, y echaba de menos alguna funcionalidades</StyledInnerParagraph>
         <StyledInnerParagraph window={window}>Yo quería una forma sencilla de saber cuándo me caduca el título TTP y no descubrirlo al llegar al metro o al bus, y con su aplicación no me era suficiente</StyledInnerParagraph>
-        <StyledTitle window={window} inner={true}>¿Funcionará con NFC?</StyledTitle>
-        <StyledInnerParagraph window={window}>Está planeado sí</StyledInnerParagraph>
+        {/*<StyledTitle window={window} inner={true}>¿Funcionará con NFC?</StyledTitle>
+        <StyledInnerParagraph window={window}>Está planeado sí</StyledInnerParagraph>*/}
         <StyledFooter window={window}>madridttp.app@gmail.com</StyledFooter>
         <StyledFooter window={window} last={true}>Crafted with ❤️ from Madrid</StyledFooter>
       </StyledView>

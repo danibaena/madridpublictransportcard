@@ -319,13 +319,13 @@ export default class CardScreen extends React.Component {
         let daysLeftToExpire;
         let cardExpireDate;
 
-        expireDate = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
-        expireDateFormatted = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
-        expireDateWeekDay = result.format("dddd").toString()
+        expireDate           = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
+        expireDateFormatted  = result.format("DD[ de ]MMMM[ de ]YYYY").toString();
+        expireDateWeekDay    = result.format("dddd").toString();
         realDaysLeftToExpire = result.diff(moment().add(-1, "days"), "days");
-        daysLeftToExpire = realDaysLeftToExpire < 1 ? '0' : realDaysLeftToExpire.toString();
-        cardExpireDate = result.format("DD/MM/YYYY");
-        result = result.format("YYYY-MM-DD").toString();
+        daysLeftToExpire     = realDaysLeftToExpire < 1 ? '0' : realDaysLeftToExpire.toString();
+        cardExpireDate       = result.format("DD/MM/YYYY");
+        result               = result.format("YYYY-MM-DD").toString();
 
         this.setState({
           expireDate: expireDate,
@@ -505,9 +505,9 @@ export default class CardScreen extends React.Component {
     })
     .catch(error => console.warn('Calendar authentication Error: ', error));
 
-    let parsedDate = moment.utc(date, "DD/MM/YYYY").toISOString();
+    let parsedDate    = moment(date, "DD/MM/YYYY").toISOString();
     const description = 'Recuerda que podrás usar tu tarjeta todo el día';
-    const eventTitle = `Expira ${name ? name : 'tu Tarjeta Transporte Público'} con número ${cardId}`;
+    const eventTitle  = `Expira ${name ? name : 'tu Tarjeta Transporte Público'} con número ${cardId}`;
 
     const event = {
       notes: description,
