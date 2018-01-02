@@ -6,6 +6,11 @@ I've seen myself too many times failing to remember the date and having to pay a
 
 With this app you can check your card's expire date, save the card to check it next month or even add an event to your calendar on the expire date.
 
+## To put your credentials
+
+You'll need 2 files in order to generate an Android release:
+-Android/gradle.properties - Add or edit MYAPP_RELEASE_STORE_PASSWORD and MYAPP_RELEASE_KEY_PASSWORD with your password
+-Android/app/my-release-key.keystore - You'll need to generate this file following react native tutorial for releasing apps in android. The filename can be changed, but every change must be reflected in gradle.properties as well.
 
 ## About the project code
 
